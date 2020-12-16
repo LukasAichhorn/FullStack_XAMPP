@@ -1,1 +1,3 @@
-#This is a nice repository:
+# This is our WEBTECH PROJECT repository
+created by Lukas Aichhorn and Johannes Goelles
+
