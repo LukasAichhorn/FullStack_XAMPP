@@ -10,8 +10,12 @@ require "classes/validator.class.php";
 
 
 <?php
+//instntiate DB Object
+$DB = new DBManager();
+
 //instantiate UserManager
 $UserManager = new UserManager(0);
+$status = $UserManager->checkStatus($DB);
 ?>
 
 
@@ -28,9 +32,10 @@ $UserManager = new UserManager(0);
     <title>GoellHorn</title>
   </head>
   <body>
-    <h1>Welcome to GoellHorn!</h1>
     <!-- +++++++++++++++++++++++++++++++  Navigation +++++++++++++++++++++++++++++++++++ -->
     <?php include "components/navigationBar.comp.php"?>
+    <h1>Welcome to GoellHorn!</h1>
+    
 <div class="container-fluid">
 
 </div>

@@ -28,8 +28,9 @@ $UserManager = new UserManager(0);
     <title>GoellHorn</title>
   </head>
   <body>
-    <!-- +++++++++++++++++++++++++++++++  Navigation +++++++++++++++++++++++++++++++++++ -->
+       <!-- +++++++++++++++++++++++++++++++  Navigation +++++++++++++++++++++++++++++++++++ -->
     <?php include "../components/navigationBar.comp.php"?>
+   
 <div class="container-fluid">
 <?php include "../components/registerForm.comp.php"?>
 </div>

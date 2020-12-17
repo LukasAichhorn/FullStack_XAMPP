@@ -14,10 +14,12 @@ function __contruct($_initStatus){
 
 
 function checkStatus(){
-    if(isset($_SESSION["Status"])){
-        return 1;
+    if(!isset($_SESSION["Status"])){
+        return 0;
     }
-    return 0;
+    
+    $this->status = $_SESSION["status"];
+    return $this->status;
 }
 function setStatus($value){
     $_SESSION["status"]= $value;
