@@ -6,7 +6,7 @@ class DBManager{
     private $DB_NAME = "goellhornDB"; 
     private $DB;
 
-
+input 
 
 function ConnectDB(){
 
@@ -28,10 +28,13 @@ function insertUser(){
 
 
 
-function QueryForUser(){
-    
+function checkifUserExists($Query*Users){
 
 }
+
+
+
+//function QueryForUser(){}
 
 function HashPW($PW){
 $PW = hash("sha256",$PW);
