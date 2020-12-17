@@ -1,37 +1,37 @@
 <?php
 $litemHome = "
 <li class='nav-item'>
-    <a class='nav-link active' aria-current='page' href='#'>Home</a>
+    <a class='nav-link active' aria-current='page' href='index.php'>Home</a>
 </li>
         ";
 $litemlogin = "
 <li class='nav-item'>
-    <a class='nav-link' aria-current='page' href='#'>login</a>
+    <a class='nav-link' aria-current='page' href='pages/login.php'>login</a>
 </li>
         ";
 $litemMyProfile = "
 <li class='nav-item'>
-    <a class='nav-link' aria-current='page' href='#'>Myprofile</a>
+    <a class='nav-link' aria-current='page' href='pages/MyProfile'>My Profile</a>
 </li>
         ";
 $litemLogOut = "
 <li class='nav-item'>
-    <a class='nav-link' aria-current='page' href='#'>Logout</a>
+    <a class='nav-link' aria-current='page' href='pages/logout.php'>Logout</a>
 </li>
         ";
 $litemImpressum = "
 <li class='nav-item'>
-    <a class='nav-link' aria-current='page' href='#'>Impressum</a>
+    <a class='nav-link' aria-current='page' href='pages/impressum.php'>Impressum</a>
 </li>
         ";
 $litemHelp = "
 <li class='nav-item'>
-    <a class='nav-link' aria-current='page' href='#'>Help</a>
+    <a class='nav-link' aria-current='page' href='pages/help.php'>Help</a>
     </li>
                 ";
 $litemManageUsers = "
         <li class='nav-item'>
-            <a class='nav-link' aria-current='page' href='#'>Manage Users</a>
+            <a class='nav-link' aria-current='page' href='pages/ManageUsers.php'>Manage Users</a>
         </li>
                 ";
 
