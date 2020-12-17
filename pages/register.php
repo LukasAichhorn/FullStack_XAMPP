@@ -1,10 +1,10 @@
 <?php 
 // all includes and requires
-require "classes/DBManager.class.php";
-require "classes/Post.class.php";
-require "classes/User.class.php";
-require "classes/UserManager.class.php";
-require "classes/validator.class.php";
+require "../classes/DBManager.class.php";
+require "../classes/Post.class.php";
+require "../classes/User.class.php";
+require "../classes/UserManager.class.php";
+require "../classes/validator.class.php";
 ?>
 
 
@@ -29,9 +29,9 @@ $UserManager = new UserManager(0);
   </head>
   <body>
     <!-- +++++++++++++++++++++++++++++++  Navigation +++++++++++++++++++++++++++++++++++ -->
-    <?php include "components/navigationBar.comp.php"?>
+    <?php include "../components/navigationBar.comp.php"?>
 <div class="container-fluid">
-<?php include "components/registerForm.comp.php"?>
+<?php include "../components/registerForm.comp.php"?>
 </div>
 
 
