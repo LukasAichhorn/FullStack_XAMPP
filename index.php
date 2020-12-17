@@ -15,6 +15,7 @@ $DB = new DBManager();
 
 //instantiate UserManager
 $UserManager = new UserManager(0);
+$UserManager->startSession();
 $status = $UserManager->checkStatus($DB);
 ?>
 
