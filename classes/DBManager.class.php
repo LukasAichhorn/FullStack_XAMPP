@@ -6,7 +6,7 @@ class DBManager{
     private $DB_NAME = "goellhornDB"; 
     private $DB;
 
-input 
+
 
 function ConnectDB(){
 
@@ -28,7 +28,7 @@ function insertUser(){
 
 
 
-function checkifUserExists($Query*Users){
+function checkifUserExists(){
 
 }
 
