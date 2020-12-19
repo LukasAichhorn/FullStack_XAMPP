@@ -5,7 +5,8 @@ private $UserName;
 private $IsAdmin;
 private $status;
 
-}
 
+
+}
 
 ?>
