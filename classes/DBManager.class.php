@@ -21,27 +21,36 @@ class DBManager
         }
     }
 
+
+
     //checking if pw of username matches the passwort stored in the database
     function validateUser($username, $passwort)
     {
         $DB = $this->DB;
         $pw = $this->HashPW($passwort);
-        $arr = array();
+        
+        
+        $ID = 0;
 
         //$qury = "SELECT UserID FROM goellhorndb.user WHERE Username = '" . $username . "' AND Passwort = '" . $pw . "';";
 
         if (!($stmt = $DB->prepare("SELECT UserID FROM goellhorndb.user WHERE Username = ? AND Passwort = ?"))) {
             echo "Prepare failed: (" . $DB->errno . ") " . $DB->error;
         }
-        if (!$stmt->bind_param("ss", $username, $pw,)) {
+        if (!$stmt->bind_param("ss", $username, $pw)) {
             echo "Binding Username failed: (" . $stmt->errno . ") " . $stmt->error;
         }
         if (!$stmt->execute()) {
             echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
         }
-        $arr = $stmt->fetch();
+        $stmt->bind_result($ID);
 
-        var_dump($stmt);
+        $stmt->fetch();
+        //returns corresponding ID if username and pw match, else returns null
+        return $ID;
+
+        
+        
     }
 
     function insertUser($validUser)
@@ -62,8 +71,28 @@ class DBManager
         }
     }
 
-    function selectUserPW()
-    {
+    //finding data of UserID then creating and returning User Object with corresponding values
+    function getUser($ID){
+        if($ID != 0){
+        //$values = array();
+        $DB = $this->DB;
+        $stmt = "SELECT * FROM goellhorndb.user WHERE UserID = '" . $ID . "';";
+
+        $result = $DB->query($stmt);
+        $values = $result->fetch_row();
+        
+        var_dump($values);
+        $newUser = new User($values[0], $values[1], $values[2], $values[3], $values[4], $values[5], $values[6], $values[7], $values[8]);
+
+        return $newUser;
+        }
+        else{
+            echo "NOT A VALID ID!!";
+        }
+
+        
+        
+        
     }
 
 

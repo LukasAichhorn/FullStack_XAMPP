@@ -9,12 +9,14 @@ $testDBManager->ConnectDB();
 $testPW = "asdfjkl1";
 
 $testPW = $testDBManager->HashPW($testPW);
+echo $testPW;
 
-$testUser = new User(0, "boi", $testPW, "Herr", "b", "oi",0,1);
 
-$testDBManager->validateUser("boi", $testPW);
 
+$TestID = $testDBManager->validateUser("boi", "asdfjkl1");
+echo "!" . $TestID . "!";
+$testUser = $testDBManager->getUser($TestID); 
 //$testDBManager->insertUser($testUser);    
 $testUsername = "Heinz";
-//$testDBManager->checkifUserExists($testUsername);
+$testDBManager->checkifUserExists($testUsername);
 ?>
