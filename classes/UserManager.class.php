@@ -52,25 +52,30 @@ function handleLogin($DB,$NameField,$PwField){
         }
 
     }
-function handleRegister($DB,$Username,$Passwort,$Anrede,$Vorname,$Nachname){
+} 
+function handleRegister($DB){
 
 if(isset($_POST["Username"]) && isset($_POST["Passwort"]) && isset($_POST["Anrede"]) && isset($_POST["Vorname"]) && isset($_POST["Nachname"])){
 
+
     $Validator = new Validator();
-    $Username=$Validator->validate_string($Username);
-    $Hpw=$Validator->validate_Password($Passwort);
-    $Anrede=$Validator->validate_string($Anrede);
-    $Vorname=$Validator->validate_string($Vorname);
-    $Nachname=$Validator->validate_string($Nachname);
+    $Username=$Validator->validate_string($_POST["Username"]);
+    $Hpw=$Validator->validate_Password($_POST["Passwort"]);
+    $Anrede=$Validator->validate_string($_POST["Anrede"]);
+    $Vorname=$Validator->validate_string($_POST["Vorname"]);
+    $Nachname=$Validator->validate_string($_POST["Nachname"]);
 
     $NewUser = new User(0,$Username,$Hpw,$Anrede,$Vorname,$Nachname,0,1);
 
     if(!$DB->checkifUserExists($Username)){
         $DB->insertUser($NewUser);
+        header("Refresh:0; url=login.php");
         
     }else{
+        echo("User already exist!");
         
-    }
+    };
+
     
 
 }
@@ -91,5 +96,4 @@ if(isset($_POST["Username"]) && isset($_POST["Passwort"]) && isset($_POST["Anred
 
 
 
-}
 ?>

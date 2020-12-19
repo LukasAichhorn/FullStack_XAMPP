@@ -1,15 +1,15 @@
 <?php 
 class User {
-private $UserID;
-private $UserPW;
-private $UserName;
-Private $Anrede;
-private $Vorname;
-private $Nachname;
+public $UserID;
+public $UserPW;
+public $UserName;
+public $Anrede;
+public $Vorname;
+public $Nachname;
 
-private $IsAdmin;
-private $status;
-private $IMG;
+public $IsAdmin;
+public $status;
+public $IMG;
 
 function __construct($_UserID,$_UserName,$_UPW,$_Anrede,$_Vorname,$_Nachname,$_IsAdmin,$_status){
 $this->UserID = $_UserID;
