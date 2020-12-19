@@ -19,7 +19,9 @@ $this->Anrede=$_Anrede;
 $this->Vorname=$_Vorname;
 $this->Nachname=$_Nachname;
 
-$this->IsAdmin = $_
+$this->IsAdmin = $_IsAdmin;
+$this->status = $_status;
+
 }
 
 }
