@@ -12,9 +12,9 @@ $testPW = $testDBManager->HashPW($testPW);
 
 $testUser = new User(0, "boi", $testPW, "Herr", "b", "oi",0,1);
 
+$testDBManager->validateUser("boi", $testPW);
 
-
-$testDBManager->insertUser($testUser);    
+//$testDBManager->insertUser($testUser);    
 $testUsername = "Heinz";
-$testDBManager->checkifUserExists($testUsername);
+//$testDBManager->checkifUserExists($testUsername);
 ?>
