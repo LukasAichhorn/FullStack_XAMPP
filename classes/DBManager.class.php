@@ -15,7 +15,9 @@ function ConnectDB(){
     if ($DB->connect_errno) {
         echo "Failed to connect to MySQL: " . $DB->connect_error;
     }
+    else{
     echo $DB->host_info . " Connection success!\n";
+    }
 
 }
 

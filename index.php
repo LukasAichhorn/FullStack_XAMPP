@@ -12,11 +12,12 @@ require "classes/validator.class.php";
 <?php
 //instntiate DB Object
 $DB = new DBManager();
-
+$DB->ConnectDB();
 //instantiate UserManager
-$UserManager = new UserManager(0);
+$UserManager = new UserManager();
 $UserManager->startSession();
-$status = $UserManager->checkStatus($DB);
+$status = $UserManager->checkStatus();
+$CurrentUser = $UserManager->getUser();
 ?>
 
 
@@ -36,6 +37,7 @@ $status = $UserManager->checkStatus($DB);
     <!-- +++++++++++++++++++++++++++++++  Navigation +++++++++++++++++++++++++++++++++++ -->
     <?php include "components/navigationBar.comp.php"?>
     <h1>Welcome to GoellHorn!</h1>
+    <h2>Your are logged in as <?php $CurrentUser->UserName ?> </h2>
     
 <div class="container-fluid">
 

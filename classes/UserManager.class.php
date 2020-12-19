@@ -1,55 +1,55 @@
 <?php
 class UserManager{
-private $status;
-private $userID;
+private $User;
 
 
-function __contruct($_initStatus){
-    
-    $this->status = $_initStatus;
 
 
-}
 function startSession(){
     session_start();
 }
 
 function checkStatus(){
-    if(!isset($_SESSION["Status"])){
-        return 0;
+    if(isset($_SESSION["User"])){
+        $User = $_SESSION["User"];
+
+        if($User->IsAdmin == 1){
+            return 2;
+        }
+        else{
+            return 1;
+        }
     }
-    $this->status = $_SESSION["status"];
-    return $this->status;
+    return 0;
+   
 }
-function setStatus($value){
-    $_SESSION["status"]= $value;
-    $this->status = $value;
- }
- function setUser($User){
-     $_SESSION["User"]=$User;
-     $this->user = $User;
- }
  function getUser(){
-   return $this->user;
+   return $this->User;
     
 }
 
-function handleLogin($DB,$NameField,$PwField){
-    if(isset($_POST[$NameField])&& isset($_POST[$PwField])){
+function handleLogin($DB){
+    if(isset($_POST["Username"])&& isset($_POST["Passwort"])){
 
-        $UserName = $_POST[$NameField];
-        $PW  =  hash("sha256",$_POST[$PwField]);
+        $UserName = $_POST["Username"];
+        $PW  =  hash("sha256",$_POST["Passwort"]);
 
         if($DB->checkifUserExists($UserName)){
 
-            $User = $DB->validateUser($UserName,$PW);
-            $DB->insertUser($User);
+            if($UserID = $DB->validateUser($UserName,$PW)){
 
-            if($User != NULL){                
-                $this->setUser($User);
+                $CurrentUser = $DB->getUser($UserID);
+                $_SESSION["User"]=$CurrentUser;
             }
-          
+            else{
+                echo("Username or password is wrong <br>");
+            }
+
         }
+        else{
+            echo("User does not exist, try to create a new account ! <br>");
+
+        };
 
     }
 } 
@@ -76,21 +76,13 @@ if(isset($_POST["Username"]) && isset($_POST["Passwort"]) && isset($_POST["Anred
         
     };
 
-    
-
-}
-    //validieren imput => 
-
-    // user exist
-    // insert
-    //redirect to login.php
-
-
-
 }
 
-   
-
+}
+function handleLogout(){
+    session_unset();
+    header("Refresh:0; url=index.php");
+}
 
 }
 
