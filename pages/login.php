@@ -11,7 +11,11 @@ require "../classes/validator.class.php";
 
 <?php
 //instantiate UserManager
-$UserManager = new UserManager(0);
+$DB = New DBManager();
+$DB->connectDB();
+
+$UserManager = new UserManager();
+$UserManager->handleLogin($DB);
 ?>
 
 

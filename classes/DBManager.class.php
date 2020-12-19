@@ -16,8 +16,9 @@ class DBManager
         $DB = $this->DB;
         if ($DB->connect_errno) {
             echo "Failed to connect to MySQL: " . $DB->connect_error;
+        } else {
+            echo $DB->host_info . " Connection success!\n";
         }
-        echo $DB->host_info . " Connection success!\n";
     }
 
     //checking if pw of username matches the passwort stored in the database
@@ -39,7 +40,7 @@ class DBManager
             echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
         }
         $arr = $stmt->fetch();
-        
+
         var_dump($stmt);
     }
 
