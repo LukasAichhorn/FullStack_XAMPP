@@ -12,6 +12,7 @@ require "../classes/validator.class.php";
 <?php
 //instantiate UserManager
 $UserManager = new UserManager(0);
+//
 ?>
 
 
