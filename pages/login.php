@@ -15,6 +15,7 @@ $DB = New DBManager();
 $DB->connectDB();
 
 $UserManager = new UserManager();
+$UserManager->startSession();
 $UserManager->handleLogin($DB);
 ?>
 

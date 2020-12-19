@@ -36,7 +36,7 @@ function handleLogin($DB){
 
         if($DB->checkifUserExists($UserName)){
             $UserID = $DB->validateUser($UserName,$PW);
-            if(!empty($UserID)){
+            if($UserID!= 0){
 
                 $CurrentUser = $DB->getUser($UserID);
                 $_SESSION["User"]=$CurrentUser;
