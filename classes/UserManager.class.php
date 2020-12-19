@@ -32,7 +32,7 @@ function handleLogin($DB){
     if(isset($_POST["Username"])&& isset($_POST["Passwort"])){
 
         $UserName = $_POST["Username"];
-        $PW  =  hash("sha256",$_POST["Passwort"]);
+        $PW  =  $_POST["Passwort"];
 
         if($DB->checkifUserExists($UserName)){
             $UserID = $DB->validateUser($UserName,$PW);
@@ -40,6 +40,7 @@ function handleLogin($DB){
 
                 $CurrentUser = $DB->getUser($UserID);
                 $_SESSION["User"]=$CurrentUser;
+                header("Refresh:0; url=../index.php");
             }
             else{
                 echo("Username or password is wrong <br>");
@@ -65,7 +66,7 @@ if(isset($_POST["Username"]) && isset($_POST["Passwort"]) && isset($_POST["Anred
     $Vorname=$Validator->validate_string($_POST["Vorname"]);
     $Nachname=$Validator->validate_string($_POST["Nachname"]);
 
-    $NewUser = new User(0,$Username,$Hpw,$Anrede,$Vorname,$Nachname,0,1);
+    $NewUser = new User(0,$Username,$Hpw,$Anrede,$Vorname,$Nachname,0,1,'ressources/pics/DefaultUser.png');
 
     if(!$DB->checkifUserExists($Username)){
         $DB->insertUser($NewUser);
@@ -81,7 +82,7 @@ if(isset($_POST["Username"]) && isset($_POST["Passwort"]) && isset($_POST["Anred
 }
 function handleLogout(){
     session_unset();
-    header("Refresh:0; url=index.php");
+    header("Refresh:0; url=../index.php");
 }
 
 }
