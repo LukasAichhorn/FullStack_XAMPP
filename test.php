@@ -1,19 +1,20 @@
 <?php
 include 'classes/DBManager.class.php';
+include 'classes/User.class.php';
 
 $testDBManager = new DBManager;
 
 $testDBManager->ConnectDB();
 
-$testInput = [
-    "Username" => "Heinz",
-    "Passwort" => "pw",
-    "Anrede" => "Herr",
-    "Vorname" => "Hei",
-    "Nachname" => "Nz"
-];
+$testPW = "asdfjkl1";
 
-$testDBManager->insertUser($testInput);    
+$testPW = $testDBManager->HashPW($testPW);
+
+$testUser = new User(0, "boi", $testPW, "Herr", "b", "oi",0,1);
+
+
+
+$testDBManager->insertUser($testUser);    
 $testUsername = "Heinz";
 $testDBManager->checkifUserExists($testUsername);
 ?>

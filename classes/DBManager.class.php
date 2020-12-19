@@ -23,18 +23,18 @@ function ConnectDB(){
 function validateUser($username, $passwort){
     $DB = $this->DB;
     $pw = $this->HashPW($passwort);
-    
+
 
 }
 
-function insertUser($validData){//input is an object called User
+function insertUser($validUser){//input is an object called User
     //validated data in array as input
     $DB = $this->DB;
     if(!( $stmt = $DB->prepare("INSERT INTO goellhorndb.user(Username,Passwort,Anrede,Vorname,Nachname) VALUES (?,?,?,?,?)"))){
         echo "Prepare failed: (" . $DB->errno . ") " . $DB->error; 
     }
     
-    if (!$stmt->bind_param("sssss", $validData['Username'],$validData['Passwort'],$validData['Anrede'],$validData['Vorname'],$validData['Nachname'])) {
+    if (!$stmt->bind_param("sssss", $validUser->UserName,$validUser->UserPW,$validUser->Anrede,$validUser->Vorname,$validUser->Nachname)) {
     echo "Binding Username failed: (" . $stmt->errno . ") " . $stmt->error;
     }
     
