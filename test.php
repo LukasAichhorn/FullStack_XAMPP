@@ -14,5 +14,6 @@ $testInput = [
 ];
 
 $testDBManager->insertUser($testInput);    
-
+$testUsername = "Heinz";
+$testDBManager->checkifUserExists($testUsername);
 ?>

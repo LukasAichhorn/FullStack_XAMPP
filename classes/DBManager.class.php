@@ -19,11 +19,15 @@ function ConnectDB(){
 
 }
 
-function validateUser(){
-    //array with POST values as input, validating each, password already hashed by HandleLogin
+//checking if pw of username matches the passwort stored in the database
+function validateUser($username, $passwort){
+    $DB = $this->DB;
+    $pw = $this->HashPW($passwort);
+    
+
 }
 
-function insertUser($validData){
+function insertUser($validData){//input is an object called User
     //validated data in array as input
     $DB = $this->DB;
     if(!( $stmt = $DB->prepare("INSERT INTO goellhorndb.user(Username,Passwort,Anrede,Vorname,Nachname) VALUES (?,?,?,?,?)"))){
@@ -33,20 +37,7 @@ function insertUser($validData){
     if (!$stmt->bind_param("sssss", $validData['Username'],$validData['Passwort'],$validData['Anrede'],$validData['Vorname'],$validData['Nachname'])) {
     echo "Binding Username failed: (" . $stmt->errno . ") " . $stmt->error;
     }
-    /*  
-    if (!$stmt->bind_param("Passwort", $validData['Passwort'])) {
-        echo "Binding Passwort failed: (" . $stmt->errno . ") " . $stmt->error;
-        }
-    if (!$stmt->bind_param("Anrede", $validData['Anrede'])) {
-        echo "Binding Anrede failed: (" . $stmt->errno . ") " . $stmt->error;
-        }
-    if (!$stmt->bind_param("Vorname", $validData['Vorname'])) {
-        echo "Binding Vorname failed: (" . $stmt->errno . ") " . $stmt->error;
-        }
-    if (!$stmt->bind_param("Nachname", $validData['Nachname'])) {
-        echo "Binding Nachname failed: (" . $stmt->errno . ") " . $stmt->error;
-        }
-        */
+    
 
     if (!$stmt->execute()) {
     echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
@@ -62,10 +53,28 @@ function selectUserPW(){}
 
 
 
+//checking if Username exists in our database returning corresponding bool, input:username as string
+function checkifUserExists($input){
+$DB = $this->DB;
+$arr = array();
 
-function checkifUserExists(){
+$qury = "SELECT Username FROM goellhorndb.user WHERE Username = '" . $input . "';";
 
+$result = $DB->query($qury);
+$arr = $result->fetch_row();
+
+if(!empty($arr)){
+    echo "Succses!";
+    var_dump($arr);
+    return True;
 }
+else{
+    echo "Fail!";
+    return False;
+}
+ 
+}
+
 
 
 
@@ -77,5 +86,3 @@ return $PW;
 }
 
 }
-
-?>
