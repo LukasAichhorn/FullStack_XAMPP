@@ -35,8 +35,8 @@ function handleLogin($DB){
         $PW  =  hash("sha256",$_POST["Passwort"]);
 
         if($DB->checkifUserExists($UserName)){
-
-            if($UserID = $DB->validateUser($UserName,$PW)){
+            $UserID = $DB->validateUser($UserName,$PW);
+            if(!empty($UserID)){
 
                 $CurrentUser = $DB->getUser($UserID);
                 $_SESSION["User"]=$CurrentUser;

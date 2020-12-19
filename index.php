@@ -37,7 +37,7 @@ $CurrentUser = $UserManager->getUser();
     <!-- +++++++++++++++++++++++++++++++  Navigation +++++++++++++++++++++++++++++++++++ -->
     <?php include "components/navigationBar.comp.php"?>
     <h1>Welcome to GoellHorn!</h1>
-    <h2>Your are logged in as <?php $CurrentUser->UserName ?> </h2>
+    <h2>Your are logged in as <?php?> </h2>
     
 <div class="container-fluid">
 
