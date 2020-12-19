@@ -11,7 +11,7 @@ public $IsAdmin;
 public $status;
 public $IMG;
 
-function __construct($_UserID,$_UserName,$_UPW,$_Anrede,$_Vorname,$_Nachname,$_IsAdmin,$_status){
+function __construct($_UserID,$_UserName,$_UPW,$_Anrede,$_Vorname,$_Nachname,$_IsAdmin,$_status,$_img){
 $this->UserID = $_UserID;
 $this->UserName=$_UserName;
 $this->UserPW=$_UPW;
@@ -21,6 +21,7 @@ $this->Nachname=$_Nachname;
 
 $this->IsAdmin = $_IsAdmin;
 $this->status = $_status;
+$this->img = $_img;
 
 }
 
