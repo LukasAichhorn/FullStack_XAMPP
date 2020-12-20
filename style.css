@@ -4,6 +4,7 @@ body{
 }
 h5 {
     font-family: 'Bree Serif', serif;
+    font-size: 1.35rem;
     
 
 }
@@ -15,10 +16,27 @@ a {
     
 }
 
-p {
-   
-
-}
 .navbar-brand{
     font-family: 'Bree Serif', serif;
 }
+.card-body{
+    padding-bottom: 0rem;
+    
+    
+}
+.card-img{
+    border-radius: 0;
+}
+.btn-sm-my{
+    font-size: .875em;
+    border-radius: 10%;
+    padding-top: .2em;
+    padding-bottom: .2em;
+}
+.Comp-like{
+    margin-left: 1em;
+}
+.comp_divider{
+    border-radius: 100%;
+}
+
