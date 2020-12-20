@@ -82,7 +82,7 @@ class DBManager
         $values = $result->fetch_row();
         
         //var_dump($values); ERROR LOG
-        $newUser = new User($values[0], $values[1], $values[2], $values[3], $values[4], $values[5], $values[6], $values[7], $values[8]);
+        $newUser = new User($values[0], $values[1], $values[2], $values[3], $values[4], $values[5], $values[6], $values[7], $values[8], $values[9]);
 
         return $newUser;
         }
