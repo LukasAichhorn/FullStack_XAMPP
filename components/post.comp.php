@@ -1,5 +1,5 @@
     
-           // [0] => Array ( [PostID] => 1 [Bildadresse] => INGOasdf.jpg [Bildname] => IngoBild [Titel] => Liebes Tagebuch: [Text] => ich bin Ingo und heute hat in der Ubahn einer zu mir gesagt ich rieche penetrant nach Zwiebeln. Das war gemein. lg Ingo. [Likes] => 0 [Dislikes] => 0 [CreatedAt] => 2020-12-20 17:57:21 [Sichtbarkeit] => 1 [FK_UserID] => 18 )
+           
 
     
     
@@ -17,7 +17,7 @@
                                 <h5 class="card-title"><?php echo($Post["Titel"]) ?></h5>
                             </a>
                             <p class="card-text">
-                            <?php echo($Post["Text"])?>
+                            <?php echo($Post["Inhalt"])?>
                             </p>
                         </div>
                     </div>
@@ -29,7 +29,7 @@
                             <div class="row mt-2">
 
                                 <div class="col">
-                                    <p class="card-text"><small class="text-muted"><?php echo($Post["Username"])?> creates at: <?php echo($Post["CreatedAt"]) ?> </small></p>
+                                    <p class="card-text"><small class="text-muted">created by: <?php echo($Post["Username"])?>  at: <?php echo($Post["CreatedAt"]) ?> </small></p>
                                 </div>
 
                                 <div class="col">

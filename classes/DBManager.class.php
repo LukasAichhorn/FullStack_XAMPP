@@ -185,7 +185,7 @@ class DBManager
     }
 
     function likePost($post){
-            
+
     }
 
     function dislikePost(){}
