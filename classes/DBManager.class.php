@@ -54,8 +54,8 @@ class DBManager
     }
 
     function insertUser($validUser)
-    { //input is an object called User
-        //validated data in array as input
+    { //input is an object called User with valid data
+        
         $DB = $this->DB;
         if (!($stmt = $DB->prepare("INSERT INTO goellhorndb.user(Username,Passwort,Anrede,Vorname,Nachname) VALUES (?,?,?,?,?)"))) {
             echo "Prepare failed: (" . $DB->errno . ") " . $DB->error;
@@ -166,5 +166,24 @@ class DBManager
         }
     }
 
+    function insertPost($validPost, $currentUser)
+    { //input is an object of class: Post and the currentUser object
+        
+        $DB = $this->DB;
+        if (!($stmt = $DB->prepare("INSERT INTO goellhorndb.post(Bildadresse,Bildname,Titel,Inhalt,Sichtbarkeit,FK_UserID) VALUES (?,?,?,?,?,?)"))) {
+            echo "Prepare failed: (" . $DB->errno . ") " . $DB->error;
+        }
+
+        if (!$stmt->bind_param("ssssii", $validPost->Bildadresse, $validPost->Bildname, $validPost->Titel, $validPost->Inhalt, $validPost->Sichtbarkeit, $currentUser->UserID)) {
+            echo "Binding Username failed: (" . $stmt->errno . ") " . $stmt->error;
+        }
+
+
+        if (!$stmt->execute()) {
+            echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+        }
+    }
+
+    
     
 }
