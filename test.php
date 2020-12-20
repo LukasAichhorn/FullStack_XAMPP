@@ -9,14 +9,16 @@ $testDBManager->ConnectDB();
 $testPW = "asdfjkl1";
 
 $testPW = $testDBManager->HashPW($testPW);
-echo $testPW;
+//echo $testPW;
 
 
 
-$TestID = $testDBManager->validateUser("boi", "asdfjkl1");
+$TestID = $testDBManager->validateUser("carlos", "1234");
 echo "!" . $TestID . "!";
 $testUser = $testDBManager->getUser($TestID); 
 //$testDBManager->insertUser($testUser);    
-$testUsername = "Heinz";
+$testUsername = "carlos";
 $testDBManager->checkifUserExists($testUsername);
+$testDBManager->getPosts(1);
+
 ?>

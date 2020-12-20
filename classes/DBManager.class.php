@@ -113,6 +113,7 @@ class DBManager
             //var_dump($arr); ERROR LOG
             return True;
         } else {
+            var_dump($arr);
             echo "Fail!";
             return False;
         }
@@ -128,4 +129,42 @@ class DBManager
         $PW = hash("sha256", $PW);
         return $PW;
     }
+
+
+    //fnc for getting assoc. array of posts to depict, output depends on loginstatus of user (public posts or all posts)
+    function getPosts($status){
+        $DB = $this->DB;
+        if($status == 0){//no prepared statemnt needed because user input has no influence on query
+            $stmt = "SELECT * FROM goellhorndb.post WHERE Sichtbarkeit = 1";
+            $result = mysqli_query($DB, $stmt);
+            $posts = array();
+            if (mysqli_num_rows($result) > 0){
+                while($row = mysqli_fetch_assoc($result)){
+                    $posts[] = $row;
+                }
+            }
+            
+            //print_r($posts);
+            return $posts;
+            
+
+            
+        }
+        else{
+            $stmt = "SELECT * FROM goellhorndb.post";
+            $result = mysqli_query($DB, $stmt);
+            $posts = array();
+            if (mysqli_num_rows($result) > 0){
+                while($row = mysqli_fetch_assoc($result)){
+                    $posts[] = $row;
+                }
+            }
+            
+            //print_r($posts);
+            return $posts;
+
+        }
+    }
+
+    
 }
