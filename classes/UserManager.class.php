@@ -11,8 +11,10 @@ function startSession(){
 
 function checkStatus(){
     if(isset($_SESSION["User"])){
-        $User = $_SESSION["User"];
-        
+        $User = $_SESSION["User"]; 
+
+        $this->User = $User;
+
         if($User->IsAdmin == 1){
             return 2;
         }

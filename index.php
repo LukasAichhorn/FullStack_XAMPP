@@ -47,13 +47,15 @@ $CurrentUser = $UserManager->getUser();
         <div class="col-2">
 
         </div>
-
+        
         <div class="col">
           <div class="mt-5 mb-5">
           <h1>Welcome to GoellHorn!</h1>
           <?php
+          
+          
           if(isset($CurrentUser)){
-            echo("<p>Your are logged in as $CurrentUser->$UserName></p>");
+            echo("<p>Your are logged in as $CurrentUser->UserName</p>");
           }
           else{
             echo("<p>Your are not logged in and only see 'public' posts!</p>");
@@ -61,7 +63,7 @@ $CurrentUser = $UserManager->getUser();
           ?>    
           </div>
 
-
+          
           <?php include "components/search.comp.php"?>
 
           <div class="mt-5">
