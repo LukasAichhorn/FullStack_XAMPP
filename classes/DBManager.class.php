@@ -184,11 +184,29 @@ class DBManager
         }
     }
 
-    function likePost($post){
-
+    function likePost($postID){
+        $DB = $this->DB;
+        $stmt = "UPDATE post SET Likes = Likes + 1 WHERE PostID = $postID";
+        $DB->query($stmt);
+        echo "oi loiked yar fockin pouust!";
     }
 
-    function dislikePost(){}
+    function dislikePost($postID){
+        $DB = $this->DB;
+        $stmt = "UPDATE post SET Dislikes = Dislikes + 1 WHERE PostID = $postID";
+        $DB->query($stmt);
+        echo "oi dissloiked yar fockin pouust!";
+    }
+
+    function allTags(){
+        $DB = $this->DB;
+        $stmt = "SELECT TagName FROM tags";
+        $result = $DB->query($stmt);
+
+        return $result->fetch_all();
+
+
+    }
 
     
     

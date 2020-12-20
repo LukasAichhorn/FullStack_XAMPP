@@ -21,4 +21,9 @@ $testUsername = "carlos";
 $testDBManager->checkifUserExists($testUsername);
 $testDBManager->getPosts(1);
 
+//$testDBManager->dislikePost(1);
+
+$tags = $testDBManager->allTags();
+var_dump($tags);
+
 ?>
