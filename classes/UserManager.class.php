@@ -68,10 +68,16 @@ if(isset($_POST["Username"]) && isset($_POST["Passwort"]) && isset($_POST["Anred
     $Vorname=$Validator->validate_string($_POST["Vorname"]);
     $Nachname=$Validator->validate_string($_POST["Nachname"]);
 
-    $NewUser = new User(0,$Username,$Hpw,$Anrede,$Vorname,$Nachname,0,1,'ressources/pics/DefaultUser.png');
+    
 
     if(!$DB->checkifUserExists($Username)){
-        $DB->insertUser($NewUser);
+
+        $UserRoot ='../UsersRoot' . $Username;
+        mkdir($UserRoot);
+        $NewUser = new User(0,$Username,$Hpw,$Anrede,$Vorname,$Nachname,0,1,'ressources/pics/DefaultUser.png',$UserRoot);
+        $DB->insertUser($NewUser);       
+        
+
         header("Refresh:0; url=login.php");
         
     }else{

@@ -18,6 +18,17 @@ function display($Posts){
     }
 
 }
+function handleNewPost(){
+
+if(
+    isset($_POST["Titel"]) &&
+    isset($_POST["Textarea"])
+){
+
+        
+}
+
+}
 
 
 

@@ -17,6 +17,9 @@ $DB->connectDB();
 $UserManager = new UserManager();
 $UserManager->startSession();
 $status = $UserManager->checkStatus();
+$Tags=$DB->allTags();
+
+
 ?>
 
 
