@@ -20,8 +20,8 @@
         foreach ($Tags as $tag) {
             echo("
             <div class='form-check form-switch'>
-                <input class='form-check-input' type='checkbox' id='" . $tag . "' checked>
-                    <label class='form-check-label' for='" . $tag . "'>Checked switch checkbox input</label>
+                <input class='form-check-input' type='checkbox' id='" . $tag[0] . "' checked>
+                    <label class='form-check-label' for='" . $tag[0] . "'>" . $tag[0] . "</label>
                     </div>
 
             ");

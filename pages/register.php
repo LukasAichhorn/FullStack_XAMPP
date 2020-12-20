@@ -36,7 +36,11 @@ $UserManager->handleRegister($DB);
     <?php include "../components/navigationBar.comp.php"?>
    
 <div class="container-fluid">
-<?php include "../components/registerForm.comp.php"?>
+<?php include "../components/registerForm.comp.php";
+echo getcwd();
+chdir("../usersRoot");
+echo getcwd();
+?>
 </div>
 
 

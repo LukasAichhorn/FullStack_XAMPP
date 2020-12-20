@@ -62,7 +62,7 @@ class DBManager
         }
 
         if (!$stmt->bind_param("sssss", $validUser->UserName, $validUser->UserPW, $validUser->Anrede, $validUser->Vorname, $validUser->Nachname)) {
-            echo "Binding Username failed: (" . $stmt->errno . ") " . $stmt->error;
+            echo "Binding params failed: (" . $stmt->errno . ") " . $stmt->error;
         }
 
 
@@ -166,7 +166,7 @@ class DBManager
         }
     }
 
-    function insertPost($validPost, $currentUser)
+    function insertPost($validPost)
     { //input is an object of class: Post and the currentUser object
         
         $DB = $this->DB;
@@ -174,8 +174,8 @@ class DBManager
             echo "Prepare failed: (" . $DB->errno . ") " . $DB->error;
         }
 
-        if (!$stmt->bind_param("ssssii", $validPost->Bildadresse, $validPost->Bildname, $validPost->Titel, $validPost->Inhalt, $validPost->Sichtbarkeit, $currentUser->UserID)) {
-            echo "Binding Username failed: (" . $stmt->errno . ") " . $stmt->error;
+        if (!$stmt->bind_param("ssssii", $validPost->Bildadresse, $validPost->Bildname, $validPost->Titel, $validPost->Inhalt, $validPost->Sichtbarkeit, $validPost->UserID)) {
+            echo "Binding params failed: (" . $stmt->errno . ") " . $stmt->error;
         }
 
 
@@ -188,14 +188,12 @@ class DBManager
         $DB = $this->DB;
         $stmt = "UPDATE post SET Likes = Likes + 1 WHERE PostID = $postID";
         $DB->query($stmt);
-        echo "oi loiked yar fockin pouust!";
     }
 
     function dislikePost($postID){
         $DB = $this->DB;
         $stmt = "UPDATE post SET Dislikes = Dislikes + 1 WHERE PostID = $postID";
         $DB->query($stmt);
-        echo "oi dissloiked yar fockin pouust!";
     }
 
     function allTags(){
