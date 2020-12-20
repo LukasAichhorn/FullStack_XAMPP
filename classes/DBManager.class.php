@@ -57,11 +57,11 @@ class DBManager
     { //input is an object called User with valid data
         
         $DB = $this->DB;
-        if (!($stmt = $DB->prepare("INSERT INTO goellhorndb.user(Username,Passwort,Anrede,Vorname,Nachname) VALUES (?,?,?,?,?)"))) {
+        if (!($stmt = $DB->prepare("INSERT INTO goellhorndb.user(Username,Passwort,Anrede,Vorname,Nachname,RootDir) VALUES (?,?,?,?,?,?)"))) {
             echo "Prepare failed: (" . $DB->errno . ") " . $DB->error;
         }
 
-        if (!$stmt->bind_param("sssss", $validUser->UserName, $validUser->UserPW, $validUser->Anrede, $validUser->Vorname, $validUser->Nachname)) {
+        if (!$stmt->bind_param("ssssss", $validUser->UserName, $validUser->UserPW, $validUser->Anrede, $validUser->Vorname, $validUser->Nachname, $validUser->RootFolder)) {
             echo "Binding params failed: (" . $stmt->errno . ") " . $stmt->error;
         }
 
