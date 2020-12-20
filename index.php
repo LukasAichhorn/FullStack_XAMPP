@@ -5,6 +5,7 @@ require "classes/Post.class.php";
 require "classes/User.class.php";
 require "classes/UserManager.class.php";
 require "classes/validator.class.php";
+require "classes/PostManager.class.php";
 ?>
 
 
@@ -17,7 +18,11 @@ $DB->ConnectDB();
 $UserManager = new UserManager();
 $UserManager->startSession();
 $status = $UserManager->checkStatus();
+//get Current user abject from Session
 $CurrentUser = $UserManager->getUser();
+//Create PostManager and fetch all posts
+$PostManager = new PostManager();
+$Posts = $PostManager->fetchPosts($DB,$status);
 ?>
 
 
@@ -67,9 +72,7 @@ $CurrentUser = $UserManager->getUser();
           <?php include "components/search.comp.php"?>
 
           <div class="mt-5">
-          <?php include "components/post.comp.php" ?>
-          <?php include "components/post.comp.php" ?>
-          <?php include "components/post.comp.php" ?>
+          <?php $PostManager->display($Posts);?>
           </div>
           
 

@@ -1,13 +1,21 @@
 <?php
 class PostManager{
-private $posts = array();
+private $Posts;
 
 
-function GetPosts(){
 
+function FetchPosts($DB,$status){
+
+$this->Posts = $DB->getPosts($status);
+
+return $this->Posts;
 }
-function display(){
-    
+
+function display($Posts){
+
+    foreach ($Posts as $Post) {    
+        include "components/post.comp.php";
+    }
 
 }
 
