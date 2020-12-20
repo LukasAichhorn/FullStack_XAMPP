@@ -34,6 +34,11 @@ $litemManageUsers = "
             <a class='nav-link' aria-current='page' href='pages/ManageUsers.php'>Manage Users</a>
         </li>
                 ";
+$litemNewPost = "
+        <li class='nav-item'>
+            <a class='nav-link' aria-current='page' href='pages/createPost.php'>create new Post</a>
+        </li>
+                ";
 
 
 ?>
@@ -58,6 +63,7 @@ $litemManageUsers = "
                 elseif ($UserManager->checkStatus() == 1) {
                     echo $litemHome;
                     echo $litemMyProfile;
+                    echo $litemNewPost;
                     echo $litemLogOut;
                     echo $litemHelp;
                     echo $litemImpressum;
@@ -67,6 +73,7 @@ $litemManageUsers = "
                     echo $litemHome;
                     echo $litemManageUsers;
                     echo $litemMyProfile;
+                    echo $litemNewPost;
                     echo $litemLogOut;
                     echo $litemHelp;
                     echo $litemImpressum;
