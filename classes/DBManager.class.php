@@ -135,7 +135,7 @@ class DBManager
     function getPosts($status){
         $DB = $this->DB;
         if($status == 0){//no prepared statemnt needed because user input has no influence on query
-            $stmt = "SELECT * FROM goellhorndb.post WHERE Sichtbarkeit = 1";
+            $stmt = "SELECT Username,PostID,Bildadresse,Titel,Inhalt,Likes,Dislikes,CreatedAt,Sichtbarkeit FROM user Inner JOIN post ON post.FK_UserID = user.UserID WHERE Sichtbarkeit = 1";
             $result = mysqli_query($DB, $stmt);
             $posts = array();
             if (mysqli_num_rows($result) > 0){
@@ -151,7 +151,7 @@ class DBManager
             
         }
         else{
-            $stmt = "SELECT * FROM goellhorndb.post";
+            $stmt = "SELECT Username,PostID,Bildadresse,Titel,Inhalt,Likes,Dislikes,CreatedAt,Sichtbarkeit FROM user Inner JOIN post ON post.FK_UserID = user.UserID";
             $result = mysqli_query($DB, $stmt);
             $posts = array();
             if (mysqli_num_rows($result) > 0){
@@ -183,6 +183,12 @@ class DBManager
             echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
         }
     }
+
+    function likePost($post){
+            
+    }
+
+    function dislikePost(){}
 
     
     
