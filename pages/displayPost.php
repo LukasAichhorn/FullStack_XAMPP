@@ -22,7 +22,7 @@ $CurrentUser = $UserManager->getUser();
 $PostManager = new PostManager();
 $PostID = $_GET["PostID"];
 $SinglePost = $DB->getSinglePost($PostID);
-
+$comments = $DB->commentCount($PostID);
 
 ?>
 
@@ -56,10 +56,37 @@ $SinglePost = $DB->getSinglePost($PostID);
       </div>
 
       <div class="col-6 p-4 minusTop">     
-            <h5><?php $SinglePost["Titel"]?></h5>
+            <h5><?php echo($SinglePost["Titel"])?></h5>
 
-            <img class="card-img-top" src=".../100px180/?text=Image cap" alt="Card image cap">
-            <p></p>
+            <img class="card-img-top" src="<?php echo($SinglePost["Bildadresse"]); ?>" alt="Card image cap">
+            <p><?php echo($SinglePost["Inhalt"])?></p>
+
+
+
+            <div class="row mt-2">
+
+<div class="col">
+    <p class="card-text"><small class="text-muted">created by <?php echo($SinglePost["Username"])?>  at: <?php echo($SinglePost["CreatedAt"]) ?> </small></p>
+</div>
+
+<div class="col">
+    <p class="card-text"><small class="text-muted"><?php echo($comments); ?> comment(s)</small></p>
+</div>
+
+<div class="col ">
+    <div class="d-flex flex-row justify-content-end">
+        <div class="Comp-like">
+            <form><button type="button" class="btn btn-sm btn-sm-my btn-outline-success"><?php echo($SinglePost["Likes"]) ?></button></form>
+        </div>
+        <div class="Comp-like">
+            <form><button type="button" class="btn btn-sm btn-sm-my btn-outline-danger"> <?php echo($SinglePost["Dislikes"]) ?></button></form>
+        </div>
+    </div>
+</div>
+
+
+
+</div>
       
       
          
