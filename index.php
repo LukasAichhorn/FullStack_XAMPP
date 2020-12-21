@@ -92,7 +92,7 @@ $Tags=$DB->allTags();
 
       <div class="col-6 p-4 minusTop">     
       
-      <?php $PostManager->display($Posts);?>
+      <?php $PostManager->display($DB,$Posts);?>
       
       
        

@@ -29,11 +29,11 @@
                             <div class="row mt-2">
 
                                 <div class="col">
-                                    <p class="card-text"><small class="text-muted">created by: <?php echo($Post["Username"])?>  at: <?php echo($Post["CreatedAt"]) ?> </small></p>
+                                    <p class="card-text"><small class="text-muted">created by <?php echo($Post["Username"])?>  at: <?php echo($Post["CreatedAt"]) ?> </small></p>
                                 </div>
 
                                 <div class="col">
-                                    <p class="card-text"><small class="text-muted">103 comments</small></p>
+                                    <p class="card-text"><small class="text-muted"><?php echo($commentnr); ?> comment(s)</small></p>
                                 </div>
 
                                 <div class="col ">

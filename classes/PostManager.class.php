@@ -11,9 +11,10 @@ $this->Posts = $DB->getPosts($status);
 return $this->Posts;
 }
 
-function display($Posts){
+function display($DB,$Posts){
 
-    foreach ($Posts as $Post) {    
+    foreach ($Posts as $Post) {
+        $commentnr = $DB->commentCount($Post['PostID']);    
         include "components/post.comp.php";
     }
 

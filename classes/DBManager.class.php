@@ -122,7 +122,7 @@ class DBManager
 
 
 
-    //function QueryForUser(){}
+    
 
     function HashPW($PW)
     {
@@ -206,6 +206,26 @@ class DBManager
 
     }
 
+    function deletePost($postID){
+        $DB = $this->DB;
+        $stmt = "DELETE FROM post WHERE PostID = $postID";
+        $DB->query($stmt);
+    }
+
+    //fnc for changing visibility of post
+    function changeVisibility($postID){
+        $DB = $this->DB;
+        $stmt = "UPDATE post SET ";
+    }
+
+    function commentCount($postID){
+        $DB = $this->DB;
+        $stmt = "SELECT COUNT(*) FROM comment c Inner JOIN post p ON c.FK_PostID = p.PostID WHERE p.PostID = $postID";
+        $count_get = mysqli_query($DB,$stmt);
+        $count = mysqli_fetch_row($count_get);
+        return $count[0];
+    }
     
-    
+
+
 }
