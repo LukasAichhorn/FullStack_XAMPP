@@ -5,6 +5,7 @@ require "../classes/Post.class.php";
 require "../classes/User.class.php";
 require "../classes/UserManager.class.php";
 require "../classes/validator.class.php";
+require "../classes/PostManager.class.php";
 ?>
 
 
@@ -17,7 +18,11 @@ $DB->connectDB();
 $UserManager = new UserManager();
 $UserManager->startSession();
 $status = $UserManager->checkStatus();
+$CurrentUser = $UserManager->getUser();
 $Tags=$DB->allTags();
+
+$PostManager = new PostManager();
+$PostManager->handleNewPost($DB,$CurrentUser);
 
 
 ?>
@@ -45,7 +50,7 @@ $Tags=$DB->allTags();
   <?php include "../components/navigationBar.comp.php"?>
 
   <div class="container-fluid">
-    <div class="row login-BG"></div>
+    <div class="row Header-BG createPostBG"></div>
     <div class="row">
       <div class="col">
 

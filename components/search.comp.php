@@ -6,10 +6,12 @@
 
 
     <div class="container-fluid d-flex flex-row justify-content-start flex-wrap">
-      <?php include"components/tag.comp.php" ?>
-      <?php include"components/tag.comp.php" ?>
-      <?php include"components/tag.comp.php" ?>
-      <?php include"components/tag.comp.php" ?>
+    <?php
+        foreach ($Tags as $tag) {
+         include "components/tag.comp.php";
+        }
+        ?>
+      
     </div>  
 
 

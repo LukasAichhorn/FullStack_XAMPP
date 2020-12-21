@@ -18,23 +18,83 @@ function display($Posts){
     }
 
 }
-function handleNewPost(){
+    function handleNewPost($DB,$CurrentUser){
 
-if(
-    isset($_POST["Titel"]) &&
-    isset($_POST["Textarea"])
-){
+        if(
+            isset($_POST["Titel"]) &&
+            isset($_POST["Textarea1"])
+        ){
+            
+            $validator= new Validator();
 
-   // insert logic for inserting new post plus upload
+            $Title = $validator->validate_string($_POST["Titel"]);
+            $Text = $validator->validate_string($_POST["Textarea1"]);
+            var_dump($_POST);
+            echo("<br>");
+            echo(" $Title <br>");
+            echo(" $Text <br>");
+            $TagsSelected = array();
+            $Tags=$DB->allTags();            
+
+            foreach ($Tags as $Tag) {
+                if(isset($_POST[$Tag[0]]))
+                {
+                    array_push($TagsSelected,$Tag[0]);
+                }
+                
+            }
+
+
+            $ImageUpload = $this->handleImgUpload($CurrentUser);
+
+            $_PostID = NUll;
+            $_Bildadresse = $ImageUpload[0];
+            $_Bildname= $ImageUpload[1];
+            $_Titel = $Title;
+            $_Inhalt = $Text;
+            $_Sichtbarkeit= 1;
+            $_FKUserID=$CurrentUser->UserID;
+            $NewPost = new Post($_PostID,$_Bildadresse,$_Bildname,$_Titel,$_Inhalt,$_Sichtbarkeit,$_FKUserID,$TagsSelected);
+
+
+            $DB->insertPost($NewPost);
+
+        }
+
+    }   
+    function handleImgUpload($CurrentUser){
+
+    if(isset($_FILES["fileUpload"])){
+
+        $targetDir = $CurrentUser->RootFolder;
+        $target_file = $targetDir . "/" . basename($_FILES["fileUpload"]["name"]);
+        $fileName=basename($_FILES["fileUpload"]["name"]);
+        $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+        //check image type: 
+        if(  $imageFileType != "jpg" &&
+             $imageFileType != "png" &&
+             $imageFileType != "jpeg"&&
+             $imageFileType != "gif" )
+             {
+                echo "Only JPG, JPEG, PNG & GIF files are allowed.";
+                return 0;
+             }
+
+        //upload to User directory
+        if(move_uploaded_file($_FILES["fileUpload"]["tmp_name"], $target_file)){
+            return [$target_file,$fileName];
+        }
+        else {
+            return 0;
+        }
+
+
+
+    }
+        return 0;
+
+    }
+
+
 
 }
-
-}
-function HandleImgUpload(){
-
-}
-
-
-
-}
-?>
