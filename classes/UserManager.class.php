@@ -81,7 +81,7 @@ if(isset($_POST["Username"]) && isset($_POST["Passwort"]) && isset($_POST["Anred
         header("Refresh:0; url=login.php");
         
     }else{
-        echo("User already exist!");
+        echo("User already exists!");
         
     };
 
