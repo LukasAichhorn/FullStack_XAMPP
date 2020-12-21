@@ -20,7 +20,9 @@ $status = $UserManager->checkStatus();
 $CurrentUser = $UserManager->getUser();
 //Create PostManager and fetch all posts
 $PostManager = new PostManager();
-$SinglePost = $DB->getSinglePost();
+$PostID = $_GET["PostID"];
+$SinglePost = $DB->getSinglePost($PostID);
+
 
 ?>
 
@@ -54,7 +56,7 @@ $SinglePost = $DB->getSinglePost();
       </div>
 
       <div class="col-6 p-4 minusTop">     
-            <h5>Titel of the Post</h5>
+            <h5><?php $SinglePost["Titel"]?></h5>
 
             <img class="card-img-top" src=".../100px180/?text=Image cap" alt="Card image cap">
             <p></p>
