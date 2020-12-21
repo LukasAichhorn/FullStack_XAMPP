@@ -57,6 +57,14 @@ a {
     background-position: center;
     background-repeat: no-repeat;
 }
+.displayPost-BG{
+    background-image: url("./ressources/pics/bermuda-745.png");
+    background-color: #ffaf2a;
+    height:42em;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+}
 .minusTop{
     margin-top: -4rem;
     background-color: white;

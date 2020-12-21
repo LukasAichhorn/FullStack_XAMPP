@@ -13,7 +13,7 @@
                 <div class="card-body h-100">
                     <div class="row mb-5">
                         <div class="col">
-                            <a href="/pages/DisplayPost.php?PostID=<?php echo($Post['PostID']); ?>">
+                            <a href="pages/DisplayPost.php?PostID=<?php echo($Post['PostID']); ?>">
                                 <h5 class="card-title"><?php echo($Post["Titel"]) ?></h5>
                             </a>
                             <p class="card-text">

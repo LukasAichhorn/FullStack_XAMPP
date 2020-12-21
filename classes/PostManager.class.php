@@ -30,17 +30,14 @@ function display($DB,$Posts){
 
             $Title = $validator->validate_string($_POST["Titel"]);
             $Text = $validator->validate_string($_POST["Textarea1"]);
-            var_dump($_POST);
-            echo("<br>");
-            echo(" $Title <br>");
-            echo(" $Text <br>");
+            
             $TagsSelected = array();
             $Tags=$DB->allTags();            
 
             foreach ($Tags as $Tag) {
                 if(isset($_POST[$Tag[0]]))
                 {
-                    array_push($TagsSelected,$Tag[0]);
+                    array_push($TagsSelected,$Tag);
                 }
                 
             }
