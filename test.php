@@ -26,6 +26,6 @@ $testDBManager->getPosts(1);
 $tags = $testDBManager->allTags();
 var_dump($tags);
 
-$testDBManager->commentCount(4);
+//$testDBManager->commentCount(4);
 
 ?>

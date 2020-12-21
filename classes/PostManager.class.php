@@ -40,10 +40,11 @@ function display($DB,$Posts){
             foreach ($Tags as $Tag) {
                 if(isset($_POST[$Tag[0]]))
                 {
-                    array_push($TagsSelected,$Tag[0]);
+                    array_push($TagsSelected,$Tag);
                 }
                 
             }
+            print_r($TagsSelected);
 
 
             $ImageUpload = $this->handleImgUpload($CurrentUser);

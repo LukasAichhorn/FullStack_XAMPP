@@ -182,6 +182,28 @@ class DBManager
         if (!$stmt->execute()) {
             echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
         }
+        
+        $insertID = $stmt->insert_id;
+        foreach($validPost->SelectedTags as $tag){
+            $stmt = "INSERT INTO post_tags (PostID,TagID) VALUES ($insertID,$tag[1])";
+
+            if(!$DB->query($stmt)){
+                echo $DB->error;
+            }
+        }
+        
+    }
+    
+
+    function insertTags($tagArray, $postID){
+        $DB = $this->DB;
+        foreach($validPost->SelectedTags as $tag){
+            $stmt = "INSERT INTO post_tags (PostID,TagID) VALUES ($insertID,$tag[1])";
+
+            if(!$DB->query($stmt)){
+                echo $DB->error;
+            }
+        }
     }
 
     function likePost($postID){
@@ -198,7 +220,7 @@ class DBManager
 
     function allTags(){
         $DB = $this->DB;
-        $stmt = "SELECT TagName FROM tags";
+        $stmt = "SELECT TagName, TagID FROM tags";
         $result = $DB->query($stmt);
 
         return $result->fetch_all();
