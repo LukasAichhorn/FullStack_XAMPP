@@ -1,7 +1,7 @@
     <div class="card mb-1 shadow-sm">
         <div class="row g-0">
             <div class="col-md-4">
-                <img class="card-img" src="ressources/pics/bermuda-704.png" style="background-color: ;">
+                <img class="card-img" src="ressources/pics/bermuda-704.png">
             </div>
             <div class="col-md-8">
                 <div class="card-body h-100">

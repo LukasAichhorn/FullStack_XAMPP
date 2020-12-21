@@ -13,8 +13,8 @@ require "classes/PostManager.class.php";
 <?php
  
 //instntiate DB Object
-//$DB = new DBManager();
-//$DB->ConnectDB();
+$DB = new DBManager();
+$DB->ConnectDB();
 //instantiate UserManager
 $UserManager = new UserManager();
 $UserManager->startSession();
@@ -22,8 +22,8 @@ $status = $UserManager->checkStatus();
 //get Current user abject from Session
 $CurrentUser = $UserManager->getUser();
 //Create PostManager and fetch all posts
-//$PostManager = new PostManager();
-// $Posts = $PostManager->fetchPosts($DB,$status); */
+$PostManager = new PostManager();
+$Posts = $PostManager->fetchPosts($DB,$status);
 ?>
 
 
@@ -72,7 +72,7 @@ $CurrentUser = $UserManager->getUser();
           <?php include "components/search.comp.php"?>
 
           <div class="mt-5">
-          <!-- <?php //$PostManager->display($Posts);?> -->
+          
           </div>
           
 
@@ -90,12 +90,11 @@ $CurrentUser = $UserManager->getUser();
       </div>
 
       <div class="col-6 p-4 minusTop">     
-            
+      
+      <?php $PostManager->display($Posts);?>
       
       
-      <?php include "components/Designpost.comp.php" ?>
-      <?php include "components/Designpost.comp.php" ?>  
-      <?php include "components/Designpost.comp.php" ?>  
+       
             
          
         </div>
