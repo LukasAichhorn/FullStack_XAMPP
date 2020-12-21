@@ -2,6 +2,8 @@ body{
     font-size: 0.7rem;
     font-family: 'Open Sans', sans-serif;
 }
+
+
 h5 {
     font-family: 'Bree Serif', serif;
     font-size: 1.35rem;
@@ -15,6 +17,7 @@ a {
     text-decoration: none;
     
 }
+
 
 .navbar-brand{
     font-family: 'Bree Serif', serif;
@@ -50,5 +53,29 @@ a {
     margin-top: -4rem;
     background-color: white;
 }
+.headline{
+    font-size: 3.5em;
+    color:white;
+}
+.headline-info{
+    color:white;
+    font-size:1.5em;
+}
+.headline-search{
+    border: none;
+    border-radius: 50px;
 
+}
+.headline-button{
+    border-radius: 50px;
+}
+.tag-comp{
+    background-color: white;
+    border-radius: 30px;
+    padding-left:3.2em;
+    padding-right:1.2em;
 
+}
+.tag-label{
+        padding-top: 0.1em;
+}

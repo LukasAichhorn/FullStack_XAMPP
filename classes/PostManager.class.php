@@ -25,8 +25,12 @@ if(
     isset($_POST["Textarea"])
 ){
 
-        
+   // insert logic for inserting new post plus upload
+
 }
+
+}
+function HandleImgUpload(){
 
 }
 

@@ -11,9 +11,10 @@ require "classes/PostManager.class.php";
 
 
 <?php
+ 
 //instntiate DB Object
-$DB = new DBManager();
-$DB->ConnectDB();
+//$DB = new DBManager();
+//$DB->ConnectDB();
 //instantiate UserManager
 $UserManager = new UserManager();
 $UserManager->startSession();
@@ -21,8 +22,8 @@ $status = $UserManager->checkStatus();
 //get Current user abject from Session
 $CurrentUser = $UserManager->getUser();
 //Create PostManager and fetch all posts
-$PostManager = new PostManager();
-$Posts = $PostManager->fetchPosts($DB,$status);
+//$PostManager = new PostManager();
+// $Posts = $PostManager->fetchPosts($DB,$status); */
 ?>
 
 
@@ -45,34 +46,33 @@ $Posts = $PostManager->fetchPosts($DB,$status);
 <body>
   
     <!-- +++++++++++++++++++++++++++++++  Navigation +++++++++++++++++++++++++++++++++++ -->
-    <?php include "components/navigationBar.comp.php" ?>
+    <?php include "components/navigationBar.comp.php"?>
     <!-- +++++++++++++++++++++++++++++++  Main 3 colum layout +++++++++++++++++++++++++++++++++++ -->
-    <div class="container-fluid">  
-    <div class="row">
+    <div class="container-fluid"> 
+    
+      
+
+      <div class="row login-BG" style="background-image: url(./ressources/pics/bermuda-fatal-error-1.png)">
         <div class="col-2">
 
         </div>
         
         <div class="col">
-          <div class="mt-5 mb-5">
-          <h1>Welcome to GoellHorn!</h1>
-          <?php
-          
-          
-          if(isset($CurrentUser)){
+          <div class="mt-5 mb-5 headline-info">
+          <h1 class="headline">Welcome to GoellHorn!</h1>
+          <?php if(isset($CurrentUser)){
             echo("<p>Your are logged in as $CurrentUser->UserName</p>");
           }
           else{
             echo("<p>Your are not logged in and only see 'public' posts!</p>");
           }
           ?>    
-          </div>
+          </div> 
 
-          
           <?php include "components/search.comp.php"?>
 
           <div class="mt-5">
-          <?php $PostManager->display($Posts);?>
+          <!-- <?php //$PostManager->display($Posts);?> -->
           </div>
           
 
@@ -84,6 +84,26 @@ $Posts = $PostManager->fetchPosts($DB,$status);
 
         </div>
       </div>
+      <div class="row">
+      <div class="col">
+
+      </div>
+
+      <div class="col-6 p-4 minusTop">     
+            
+      
+      
+      <?php include "components/Designpost.comp.php" ?>
+      <?php include "components/Designpost.comp.php" ?>  
+      <?php include "components/Designpost.comp.php" ?>  
+            
+         
+        </div>
+        
+
+      
+
+      <div class="col">
     </div>
 
   
