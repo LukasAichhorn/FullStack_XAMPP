@@ -41,6 +41,7 @@ function display($DB,$Posts){
                 }
                 
             }
+            print_r($TagsSelected);
 
 
             $ImageUpload = $this->handleImgUpload($CurrentUser);

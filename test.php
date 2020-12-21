@@ -14,8 +14,8 @@ $testPW = $testDBManager->HashPW($testPW);
 
 
 $TestID = $testDBManager->validateUser("carlos", "1234");
-echo "!" . $TestID . "!";
-$testUser = $testDBManager->getUser($TestID); 
+echo "!" . $TestID . "!<br>";
+//$testUser = $testDBManager->getUser($TestID); 
 //$testDBManager->insertUser($testUser);    
 $testUsername = "carlos";
 $testDBManager->checkifUserExists($testUsername);
@@ -23,9 +23,12 @@ $testDBManager->getPosts(1);
 
 //$testDBManager->dislikePost(1);
 
-$tags = $testDBManager->allTags();
-var_dump($tags);
+//$tags = $testDBManager->allTags();
+//var_dump($tags);
 
-$testDBManager->commentCount(4);
+$singlepost = $testDBManager->getSinglePost(4);
+print_r($singlepost);
+
+//$testDBManager->commentCount(4);
 
 ?>
