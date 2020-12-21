@@ -166,6 +166,19 @@ class DBManager
         }
     }
 
+    function getSinglePost($postID){
+        $DB = $this->DB;
+        $stmt = "SELECT Username,PostID,Bildadresse,Titel,Inhalt,Likes,Dislikes,CreatedAt,Sichtbarkeit FROM user Inner JOIN post ON post.FK_UserID = user.UserID WHERE post.PostID = $postID";
+            $result = mysqli_query($DB, $stmt);
+            $post = array();
+            if (mysqli_num_rows($result) > 0){
+                while($row = mysqli_fetch_assoc($result)){
+                    $post[] = $row;
+                }
+            }
+        return $post;    
+    }
+
     function insertPost($validPost)
     { //input is an object of class: Post and the currentUser object
         
@@ -194,17 +207,6 @@ class DBManager
         
     }
     
-
-    function insertTags($tagArray, $postID){
-        $DB = $this->DB;
-        foreach($validPost->SelectedTags as $tag){
-            $stmt = "INSERT INTO post_tags (PostID,TagID) VALUES ($insertID,$tag[1])";
-
-            if(!$DB->query($stmt)){
-                echo $DB->error;
-            }
-        }
-    }
 
     function likePost($postID){
         $DB = $this->DB;
@@ -240,6 +242,7 @@ class DBManager
         $stmt = "UPDATE post SET ";
     }
 
+    //fnc that returns the number of comments of a single post
     function commentCount($postID){
         $DB = $this->DB;
         $stmt = "SELECT COUNT(*) FROM comment c Inner JOIN post p ON c.FK_PostID = p.PostID WHERE p.PostID = $postID";
