@@ -176,7 +176,7 @@ class DBManager
                     $post[] = $row;
                 }
             }
-        return $post;    
+        return $post[0];    
     }
 
     function insertPost($validPost)
