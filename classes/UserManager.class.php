@@ -72,7 +72,7 @@ if(isset($_POST["Username"]) && isset($_POST["Passwort"]) && isset($_POST["Anred
 
     if(!$DB->checkifUserExists($Username)){
 
-        $UserRoot =DIR_ROOT. "/WEB_SS2020/WP/UsersRoot/" . $Username;
+        $UserRoot = DIR_ROOT. "/WEB_SS2020/WP/UsersRoot/" . $Username;
         $error=mkdir($UserRoot);
         echo $error;
         $UserRoot = DIR_BASE . "UsersRoot/" . $Username;

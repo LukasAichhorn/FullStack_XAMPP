@@ -19,7 +19,7 @@ echo "!" . $TestID . "!<br>";
 //$testDBManager->insertUser($testUser);    
 $testUsername = "carlos";
 $testDBManager->checkifUserExists($testUsername);
-$testDBManager->getPosts(1);
+var_dump($testDBManager->getPosts(1));
 
 //$testDBManager->dislikePost(1);
 
@@ -27,7 +27,9 @@ $testDBManager->getPosts(1);
 //var_dump($tags);
 
 $singlepost = $testDBManager->getSinglePost(4);
-print_r($singlepost);
+//print_r($singlepost);
+
+//print_r($testDBManager->getTags(17));
 
 //$testDBManager->commentCount(4);
 
