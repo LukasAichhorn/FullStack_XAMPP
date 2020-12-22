@@ -1,6 +1,7 @@
 <?php
 include 'classes/DBManager.class.php';
 include 'classes/User.class.php';
+include 'classes/Post.class.php';
 
 $testDBManager = new DBManager;
 

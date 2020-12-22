@@ -53,7 +53,7 @@ function display($DB,$Posts){
             $_Inhalt = $Text;            
             $_Sichtbarkeit=($_POST["checkPrivate"] == "on") ? 0 : 1 ;
             $_FKUserID=$CurrentUser->UserID;
-            $NewPost = new Post($_PostID,"Fisch",$_Bildadresse,$_Bildname,$_Titel,$_Inhalt,$_Sichtbarkeit,$_FKUserID,$TagsSelected,1234);
+            $NewPost = new Post($_PostID,"Fisch",$_Bildadresse,$_Bildname,$_Titel,$_Inhalt,$_Sichtbarkeit,$_FKUserID,$TagsSelected,1234,0,0);
 
 
             $DB->insertPost($NewPost);

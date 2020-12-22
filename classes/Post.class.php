@@ -11,11 +11,13 @@ public $Sichtbarkeit;
 public $UserID;
 public $SelectedTags = array();
 public $CreatedAt;
+public $Likes;
+public $Dislikes;
 private $commentArray;
 
 
 
-function __construct($_PostID,$_Username,$_Bildadresse,$_Bildname,$_Titel,$_Inhalt,$_Sichtbarkeit,$_FKUserID,$_SelectedTags,$_CreatedAt){
+function __construct($_PostID,$_Username,$_Bildadresse,$_Bildname,$_Titel,$_Inhalt,$_Sichtbarkeit,$_FKUserID,$_SelectedTags,$_CreatedAt,$_Likes,$_Dislikes){
 $this->PostID = $_PostID;
 $this->Bildadresse=$_Bildadresse;
 $this->Bildname=$_Bildname;
@@ -26,6 +28,8 @@ $this->UserID = $_FKUserID;
 $this->SelectedTags = $_SelectedTags;
 $this->Username = $_Username;
 $this->CreatedAt = $_CreatedAt;
+$this->Likes = $_Likes;
+$this->Dislikes = $_Dislikes;
 
 }
 

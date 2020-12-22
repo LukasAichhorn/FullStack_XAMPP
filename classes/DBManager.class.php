@@ -246,7 +246,7 @@ class DBManager
     //fnc for getting assoc. array of posts to depict, output depends on loginstatus of user (public posts or all posts)
     function getPosts($status){
         $DB = $this->DB;
-        include 'Post.class.php';
+        //
         if($status == 0){//no prepared statemnt needed because user input has no influence on query
             $stmt = "SELECT Username,PostID,Bildadresse,Bildname,Titel,Inhalt,Likes,Dislikes,CreatedAt,Sichtbarkeit,FK_UserID FROM user Inner JOIN post ON post.FK_UserID = user.UserID WHERE Sichtbarkeit = 1";
             $result = mysqli_query($DB, $stmt);
@@ -282,7 +282,7 @@ class DBManager
         foreach($posts as $p){
             $tags = $this->getTags($p['PostID']);
             
-            $postObj = new Post($p['PostID'],$p['Username'],$p['Bildadresse'],$p['Bildname'],$p['Titel'],$p['Inhalt'],$p['Sichtbarkeit'],$p['FK_UserID'],$tags,$p['CreatedAt']);
+            $postObj = new Post($p['PostID'],$p['Username'],$p['Bildadresse'],$p['Bildname'],$p['Titel'],$p['Inhalt'],$p['Sichtbarkeit'],$p['FK_UserID'],$tags,$p['CreatedAt'],$p['Likes'],$p['Dislikes']);
             array_push($postObjects,$postObj);
         }
 
