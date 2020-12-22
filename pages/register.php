@@ -1,5 +1,6 @@
 <?php 
 // all includes and requires
+
 include "../Dir-Config.php";
 require "../classes/DBManager.class.php";
 require "../classes/Post.class.php";
@@ -11,6 +12,7 @@ require "../classes/validator.class.php";
 
 
 <?php
+echo(DIR_ROOT);
 //instantiate UserManager
 $DB = new DBManager();
 $DB->ConnectDB();

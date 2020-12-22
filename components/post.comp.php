@@ -7,7 +7,7 @@
     <div class="card mb-1">
         <div class="row g-0">
             <div class="col-md-4">
-                <img class="card-img" src="<?php echo($Post['Bildadresse'])?>" style="background-color: #ffaf2a;">
+                <img class="card-img" src="//<?php echo($Post['Bildadresse'])?>" style="background-color: #ffaf2a;">
             </div>
             <div class="col-md-8">
                 <div class="card-body h-100">

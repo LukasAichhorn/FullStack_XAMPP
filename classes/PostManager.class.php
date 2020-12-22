@@ -65,8 +65,8 @@ function display($DB,$Posts){
 
     if(isset($_FILES["fileUpload"])){
 
-        $targetDir = $CurrentUser->RootFolder;
-        $target_file = $targetDir . DIRECTORY_SEPARATOR . basename($_FILES["fileUpload"]["name"]);
+        $targetDir = $CurrentUser->RootFolder ."/". basename($_FILES["fileUpload"]["name"]);
+        $target_file = DIR_ROOT."/WEB_SS2020/WP/UsersRoot/".$CurrentUser->UserName ."/". basename($_FILES["fileUpload"]["name"]);
         $fileName=basename($_FILES["fileUpload"]["name"]);
         $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
         //check image type: 
@@ -81,7 +81,7 @@ function display($DB,$Posts){
 
         //upload to User directory
         if(move_uploaded_file($_FILES["fileUpload"]["tmp_name"], $target_file)){
-            return [$target_file,$fileName];
+            return [$targetDir,$fileName];
         }
         else {
             return 0;

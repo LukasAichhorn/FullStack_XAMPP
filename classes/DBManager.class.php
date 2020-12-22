@@ -252,5 +252,14 @@ class DBManager
     }
     
 
+    function filterPosts($tagArray){
+        $DB = $this->DB;
+        $stmt = "SELECT DISTINCT PostID from post_tags pt join tags t on pt.TagID = t.TagID WHERE t.TagName in $tagArray";
+        
+
+    }
+
+
+
 
 }
