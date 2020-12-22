@@ -20,7 +20,7 @@ function display($DB,$Posts){
 
 }
     function handleNewPost($DB,$CurrentUser){
-
+        echo $_POST["checkPrivate"];
         if(
             isset($_POST["Titel"]) &&
             isset($_POST["Textarea1"])
@@ -50,8 +50,8 @@ function display($DB,$Posts){
             $_Bildadresse = $ImageUpload[0];
             $_Bildname= $ImageUpload[1];
             $_Titel = $Title;
-            $_Inhalt = $Text;
-            $_Sichtbarkeit= 1;
+            $_Inhalt = $Text;            
+            $_Sichtbarkeit=($_POST["checkPrivate"] == "on") ? 0 : 1 ;
             $_FKUserID=$CurrentUser->UserID;
             $NewPost = new Post($_PostID,$_Bildadresse,$_Bildname,$_Titel,$_Inhalt,$_Sichtbarkeit,$_FKUserID,$TagsSelected);
 
@@ -63,8 +63,8 @@ function display($DB,$Posts){
     }   
     function handleImgUpload($CurrentUser){
 
-    if(isset($_FILES["fileUpload"])){
-
+    if(!$_FILES["fileUpload"]["name"]==""){
+        echo("isset fileupload");
         $targetDir = $CurrentUser->RootFolder ."/". basename($_FILES["fileUpload"]["name"]);
         $target_file = DIR_ROOT."/WEB_SS2020/WP/UsersRoot/".$CurrentUser->UserName ."/". basename($_FILES["fileUpload"]["name"]);
         $fileName=basename($_FILES["fileUpload"]["name"]);
@@ -90,7 +90,7 @@ function display($DB,$Posts){
 
 
     }
-        return 0;
+        return ["localhost/WEB_SS2020/WP/ressources/pics/Default_img.png","Default_img.png"];
 
     }
 

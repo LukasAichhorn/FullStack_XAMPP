@@ -1,5 +1,6 @@
 <?php
 // all includes and requires
+include "../Dir-Config.php";
 require "../classes/DBManager.class.php";
 require "../classes/Post.class.php";
 require "../classes/User.class.php";
@@ -56,14 +57,16 @@ $comments = $DB->commentCount($PostID);
       </div>
 
       <div class="col-6 p-4 minusTop">     
-            <h5><?php echo($SinglePost["Titel"])?></h5>
+            
 
-            <img class="card-img-top" src="<?php echo($SinglePost["Bildadresse"]); ?>" alt="Card image cap">
+            <img class="card-img-top" src="//<?php echo($SinglePost["Bildadresse"]); ?>" alt="Card image cap">
+            <h5><?php echo($SinglePost["Titel"])?></h5>
             <p><?php echo($SinglePost["Inhalt"])?></p>
 
 
 
             <div class="row mt-2">
+             
 
 <div class="col">
     <p class="card-text"><small class="text-muted">created by <?php echo($SinglePost["Username"])?>  at: <?php echo($SinglePost["CreatedAt"]) ?> </small></p>

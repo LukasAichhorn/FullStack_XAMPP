@@ -4,6 +4,8 @@
 
 <div class="col">
     <form action="createPost.php" method="post" enctype="multipart/form-data">
+    
+    
 
         <div class="form-group mt-1">
             <label for="Titel">Title:</label>
@@ -28,6 +30,12 @@
         ?>
 
         </div>
+
+        <div class="form-check mt-3">
+        <label class="form-check-label" for="checkPrivate">is privat</label>
+        <input class="form-check-input" type="checkbox" value="on" name="checkPrivate" id="checkPrivate">
+   
+    </div>
 
         <div class="form-group mt-3">
             <button type="submit" name="Submit" class="btn btn-sm btn-primary" style="border-radius: 40px;">Create Post</button>
