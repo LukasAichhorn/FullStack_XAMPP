@@ -1,42 +1,48 @@
 <?php
+
+
+
+
+
+
 $litemHome = "
 <li class='nav-item'>
-    <a class='nav-link active' aria-current='page' href='../index.php'>Home</a>
+    <a class='nav-link active' aria-current='page' href='//".DIR_BASE."index.php'>Home</a>
 </li>
         ";
-$litemlogin = "
+$litemlogin ="
 <li class='nav-item'>
-    <a class='nav-link' aria-current='page' href='pages/login.php'>login</a>
+    <a class='nav-link' aria-current='page' href='//".DIR_PAGES."login.php'>login</a>
 </li>
         ";
 $litemMyProfile = "
 <li class='nav-item'>
-    <a class='nav-link' aria-current='page' href='pages/MyProfile'>My Profile</a>
+    <a class='nav-link' aria-current='page' href='//".DIR_PAGES."MyProfile.php'>My Profile</a>
 </li>
         ";
 $litemLogOut = "
 <li class='nav-item'>
-    <a class='nav-link' aria-current='page' href='pages/logout.php'>Logout</a>
+    <a class='nav-link' aria-current='page' href='//".DIR_PAGES."logout.php'>Logout</a>
 </li>
         ";
 $litemImpressum = "
 <li class='nav-item'>
-    <a class='nav-link' aria-current='page' href='pages/impressum.php'>Impressum</a>
+    <a class='nav-link' aria-current='page' href='//".DIR_PAGES."impressum.php'>Impressum</a>
 </li>
         ";
 $litemHelp = "
 <li class='nav-item'>
-    <a class='nav-link' aria-current='page' href='pages/help.php'>Help</a>
+    <a class='nav-link' aria-current='page' href='//".DIR_PAGES."help.php'>Help</a>
     </li>
                 ";
 $litemManageUsers = "
         <li class='nav-item'>
-            <a class='nav-link' aria-current='page' href='pages/ManageUsers.php'>Manage Users</a>
+            <a class='nav-link' aria-current='page' href='//".DIR_PAGES."ManageUsers.php'>Manage Users</a>
         </li>
                 ";
 $litemNewPost = "
         <li class='nav-item'>
-            <a class='nav-link' aria-current='page' href='pages/createPost.php'>create new Post</a>
+            <a class='nav-link' aria-current='page' href='//".DIR_PAGES."createPost.php'>create new Post</a>
         </li>
                 ";
 
@@ -58,6 +64,7 @@ $litemNewPost = "
                     echo $litemlogin;
                     echo $litemHelp;
                     echo $litemImpressum;
+                    
                 }
                 // checkStatus == 1 = User
                 elseif ($UserManager->checkStatus() == 1) {
@@ -85,3 +92,4 @@ $litemNewPost = "
         </div>
     </div>
 </nav>
+

@@ -95,3 +95,11 @@ a {
 .tag-label{
         padding-top: 0.1em;
 }
+.form-control-sm{
+    font-size: 0.7rem;
+    font-family: 'Open Sans', sans-serif;
+}
+.form-control{
+    font-size: 0.7rem;
+    font-family: 'Open Sans', sans-serif;
+}

@@ -1,5 +1,6 @@
 <?php
 // all includes and requires
+include "Dir-Config.php";
 require "classes/DBManager.class.php";
 require "classes/Post.class.php";
 require "classes/User.class.php";

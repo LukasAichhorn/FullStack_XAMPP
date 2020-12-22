@@ -72,13 +72,14 @@ if(isset($_POST["Username"]) && isset($_POST["Passwort"]) && isset($_POST["Anred
 
     if(!$DB->checkifUserExists($Username)){
 
-        $UserRoot ='WP/UsersRoot/' . $Username;
-        mkdir($UserRoot);
+        $UserRoot =DIR_BASE . "UsersRoot/" . $Username;
+        $error=mkdir($UserRoot);
+        echo $error;
         $NewUser = new User(0,$Username,$Hpw,$Anrede,$Vorname,$Nachname,0,1,'ressources/pics/DefaultUser.png',$UserRoot);
         $DB->insertUser($NewUser);       
         
 
-        header("Refresh:0; url=login.php");
+        //header("Refresh:0; url=login.php");
         
     }else{
         echo("User already exists!");
