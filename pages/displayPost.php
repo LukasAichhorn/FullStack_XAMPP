@@ -7,6 +7,7 @@ require "../classes/User.class.php";
 require "../classes/UserManager.class.php";
 require "../classes/validator.class.php";
 require "../classes/PostManager.class.php";
+require "../classes/Comment.class.php";
 ?>
 <?php
 
@@ -25,11 +26,13 @@ $PostID = $_GET["PostID"];
 $SinglePost = $DB->getSinglePost($PostID);
 $comments = $DB->commentCount($PostID);
 $SinglePost = $SinglePost[0];
-
+$Path = $_SERVER['REQUEST_URI'];
+$PostManager->handleNewComment($DB,$PostID,$CurrentUser->UserID,$Path);
+$Comments = $DB->getComments($PostID);
 ?>
 
 
-!doctype html>
+<!doctype html>
 <html lang="en">
 
 <head>
@@ -101,11 +104,19 @@ $SinglePost = $SinglePost[0];
 
 
         </div>
+        <b>Comments:</b>
+        <?php
+
+        //Display all comments
+        foreach ($Comments as $Comment) {        
+          include "../components/comment.comp.php";
+        }
+        ?>
 
 
 
 
-
+        <?php include "../components/CreateComment.comp.php" ?>
       </div>
 
 

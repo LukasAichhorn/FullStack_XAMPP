@@ -94,6 +94,18 @@ function display($DB,$Posts){
 
     }
 
+function handleNewComment($DB,$PostID,$CurrentUserID,$Path){
 
+    if(!empty($_POST["Comment_text"])){
+        
+        $validator = new Validator();
+        $text = $validator->validate_string($_POST["Comment_text"]);
+        $CreatedAt = Null;
+        $NewComment = new Comment($text,$CurrentUserID,$PostID,$CreatedAt);
+
+        $DB->insertComment($NewComment); 
+        header("Refresh:0; url=$Path");   
+    }
+}
 
 }

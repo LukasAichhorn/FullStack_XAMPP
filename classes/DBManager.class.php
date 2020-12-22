@@ -290,4 +290,46 @@ class DBManager
 
         return $postObjects;
     }
+
+    function insertComment($validComment)
+    { //input is an object of class: Post and the currentUser object
+
+        $DB = $this->DB;
+        if (!($stmt = $DB->prepare("INSERT INTO goellhorndb.comment(Inhalt,FK_PostID,FK_UserID) VALUES (?,?,?)"))) {
+            echo "Prepare failed: (" . $DB->errno . ") " . $DB->error;
+        }
+
+        if (!$stmt->bind_param("sii", $validComment->Inhalt, $validComment->PostID, $validComment->Author)){
+            echo "Binding params failed: (" . $stmt->errno . ") " . $stmt->error;
+        }
+
+
+        if (!$stmt->execute()) {
+            echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+        }
+
+    }
+    function getComments($PostID){    
+        $DB = $this->DB;
+        //no prepared statemnt needed because user input has no influence on query
+            $stmt = "SELECT Inhalt,CreatedAt,Username, FK_PostID  FROM comment Inner JOIN user  ON comment.FK_UserID = user.UserID  Where FK_PostID =$PostID";
+            $result = mysqli_query($DB, $stmt);
+            $comments = array();
+            if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                    $comments[] = $row;
+                }
+            }
+
+            $CommentsObjects = array();
+            foreach ($comments as $c) {
+                
+    
+                $commentObj = new Comment($c["Inhalt"],$c["Username"],$c["FK_PostID"],$c["CreatedAt"]);
+                //$_Inhalt,$_UserID,$_PostID,$_CreatedAt
+                array_push($CommentsObjects, $commentObj);
+            }
+            
+            return $CommentsObjects;
+    }
 }
