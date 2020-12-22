@@ -242,6 +242,7 @@ class DBManager
         
 
     }
+
     //fnc for getting assoc. array of posts to depict, output depends on loginstatus of user (public posts or all posts)
     function getPosts($status){
         $DB = $this->DB;
@@ -276,11 +277,12 @@ class DBManager
             
 
         }
+
         $postObjects = array();
         foreach($posts as $p){
             $tags = $this->getTags($p['PostID']);
             
-            $postObj = new Post($p['PostID'],$p['Bildadresse'],$p['Bildname'],$p['Titel'],$p['Inhalt'],$p['Sichtbarkeit'],$p['FK_UserID'],$tags);
+            $postObj = new Post($p['PostID'],$p['Username'],$p['Bildadresse'],$p['Bildname'],$p['Titel'],$p['Inhalt'],$p['Sichtbarkeit'],$p['FK_UserID'],$tags,$p['CreatedAt']);
             array_push($postObjects,$postObj);
         }
 

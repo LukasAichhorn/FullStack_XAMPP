@@ -2,6 +2,7 @@
 
 class Post {
 public $PostID;
+public $Username;
 public $Bildadresse;
 public $Bildname;
 public $Titel;
@@ -9,10 +10,12 @@ public $Inhalt;
 public $Sichtbarkeit;
 public $UserID;
 public $SelectedTags = array();
+public $CreatedAt;
 private $commentArray;
 
 
-function __construct($_PostID,$_Bildadresse,$_Bildname,$_Titel,$_Inhalt,$_Sichtbarkeit,$_FKUserID,$_SelectedTags){
+
+function __construct($_PostID,$_Username,$_Bildadresse,$_Bildname,$_Titel,$_Inhalt,$_Sichtbarkeit,$_FKUserID,$_SelectedTags,$_CreatedAt){
 $this->PostID = $_PostID;
 $this->Bildadresse=$_Bildadresse;
 $this->Bildname=$_Bildname;
@@ -21,6 +24,8 @@ $this->Inhalt=$_Inhalt;
 $this->Sichtbarkeit=$_Sichtbarkeit;
 $this->UserID = $_FKUserID;
 $this->SelectedTags = $_SelectedTags;
+$this->Username = $_Username;
+$this->CreatedAt = $_CreatedAt;
 
 }
 
