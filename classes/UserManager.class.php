@@ -72,14 +72,9 @@ if(isset($_POST["Username"]) && isset($_POST["Passwort"]) && isset($_POST["Anred
 
     if(!$DB->checkifUserExists($Username)){
 
-<<<<<<< HEAD
         $UserRoot =DIR_BASE . "UsersRoot/" . $Username;
         $error=mkdir($UserRoot);
         echo $error;
-=======
-        $UserRoot ='C:\xampp\htdocs\WEBTECH_WS2020\WP\usersRoot' . DIRECTORY_SEPARATOR . $Username;
-        mkdir($UserRoot);
->>>>>>> 53c08ca4bd306e40630f092943c8175f79e0c9fb
         $NewUser = new User(0,$Username,$Hpw,$Anrede,$Vorname,$Nachname,0,1,'ressources/pics/DefaultUser.png',$UserRoot);
         $DB->insertUser($NewUser);       
         
