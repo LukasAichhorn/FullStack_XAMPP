@@ -131,40 +131,7 @@ class DBManager
     }
 
 
-    //fnc for getting assoc. array of posts to depict, output depends on loginstatus of user (public posts or all posts)
-    function getPosts($status){
-        $DB = $this->DB;
-        if($status == 0){//no prepared statemnt needed because user input has no influence on query
-            $stmt = "SELECT Username,PostID,Bildadresse,Titel,Inhalt,Likes,Dislikes,CreatedAt,Sichtbarkeit FROM user Inner JOIN post ON post.FK_UserID = user.UserID WHERE Sichtbarkeit = 1";
-            $result = mysqli_query($DB, $stmt);
-            $posts = array();
-            if (mysqli_num_rows($result) > 0){
-                while($row = mysqli_fetch_assoc($result)){
-                    $posts[] = $row;
-                }
-            }
-            
-            //print_r($posts);
-            return $posts;
-            
-
-            
-        }
-        else{
-            $stmt = "SELECT Username,PostID,Bildadresse,Titel,Inhalt,Likes,Dislikes,CreatedAt,Sichtbarkeit FROM user Inner JOIN post ON post.FK_UserID = user.UserID";
-            $result = mysqli_query($DB, $stmt);
-            $posts = array();
-            if (mysqli_num_rows($result) > 0){
-                while($row = mysqli_fetch_assoc($result)){
-                    $posts[] = $row;
-                }
-            }
-            
-            //print_r($posts);
-            return $posts;
-
-        }
-    }
+    
 
     function getSinglePost($postID){
         $DB = $this->DB;
@@ -254,10 +221,72 @@ class DBManager
 
     function filterPosts($tagArray){
         $DB = $this->DB;
-        $stmt = "SELECT DISTINCT PostID from post_tags pt join tags t on pt.TagID = t.TagID WHERE t.TagName in $tagArray";
+        $stmt = "SELECT DISTINCT PostID from post_tags pt inner join tags t on pt.TagID = t.TagID WHERE t.TagName in $tagArray";
+
+
+    }
+
+    function getTags($PostID){
+        $DB = $this->DB;
+        $stmt = "SELECT TagName from post_tags pt inner join tags t on pt.TagID = t.TagID WHERE PostID = $PostID";
+        $result = mysqli_query($DB, $stmt);
+        $tags = array();
+        if (mysqli_num_rows($result) > 0){
+            while($row = mysqli_fetch_assoc($result)){
+                $tags[] = $row;
+            }
+        }
+
+        return $tags;
+
         
 
     }
+    //fnc for getting assoc. array of posts to depict, output depends on loginstatus of user (public posts or all posts)
+    function getPosts($status){
+        $DB = $this->DB;
+        include 'Post.class.php';
+        if($status == 0){//no prepared statemnt needed because user input has no influence on query
+            $stmt = "SELECT Username,PostID,Bildadresse,Bildname,Titel,Inhalt,Likes,Dislikes,CreatedAt,Sichtbarkeit,FK_UserID FROM user Inner JOIN post ON post.FK_UserID = user.UserID WHERE Sichtbarkeit = 1";
+            $result = mysqli_query($DB, $stmt);
+            $posts = array();
+            if (mysqli_num_rows($result) > 0){
+                while($row = mysqli_fetch_assoc($result)){
+                    $posts[] = $row;
+                }
+            }
+            
+            //print_r($posts);
+            
+            
+
+            
+        }
+        else{
+            $stmt = "SELECT Username,PostID,Bildadresse,Bildname,Titel,Inhalt,Likes,Dislikes,CreatedAt,Sichtbarkeit,FK_UserID FROM user Inner JOIN post ON post.FK_UserID = user.UserID";
+            $result = mysqli_query($DB, $stmt);
+            $posts = array();
+            if (mysqli_num_rows($result) > 0){
+                while($row = mysqli_fetch_assoc($result)){
+                    $posts[] = $row;
+                }
+            }
+            
+            //print_r($posts);
+            
+
+        }
+        $postObjects = array();
+        foreach($posts as $p){
+            $tags = $this->getTags($p['PostID']);
+            
+            $postObj = new Post($p['PostID'],$p['Bildadresse'],$p['Bildname'],$p['Titel'],$p['Inhalt'],$p['Sichtbarkeit'],$p['FK_UserID'],$tags);
+            array_push($postObjects,$postObj);
+        }
+
+        return $postObjects;
+    }
+
 
 
 
