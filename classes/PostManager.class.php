@@ -20,7 +20,7 @@ function display($DB,$Posts){
 
 }
     function handleNewPost($DB,$CurrentUser){
-        echo $_POST["checkPrivate"];
+        
         if(
             isset($_POST["Titel"]) &&
             isset($_POST["Textarea1"])

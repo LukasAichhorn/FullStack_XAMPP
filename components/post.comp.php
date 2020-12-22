@@ -4,7 +4,7 @@
     
     
     
-    <div class="card mb-1">
+    <div class="card mb-3 shadow-sm">
         <div class="row g-0">
             <div class="col-md-4">
             
@@ -27,7 +27,17 @@
                     </div>
 
                     <div class="row comp-infoSection">
-                        <div class="col">
+                        <div class="col ">
+                            <div class="d-flex flex-wrap">
+                            
+                            <?php
+                                foreach ($Post->SelectedTags as $tag ) {
+                                    
+                                   echo("<div class='border  m-1 small-tag'>" . $tag["TagName"] . "</div>");
+                                }                                 
+                                                         
+                            ?>
+                            </div>
                             <div class="divider border"></div>
                             
                             <div class="row mt-2">
@@ -47,10 +57,16 @@
                                 <div class="col-1 ">
                                     <div class="d-flex flex-row justify-content-end">
                                         <div class="Comp-like">
-                                            <form><button type="button" class="btn btn-sm btn-sm-my btn-outline-success"><?php echo($Post->Likes); ?></button></form>
+                                            <form action="util/handleLikes.php">
+                                            <input type="hidden" name="action" value="0" />
+                                            <input type="hidden" name="PostId" value="<?php echo($Post->PostID);?>" />  
+                                            <button type="submit" class="btn btn-sm btn-sm-my btn-outline-success"><?php echo($Post->Likes); ?></button></form>
                                         </div>
                                         <div class="Comp-like">
-                                            <form><button type="button" class="btn btn-sm btn-sm-my btn-outline-danger"> <?php echo($Post->Dislikes); ?></button></form>
+                                            <form action="util/handleLikes.php">
+                                            <input type="hidden" name="action" value="1" />
+                                            <input type="hidden" name="PostId" value="<?php echo($Post->PostID);?>" />  
+                                            <button type="submit" class="btn btn-sm btn-sm-my btn-outline-danger"> <?php echo($Post->Dislikes); ?></button></form>
                                         </div>
                                     </div>
                                 </div>

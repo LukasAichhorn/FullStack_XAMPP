@@ -26,6 +26,7 @@ $CurrentUser = $UserManager->getUser();
 $PostManager = new PostManager();
 $PostsAsObjects = $PostManager->fetchPosts($DB,$status);
 $Tags=$DB->allTags();
+
 ?>
 
 
