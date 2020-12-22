@@ -66,7 +66,7 @@ function display($DB,$Posts){
     if(isset($_FILES["fileUpload"])){
 
         $targetDir = $CurrentUser->RootFolder;
-        $target_file = $targetDir . "/" . basename($_FILES["fileUpload"]["name"]);
+        $target_file = $targetDir . DIRECTORY_SEPARATOR . basename($_FILES["fileUpload"]["name"]);
         $fileName=basename($_FILES["fileUpload"]["name"]);
         $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
         //check image type: 
