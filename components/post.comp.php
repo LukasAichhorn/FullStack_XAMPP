@@ -33,7 +33,7 @@
                             <div class="row mt-2">
                             
                                 <div class="col">
-                                    <p class="card-text"><small class="text-muted">created by <?php echo($Post->Username)?> <br> at: <?php echo($Post->CreatedAt) ?> </small></p>
+                                    <p class="card-text"><small class="text-muted">created by <?php echo($Post->Username);?> <br> at: <?php echo($Post->CreatedAt); ?> </small></p>
                                 </div>
 
                                 <div class="col">
@@ -47,10 +47,10 @@
                                 <div class="col-1 ">
                                     <div class="d-flex flex-row justify-content-end">
                                         <div class="Comp-like">
-                                            <form><button type="button" class="btn btn-sm btn-sm-my btn-outline-success"><?php echo($Post["Likes"]) ?></button></form>
+                                            <form><button type="button" class="btn btn-sm btn-sm-my btn-outline-success"><?php echo($Post->Likes); ?></button></form>
                                         </div>
                                         <div class="Comp-like">
-                                            <form><button type="button" class="btn btn-sm btn-sm-my btn-outline-danger"> <?php echo($Post["Dislikes"]) ?></button></form>
+                                            <form><button type="button" class="btn btn-sm btn-sm-my btn-outline-danger"> <?php echo($Post->Dislikes); ?></button></form>
                                         </div>
                                     </div>
                                 </div>

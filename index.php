@@ -24,7 +24,7 @@ $status = $UserManager->checkStatus();
 $CurrentUser = $UserManager->getUser();
 //Create PostManager and fetch all posts
 $PostManager = new PostManager();
-$Posts = $PostManager->fetchPosts($DB,$status);
+$PostsAsObjects = $PostManager->fetchPosts($DB,$status);
 $Tags=$DB->allTags();
 ?>
 
@@ -93,7 +93,7 @@ $Tags=$DB->allTags();
 
       <div class="col-6 p-4 minusTop">     
       
-      <?php $PostManager->display($DB,$Posts);?>
+      <?php $PostManager->display($DB,$PostsAsObjects);?>
       
       
        

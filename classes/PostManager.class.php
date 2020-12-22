@@ -14,7 +14,7 @@ return $this->Posts;
 function display($DB,$Posts){
 
     foreach ($Posts as $Post) {
-        $commentnr = $DB->commentCount($Post['PostID']);    
+        $commentnr = $DB->commentCount($Post->PostID);    
         include "components/post.comp.php";
     }
 
