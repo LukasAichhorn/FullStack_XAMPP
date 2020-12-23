@@ -249,13 +249,8 @@ class DBManager
     function getPosts($status)
     {
         $DB = $this->DB;
-<<<<<<< HEAD
-        //include 'Post.class.php';
-        if($status == 0){//no prepared statemnt needed because user input has no influence on query
-=======
         //
         if ($status == 0) { //no prepared statemnt needed because user input has no influence on query
->>>>>>> c1bb8b91c0ba74560f23fcaeee4b867a0a23c061
             $stmt = "SELECT Username,PostID,Bildadresse,Bildname,Titel,Inhalt,Likes,Dislikes,CreatedAt,Sichtbarkeit,FK_UserID FROM user Inner JOIN post ON post.FK_UserID = user.UserID WHERE Sichtbarkeit = 1";
             $result = mysqli_query($DB, $stmt);
             $posts = array();
