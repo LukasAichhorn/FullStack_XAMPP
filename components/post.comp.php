@@ -1,7 +1,12 @@
     
            
-
-    
+<?php
+$path_parts= pathinfo($Post->Bildadresse);
+$IMG_name=$path_parts["filename"];
+$IMG_ending=$path_parts["extension"];
+$IMG_dir=$path_parts["dirname"];
+$IMG_TN_Path = $IMG_dir."/".$IMG_name."_thumbnail".".".$IMG_ending;
+?>
     
     
     <div class="card mb-2 shadow-sm">
@@ -9,7 +14,7 @@
             <div class="col-md-4  d-flex align-content-center">
             
 
-                <img class="card-img cover " src="//<?php echo($Post->Bildadresse)?>">
+                <img class="card-img cover " src="//<?php echo($IMG_TN_Path)?>">
             </div>
             <div class="col-md-8">
                 <div class="card-body d-flex flex-row flex-wrap h-100">

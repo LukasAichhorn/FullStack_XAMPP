@@ -29,6 +29,7 @@ $SinglePost = $SinglePost[0];
 $Path = $_SERVER['REQUEST_URI'];
 $PostManager->handleNewComment($DB, $PostID, $CurrentUser->UserID, $Path);
 $Comments = $DB->getComments($PostID);
+
 ?>
 
 
