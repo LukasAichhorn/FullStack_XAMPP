@@ -27,7 +27,7 @@ $SinglePost = $DB->getSinglePost($PostID);
 $comments = $DB->commentCount($PostID);
 $SinglePost = $SinglePost[0];
 $Path = $_SERVER['REQUEST_URI'];
-$PostManager->handleNewComment($DB,$PostID,$CurrentUser->UserID,$Path);
+$PostManager->handleNewComment($DB, $PostID, $CurrentUser->UserID, $Path);
 $Comments = $DB->getComments($PostID);
 ?>
 
@@ -63,8 +63,8 @@ $Comments = $DB->getComments($PostID);
       <div class="col-6 p-4 minusTop">
 
 
-        <img class="card-img-top" src="//<?php echo ($SinglePost->Bildadresse); ?>" alt="Card image cap">
-        <h5><?php echo ($SinglePost->Titel) ?></h5>
+        <img class="card-img-top " src="//<?php echo ($SinglePost->Bildadresse); ?>" alt="Card image cap">
+        <h5 class="mt-3 mb-3"><?php echo ($SinglePost->Titel) ?></h5>
         <p><?php echo ($SinglePost->Inhalt) ?></p>
 
 
@@ -81,7 +81,7 @@ $Comments = $DB->getComments($PostID);
 
             ?>
           </div>
-
+          <div class="divider border mt-1 mb-1"></div>
           <div class="col">
             <p class="card-text"><small class="text-muted">created by <?php echo ($SinglePost->Username) ?> at: <?php echo ($SinglePost->CreatedAt) ?> </small></p>
           </div>
@@ -104,11 +104,14 @@ $Comments = $DB->getComments($PostID);
 
 
         </div>
-        <b>Comments:</b>
+        <div class="row mb-1">
+          <b>Comments:</b>
+        </div>
+
         <?php
 
         //Display all comments
-        foreach ($Comments as $Comment) {        
+        foreach ($Comments as $Comment) {
           include "../components/comment.comp.php";
         }
         ?>

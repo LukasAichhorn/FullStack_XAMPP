@@ -4,36 +4,36 @@
     
     
     
-    <div class="card mb-3 shadow-sm">
+    <div class="card mb-2 shadow-sm">
         <div class="row g-0">
-            <div class="col-md-4">
+            <div class="col-md-4  d-flex align-content-center">
             
 
-                <img class="card-img" src="//<?php echo($Post->Bildadresse)?>">
+                <img class="card-img cover " src="//<?php echo($Post->Bildadresse)?>">
             </div>
             <div class="col-md-8">
-                <div class="card-body h-100">
-                    <div class="row mb-5">
+                <div class="card-body d-flex flex-row flex-wrap h-100">
+                    <div class="row  ">
                         <div class="col">
                         
                             <a href="pages/DisplayPost.php?PostID=<?php echo($Post->PostID); ?>">
                                 <h5 class="card-title"><?php echo($Post->Titel) ?></h5>   
                             </a>
 
-                            <p class="card-text">
+                            <p class="card-text mb-3">
                             <?php echo($Post->Inhalt)?>
                             </p>
                         </div>
                     </div>
 
-                    <div class="row comp-infoSection">
-                        <div class="col ">
+                    <div class="row  w-100 align-self-end">
+                        <div class="col">
                             <div class="d-flex flex-wrap">
                             
                             <?php
                                 foreach ($Post->SelectedTags as $tag ) {
                                     
-                                   echo("<div class='border  m-1 small-tag'>" . $tag["TagName"] . "</div>");
+                                   echo("<div class='border   small-tag'>" . $tag["TagName"] . "</div>");
                                 }                                 
                                                          
                             ?>
@@ -42,7 +42,7 @@
                             
                             <div class="row mt-2">
                             
-                                <div class="col">
+                                <div class="col-4 ">
                                     <p class="card-text"><small class="text-muted">created by <?php echo($Post->Username);?> <br> at: <?php echo($Post->CreatedAt); ?> </small></p>
                                 </div>
 

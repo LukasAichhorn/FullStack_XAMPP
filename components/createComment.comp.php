@@ -1,6 +1,6 @@
 <form action="<?php echo ($_SERVER['REQUEST_URI']); ?>" method="post">
-    <div class="row">
-        <label for="Textarea1" class="form-label">Text:</label>
+    <div class="row mt-3">
+        <label for="Textarea1" class="form-label"><b>Create a new Comment:</b></label>
     </div>
     <div class="row d-flex align-content-end justify-content-end">
         <div class="col">
