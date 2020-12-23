@@ -110,5 +110,14 @@ function handleNewComment($DB,$PostID,$CurrentUserID,$Path){
         header("Refresh:0; url=$Path");   
     }
 }
+function handleSearch($DB){
+    $Tags = $DB->allTags();
+//get all tags in url and save into new array
+//get string in url
+// build query  select * from posts where MATCH(title,Inhalt, bildname) AGAINST (string) AND tag in [array of used tags ]
+    
+
+
+}
 
 }
