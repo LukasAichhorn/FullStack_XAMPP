@@ -7,6 +7,7 @@ require "../classes/User.class.php";
 require "../classes/UserManager.class.php";
 require "../classes/validator.class.php";
 require "../classes/PostManager.class.php";
+require "../classes/imagePocessor.class.php";
 ?>
 
 

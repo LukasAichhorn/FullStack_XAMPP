@@ -20,7 +20,7 @@ function display($DB,$Posts){
 
 }
     function handleNewPost($DB,$CurrentUser){
-        echo $_POST["checkPrivate"];
+        
         if(
             isset($_POST["Titel"]) &&
             isset($_POST["Textarea1"])
@@ -81,6 +81,9 @@ function display($DB,$Posts){
 
         //upload to User directory
         if(move_uploaded_file($_FILES["fileUpload"]["tmp_name"], $target_file)){
+
+            $ImgProcessor = new ImageProcessor();
+            $ImgProcessor->createThumbnail($target_file);    
             return [$targetDir,$fileName];
         }
         else {
@@ -94,6 +97,27 @@ function display($DB,$Posts){
 
     }
 
+function handleNewComment($DB,$PostID,$CurrentUserID,$Path){
 
+    if(!empty($_POST["Comment_text"])){
+        
+        $validator = new Validator();
+        $text = $validator->validate_string($_POST["Comment_text"]);
+        $CreatedAt = Null;
+        $NewComment = new Comment($text,$CurrentUserID,$PostID,$CreatedAt);
+
+        $DB->insertComment($NewComment); 
+        header("Refresh:0; url=$Path");   
+    }
+}
+function handleSearch($DB){
+    $Tags = $DB->allTags();
+//get all tags in url and save into new array
+//get string in url
+// build query  select * from posts where MATCH(title,Inhalt, bildname) AGAINST (string) AND tag in [array of used tags ]
+    
+
+
+}
 
 }

@@ -7,9 +7,10 @@ require "../classes/User.class.php";
 require "../classes/UserManager.class.php";
 require "../classes/validator.class.php";
 require "../classes/PostManager.class.php";
+require "../classes/Comment.class.php";
 ?>
 <?php
- 
+
 //instntiate DB Object
 $DB = new DBManager();
 $DB->ConnectDB();
@@ -24,11 +25,15 @@ $PostManager = new PostManager();
 $PostID = $_GET["PostID"];
 $SinglePost = $DB->getSinglePost($PostID);
 $comments = $DB->commentCount($PostID);
+$SinglePost = $SinglePost[0];
+$Path = $_SERVER['REQUEST_URI'];
+$PostManager->handleNewComment($DB, $PostID, $CurrentUser->UserID, $Path);
+$Comments = $DB->getComments($PostID);
 
 ?>
 
 
-!doctype html>
+<!doctype html>
 <html lang="en">
 
 <head>
@@ -56,49 +61,70 @@ $comments = $DB->commentCount($PostID);
 
       </div>
 
-      <div class="col-6 p-4 minusTop">     
-            
-
-            <img class="card-img-top" src="//<?php echo($SinglePost["Bildadresse"]); ?>" alt="Card image cap">
-            <h5><?php echo($SinglePost["Titel"])?></h5>
-            <p><?php echo($SinglePost["Inhalt"])?></p>
+      <div class="col-6 p-4 minusTop">
 
 
+        <img class="card-img-top " src="//<?php echo ($SinglePost->Bildadresse); ?>" alt="Card image cap">
+        <h5 class="mt-3 mb-3"><?php echo ($SinglePost->Titel) ?></h5>
+        <p><?php echo ($SinglePost->Inhalt) ?></p>
 
-            <div class="row mt-2">
-             
 
-<div class="col">
-    <p class="card-text"><small class="text-muted">created by <?php echo($SinglePost["Username"])?>  at: <?php echo($SinglePost["CreatedAt"]) ?> </small></p>
-</div>
 
-<div class="col">
-    <p class="card-text"><small class="text-muted"><?php echo($comments); ?> comment(s)</small></p>
-</div>
+        <div class="row mt-2">
 
-<div class="col ">
-    <div class="d-flex flex-row justify-content-end">
-        <div class="Comp-like">
-            <form><button type="button" class="btn btn-sm btn-sm-my btn-outline-success"><?php echo($SinglePost["Likes"]) ?></button></form>
+          <div class="d-flex flex-wrap">
+
+            <?php
+            foreach ($SinglePost->SelectedTags as $tag) {
+
+              echo ("<div class='border  m-1 small-tag'>" . $tag["TagName"] . "</div>");
+            }
+
+            ?>
+          </div>
+          <div class="divider border mt-1 mb-1"></div>
+          <div class="col">
+            <p class="card-text"><small class="text-muted">created by <?php echo ($SinglePost->Username) ?> at: <?php echo ($SinglePost->CreatedAt) ?> </small></p>
+          </div>
+
+          <div class="col">
+            <p class="card-text"><small class="text-muted"><?php echo ($comments); ?> comment(s)</small></p>
+          </div>
+
+          <div class="col ">
+            <div class="d-flex flex-row justify-content-end">
+              <div class="Comp-like">
+                <form><button type="button" class="btn btn-sm btn-sm-my btn-outline-success"><?php echo ($SinglePost->Likes) ?></button></form>
+              </div>
+              <div class="Comp-like">
+                <form><button type="button" class="btn btn-sm btn-sm-my btn-outline-danger"> <?php echo ($SinglePost->Dislikes) ?></button></form>
+              </div>
+            </div>
+          </div>
+
+
+
         </div>
-        <div class="Comp-like">
-            <form><button type="button" class="btn btn-sm btn-sm-my btn-outline-danger"> <?php echo($SinglePost["Dislikes"]) ?></button></form>
+        <div class="row mb-1">
+          <b>Comments:</b>
         </div>
-    </div>
-</div>
+
+        <?php
+
+        //Display all comments
+        foreach ($Comments as $Comment) {
+          include "../components/comment.comp.php";
+        }
+        ?>
 
 
 
-</div>
-      
-      
-         
-            
-         
-        </div>
-        
 
-      
+        <?php include "../components/CreateComment.comp.php" ?>
+      </div>
+
+
+
 
       <div class="col">
 
