@@ -81,6 +81,9 @@ function display($DB,$Posts){
 
         //upload to User directory
         if(move_uploaded_file($_FILES["fileUpload"]["tmp_name"], $target_file)){
+
+            $ImgProcessor = new ImageProcessor();
+            $ImgProcessor->createThumbnail($target_file);    
             return [$targetDir,$fileName];
         }
         else {

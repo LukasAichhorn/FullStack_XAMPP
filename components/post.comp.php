@@ -33,7 +33,7 @@
                             <?php
                                 foreach ($Post->SelectedTags as $tag ) {
                                     
-                                   echo("<div class='border   small-tag'>" . $tag["TagName"] . "</div>");
+                                   echo("<div class='border  mb-1 small-tag'>" . $tag["TagName"] . "</div>");
                                 }                                 
                                                          
                             ?>
