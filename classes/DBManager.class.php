@@ -309,6 +309,7 @@ class DBManager
         }
 
     }
+
     function getComments($PostID){    
         $DB = $this->DB;
         //no prepared statemnt needed because user input has no influence on query
@@ -332,4 +333,6 @@ class DBManager
             
             return $CommentsObjects;
     }
+
+    //Admin: getAllUsers(active/inactive)-->changeUserStatus(), myProfile -->currentUserObject --> getPostsUser($UserID)
 }
