@@ -62,10 +62,13 @@ $IMG_TN_Path = $IMG_dir."/".$IMG_name."_thumbnail".".".$IMG_ending;
                                 <div class="col-1 ">
                                     <div class="d-flex flex-row justify-content-end">
                                         <div class="Comp-like">
+                                            
                                             <form action="util/handleLikes.php">
                                             <input type="hidden" name="action" value="0" />
                                             <input type="hidden" name="PostId" value="<?php echo($Post->PostID);?>" />  
-                                            <button type="submit" class="btn btn-sm btn-sm-my btn-outline-success"><?php echo($Post->Likes); ?></button></form>
+                                            <button type="submit" class="btn btn-sm btn-sm-my btn-outline-success">
+                                                
+                                            <?php echo($Post->Likes); ?></button></form>
                                         </div>
                                         <div class="Comp-like">
                                             <form action="util/handleLikes.php">
