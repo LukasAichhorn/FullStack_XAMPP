@@ -54,7 +54,7 @@ class DBManager
     { //input is an object called User with valid data
 
         $DB = $this->DB;
-        if (!($stmt = $DB->prepare("INSERT INTO goellhorndb.user(Username,Passwort,Anrede,Vorname,Nachname,Profilbild,RootDir) VALUES (?,?,?,?,?,?,?,?)"))) {
+        if (!($stmt = $DB->prepare("INSERT INTO goellhorndb.user(Username,Email,Passwort,Anrede,Vorname,Nachname,Profilbild,RootDir) VALUES (?,?,?,?,?,?,?,?)"))) {
             echo "Prepare failed: (" . $DB->errno . ") " . $DB->error;
         }
 
