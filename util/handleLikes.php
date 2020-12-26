@@ -13,6 +13,6 @@ else{
     $DB->dislikePost($PostID);
 }
 
-header("Refresh:0; url=../index.php");
+header("Refresh:0; url=" . $_SERVER["HTTP_REFERER"]);
 
 ?>

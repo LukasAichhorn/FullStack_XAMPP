@@ -22,7 +22,7 @@ $this->Nachname=$_Nachname;
 
 $this->IsAdmin = $_IsAdmin;
 $this->status = $_status;
-$this->img = $_img;
+$this->IMG = $_img;
 $this->RootFolder = $_RootFolder;
 
 }

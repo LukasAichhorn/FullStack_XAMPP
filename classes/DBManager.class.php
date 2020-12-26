@@ -54,11 +54,11 @@ class DBManager
     { //input is an object called User with valid data
 
         $DB = $this->DB;
-        if (!($stmt = $DB->prepare("INSERT INTO goellhorndb.user(Username,Passwort,Anrede,Vorname,Nachname,RootDir) VALUES (?,?,?,?,?,?)"))) {
+        if (!($stmt = $DB->prepare("INSERT INTO goellhorndb.user(Username,Passwort,Anrede,Vorname,Nachname,Profilbild,RootDir) VALUES (?,?,?,?,?,?,?)"))) {
             echo "Prepare failed: (" . $DB->errno . ") " . $DB->error;
         }
 
-        if (!$stmt->bind_param("ssssss", $validUser->UserName, $validUser->UserPW, $validUser->Anrede, $validUser->Vorname, $validUser->Nachname, $validUser->RootFolder)) {
+        if (!$stmt->bind_param("sssssss", $validUser->UserName, $validUser->UserPW, $validUser->Anrede, $validUser->Vorname, $validUser->Nachname,$validUser->IMG, $validUser->RootFolder)) {
             echo "Binding params failed: (" . $stmt->errno . ") " . $stmt->error;
         }
 
@@ -334,5 +334,32 @@ class DBManager
             return $CommentsObjects;
     }
 
-    //Admin: getAllUsers(active/inactive)-->changeUserStatus(), myProfile -->currentUserObject --> getPostsUser($UserID)
+    //Admin: getAllUsers(active/inactive)-->changeUserStatus(), myProfile -->currentUserObject
+
+    function getPostsUser($UserID){
+
+  
+        $DB = $this->DB;
+    
+            $stmt = "SELECT Username,PostID,Bildadresse,Bildname,Titel,Inhalt,Likes,Dislikes,CreatedAt,Sichtbarkeit,FK_UserID FROM user Inner JOIN post ON post.FK_UserID = user.UserID WHERE user.UserID = $UserID";
+            $result = mysqli_query($DB, $stmt);
+            $posts = array();
+            if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                    $posts[] = $row;
+                }
+            }
+
+            //print_r($posts);
+        $postObjects = array();
+        foreach ($posts as $p) {
+            $tags = $this->getTags($p['PostID']);
+
+            $postObj = new Post($p['PostID'], $p['Username'], $p['Bildadresse'], $p['Bildname'], $p['Titel'], $p['Inhalt'], $p['Sichtbarkeit'], $p['FK_UserID'], $tags, $p['CreatedAt'], $p['Likes'], $p['Dislikes']);
+            array_push($postObjects, $postObj);
+        }
+
+        return $postObjects;
+    
+    }
 }

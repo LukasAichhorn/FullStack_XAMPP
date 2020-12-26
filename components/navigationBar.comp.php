@@ -17,7 +17,7 @@ $litemlogin ="
         ";
 $litemMyProfile = "
 <li class='nav-item'>
-    <a class='nav-link' aria-current='page' href='//".DIR_PAGES."MyProfile.php'>My Profile</a>
+    <a class='nav-link' aria-current='page' href='//".DIR_PAGES."myProfile.php'>My Profile</a>
 </li>
         ";
 $litemLogOut = "

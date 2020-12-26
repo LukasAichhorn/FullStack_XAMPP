@@ -26,6 +26,8 @@ $CurrentUser = $UserManager->getUser();
 $PostManager = new PostManager();
 $PostsAsObjects = $PostManager->fetchPosts($DB,$status);
 $Tags=$DB->allTags();
+echo($_SERVER['DOCUMENT_ROOT']);
+
 
 ?>
 

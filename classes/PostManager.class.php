@@ -15,7 +15,7 @@ function display($DB,$Posts){
 
     foreach ($Posts as $Post) {
         $commentnr = $DB->commentCount($Post->PostID);    
-        include "components/post.comp.php";
+        include "C:/xampp/htdocs/WEB_SS2020/WP/components/post.comp.php";
     }
 
 }
@@ -51,7 +51,7 @@ function display($DB,$Posts){
             $_Bildname= $ImageUpload[1];
             $_Titel = $Title;
             $_Inhalt = $Text;            
-            $_Sichtbarkeit=($_POST["checkPrivate"] == "on") ? 0 : 1 ;
+            $_Sichtbarkeit=(isset($_POST["checkPrivate"])) ? 0 : 1 ;
             $_FKUserID=$CurrentUser->UserID;
             $NewPost = new Post($_PostID,"Fisch",$_Bildadresse,$_Bildname,$_Titel,$_Inhalt,$_Sichtbarkeit,$_FKUserID,$TagsSelected,1234,0,0);
 

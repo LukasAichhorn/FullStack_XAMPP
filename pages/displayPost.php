@@ -66,6 +66,7 @@ $Comments = $DB->getComments($PostID);
 
         <img class="card-img-top " src="//<?php echo ($SinglePost->Bildadresse); ?>" alt="Card image cap">
         <h5 class="mt-3 mb-3"><?php echo ($SinglePost->Titel) ?></h5>
+        
         <p><?php echo ($SinglePost->Inhalt) ?></p>
 
 

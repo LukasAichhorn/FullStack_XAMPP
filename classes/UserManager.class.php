@@ -76,7 +76,8 @@ if(isset($_POST["Username"]) && isset($_POST["Passwort"]) && isset($_POST["Anred
         $error=mkdir($UserRoot);
         echo $error;
         $UserRoot = DIR_BASE . "UsersRoot/" . $Username;
-        $NewUser = new User(0,$Username,$Hpw,$Anrede,$Vorname,$Nachname,0,1,'ressources/pics/DefaultUser.png',$UserRoot);
+        $DefaultUserImg= DIR_BASE .'ressources/pics/DefaultUser.png';
+        $NewUser = new User(0,$Username,$Hpw,$Anrede,$Vorname,$Nachname,0,1,$DefaultUserImg,$UserRoot);
         $DB->insertUser($NewUser);       
         
 
@@ -95,7 +96,27 @@ function handleLogout(){
     header("Refresh:0; url=../index.php");
 }
 
+    function handleUpdateProfile($CurrentUser){
+            if( $_POST["Username"]&&
+                $_POST["Anrede"]&&
+                $_POST["Vorname"]){
+            
+             //upload user pic to        
+            $POSTManager = new PostManager();
+            $POSTManager->handleImgUpload($CurrentUser);
+            
+            //$UpdatedUser = new User();
+            // use db function to insert user
+
+            }
+
+
+
+    }
+
 }
+
+
 
 
 

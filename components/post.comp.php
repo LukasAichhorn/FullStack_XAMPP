@@ -21,7 +21,7 @@ $IMG_TN_Path = $IMG_dir."/".$IMG_name."_thumbnail".".".$IMG_ending;
                     <div class="row  ">
                         <div class="col">
                         
-                            <a href="pages/DisplayPost.php?PostID=<?php echo($Post->PostID); ?>">
+                            <a href="//<?php echo(DIR_PAGES);?>DisplayPost.php?PostID=<?php echo($Post->PostID); ?>">
                                 <h5 class="card-title"><?php echo($Post->Titel) ?></h5>   
                             </a>
 
@@ -63,7 +63,7 @@ $IMG_TN_Path = $IMG_dir."/".$IMG_name."_thumbnail".".".$IMG_ending;
                                     <div class="d-flex flex-row justify-content-end">
                                         <div class="Comp-like">
                                             
-                                            <form action="util/handleLikes.php">
+                                            <form action="//<?php echo(DIR_UTIL);?>handleLikes.php">
                                             <input type="hidden" name="action" value="0" />
                                             <input type="hidden" name="PostId" value="<?php echo($Post->PostID);?>" />  
                                             <button type="submit" class="btn btn-sm btn-sm-my btn-outline-success">
@@ -71,7 +71,7 @@ $IMG_TN_Path = $IMG_dir."/".$IMG_name."_thumbnail".".".$IMG_ending;
                                             <?php echo($Post->Likes); ?></button></form>
                                         </div>
                                         <div class="Comp-like">
-                                            <form action="util/handleLikes.php">
+                                            <form action="//<?php echo(DIR_UTIL);?>handleLikes.php">
                                             <input type="hidden" name="action" value="1" />
                                             <input type="hidden" name="PostId" value="<?php echo($Post->PostID);?>" />  
                                             <button type="submit" class="btn btn-sm btn-sm-my btn-outline-danger"> <?php echo($Post->Dislikes); ?></button></form>
