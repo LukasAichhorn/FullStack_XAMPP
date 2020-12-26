@@ -10,7 +10,7 @@
         <input type="password" name="Passwort" class="form-control" id="Passwort" required>
     </div>  
     <div class="form-group mt-3">
-                <label for="Nachname">Email</label>
+                <label for="Email">Email</label>
                 <input type="email" name="Email" class="form-control" id="Email" required>
             </div>
   
