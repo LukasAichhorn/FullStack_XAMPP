@@ -11,7 +11,7 @@ $this->Posts = $DB->getPosts($status);
 return $this->Posts;
 }
 
-function display($DB,$Posts){
+function display($DB,$Posts,$CurrentUser){
 
     foreach ($Posts as $Post) {
         $commentnr = $DB->commentCount($Post->PostID);    

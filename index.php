@@ -29,6 +29,7 @@ $Tags=$DB->allTags();
 echo($_SERVER['DOCUMENT_ROOT']);
 
 
+
 ?>
 
 
@@ -96,7 +97,7 @@ echo($_SERVER['DOCUMENT_ROOT']);
 
       <div class="col-6 p-4 minusTop">     
       
-      <?php $PostManager->display($DB,$PostsAsObjects);?>
+      <?php $PostManager->display($DB,$PostsAsObjects,$CurrentUser);?>
       
       
        

@@ -69,7 +69,7 @@ $PostManager= new PostManager();
              
       <h5>My Posts:</h5>
       <?php //var_dump($CurrentUserPosts);?>
-      <?php $PostManager->display($DB,$CurrentUserPosts);?>
+      <?php $PostManager->display($DB,$CurrentUserPosts,$CurrentUser);?>
       
         </div>
         
