@@ -20,7 +20,15 @@ function validate_Password($PW){
             return $PW;
         
     }
+    function validate_Email($email){
 
+        $email = trim(htmlspecialchars($_POST[$email]));
+            $email = filter_var($email, FILTER_VALIDATE_EMAIL);
+        if($email == false){
+            return false;
+        }
+        return true;
+    }
 
     
 }

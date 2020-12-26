@@ -203,7 +203,12 @@ class DBManager
     {
         $DB = $this->DB;
         $stmt = "DELETE FROM post WHERE PostID = $postID";
-        $DB->query($stmt);
+        if(!$DB->query($stmt)){
+            printf($DB->error);
+        }
+        else {
+            return "successfully deleted post!";
+        }
     }
 
     //fnc for changing visibility of post

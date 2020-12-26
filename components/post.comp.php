@@ -25,6 +25,8 @@ $IMG_TN_Path = $IMG_dir."/".$IMG_name."_thumbnail".".".$IMG_ending;
                                 <h5 class="card-title"><?php echo($Post->Titel) ?></h5>   
                             </a>
 
+                            <p class="d-flex"><small> <?php echo($Post->Sichtbarkeit == 0) ? "private" : "public"; ?></small></p>
+
                             <p class="card-text mb-3">
                             <?php echo($Post->Inhalt)?>
                             </p>
@@ -47,16 +49,14 @@ $IMG_TN_Path = $IMG_dir."/".$IMG_name."_thumbnail".".".$IMG_ending;
                             
                             <div class="row mt-2">
                             
-                                <div class="col-4 ">
+                                <div class="col-6 ">
                                     <p class="card-text"><small class="text-muted">created by <?php echo($Post->Username);?> <br> at: <?php echo($Post->CreatedAt); ?> </small></p>
                                 </div>
 
                                 <div class="col">
                                     <p class="card-text"><small class="text-muted"><?php echo($commentnr); ?> comment(s)</small></p>
                                 </div>
-                                <div class="col">
-                                <p class="d-flex"><small> <?php echo($Post->Sichtbarkeit == 0) ? "private" : "public"; ?></small></p>
-                                </div>
+                                
                                 
 
                                 <div class="col-1 ">
@@ -76,6 +76,20 @@ $IMG_TN_Path = $IMG_dir."/".$IMG_name."_thumbnail".".".$IMG_ending;
                                             <input type="hidden" name="PostId" value="<?php echo($Post->PostID);?>" />  
                                             <button type="submit" class="btn btn-sm btn-sm-my btn-outline-danger"> <?php echo($Post->Dislikes); ?></button></form>
                                         </div>
+
+                                        <?php
+                                        if($Post->Username == $CurrentUser->UserName){
+                                            echo('<div class="Comp-like">
+                                            
+                                            <form action="//'. DIR_UTIL .'handleDelete.php">
+                                            <input type="hidden" name="PostId" value="'. $Post->PostID . '" />  
+                                            <button type="submit" class="btn btn-sm btn-sm-my btn-outline-warning">delete</button>
+                                            </form>
+                                            </div>');
+                                        }
+
+                                        ?>
+
                                     </div>
                                 </div>
 

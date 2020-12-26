@@ -58,7 +58,7 @@ function handleLogin($DB){
 } 
 function handleRegister($DB){
 
-if(isset($_POST["Username"]) && isset($_POST["Passwort"]) && isset($_POST["Anrede"]) && isset($_POST["Vorname"]) && isset($_POST["Nachname"])){
+if(isset($_POST["Username"]) && isset($_POST["Passwort"]) && isset($_POST["Anrede"]) && isset($_POST["Vorname"]) && isset($_POST["Nachname"]) && isset($_POST["Email"])){
 
 
     $Validator = new Validator();
@@ -67,6 +67,7 @@ if(isset($_POST["Username"]) && isset($_POST["Passwort"]) && isset($_POST["Anred
     $Anrede=$Validator->validate_string($_POST["Anrede"]);
     $Vorname=$Validator->validate_string($_POST["Vorname"]);
     $Nachname=$Validator->validate_string($_POST["Nachname"]);
+    $Email = $Validator->validate_Email($_POST["Email"]);
 
     
 
@@ -77,7 +78,7 @@ if(isset($_POST["Username"]) && isset($_POST["Passwort"]) && isset($_POST["Anred
         echo $error;
         $UserRoot = DIR_BASE . "UsersRoot/" . $Username;
         $DefaultUserImg= DIR_BASE .'ressources/pics/DefaultUser.png';
-        $NewUser = new User(0,$Username,$Hpw,$Anrede,$Vorname,$Nachname,0,1,$DefaultUserImg,$UserRoot);
+        $NewUser = new User(0,$Username,$Hpw,$Anrede,$Vorname,$Nachname,0,1,$DefaultUserImg,$UserRoot,$Email);
         $DB->insertUser($NewUser);       
         
 
@@ -96,8 +97,9 @@ function handleLogout(){
     header("Refresh:0; url=../index.php");
 }
 
-    function handleUpdateProfile($CurrentUser){
-            if( $_POST["Username"]&&
+function handleUpdateProfile($CurrentUser){
+           
+    if( $_POST["Username"]&&
                 $_POST["Anrede"]&&
                 $_POST["Vorname"]){
             
@@ -105,6 +107,7 @@ function handleLogout(){
             $POSTManager = new PostManager();
             $POSTManager->handleImgUpload($CurrentUser);
             
+            // if img is empty set img path to default manually
             //$UpdatedUser = new User();
             // use db function to insert user
 
