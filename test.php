@@ -34,4 +34,12 @@ $singlepost = $testDBManager->getSinglePost(4);
 
 //$testDBManager->commentCount(4);
 
+//$newUser = new user(32,"carpador",1234,"Frau","car","pador",0,1,"localhost/WEB_SS2020/WP/ressources/pics/DefaultUser.png","localhost/WEB_SS2020/WP/UsersRoot/carlos");
+
+//$testDBManager->updateUser($newUser);
+
+//$testDBManager->changeStatus(32);
+
+$testDBManager->changeVisibility(19);  
+
 ?>

@@ -54,11 +54,11 @@ class DBManager
     { //input is an object called User with valid data
 
         $DB = $this->DB;
-        if (!($stmt = $DB->prepare("INSERT INTO goellhorndb.user(Username,Passwort,Anrede,Vorname,Nachname,Profilbild,RootDir) VALUES (?,?,?,?,?,?,?)"))) {
+        if (!($stmt = $DB->prepare("INSERT INTO goellhorndb.user(Username,Passwort,Anrede,Vorname,Nachname,Profilbild,RootDir) VALUES (?,?,?,?,?,?,?,?)"))) {
             echo "Prepare failed: (" . $DB->errno . ") " . $DB->error;
         }
 
-        if (!$stmt->bind_param("sssssss", $validUser->UserName, $validUser->UserPW, $validUser->Anrede, $validUser->Vorname, $validUser->Nachname,$validUser->IMG, $validUser->RootFolder)) {
+        if (!$stmt->bind_param("ssssssss", $validUser->UserName,$validUser->Email, $validUser->UserPW, $validUser->Anrede, $validUser->Vorname, $validUser->Nachname,$validUser->IMG, $validUser->RootFolder)) {
             echo "Binding params failed: (" . $stmt->errno . ") " . $stmt->error;
         }
 
@@ -80,7 +80,7 @@ class DBManager
             $values = $result->fetch_row();
 
             //var_dump($values); ERROR LOG
-            $newUser = new User($values[0], $values[1], $values[2], $values[3], $values[4], $values[5], $values[6], $values[7], $values[8], $values[9]);
+            $newUser = new User($values[0], $values[1], $values[3], $values[4], $values[5], $values[6], $values[7], $values[8], $values[9], $values[10],$values[2]);
 
             return $newUser;
         } else {
@@ -204,13 +204,24 @@ class DBManager
         $DB = $this->DB;
         $stmt = "DELETE FROM post WHERE PostID = $postID";
         $DB->query($stmt);
+
     }
 
     //fnc for changing visibility of post
     function changeVisibility($postID)
     {
         $DB = $this->DB;
-        $stmt = "UPDATE post SET ";
+        $getVisibility = "SELECT Sichtbarkeit FROM post WHERE PostID = $postID";
+        $result = $DB->query($getVisibility);
+        $visibility = $result->fetch_row();//$status[0] = Sichtbarkeit des posts
+        
+        if($visibility[0] == 0){
+            $stmt = "UPDATE post SET Sichtbarkeit = 1 WHERE PostID = $postID";
+        }
+        else{
+            $stmt = "UPDATE post SET Sichtbarkeit = 0 WHERE PostID = $postID"; 
+        }
+        $DB->query($stmt);
     }
 
     //fnc that returns the number of comments of a single post
@@ -361,5 +372,35 @@ class DBManager
 
         return $postObjects;
     
+    }
+
+    function updateUser($user){
+        $DB = $this->DB;
+        
+        if (!($stmt = $DB->prepare("UPDATE user SET Username = ?,Anrede = ?,Vorname=?,Nachname=?,Profilbild=? WHERE UserID = ?"))) {
+            echo "Prepare failed: (" . $DB->errno . ") " . $DB->error;
+        }
+        if (!$stmt->bind_param("sssssi", $user->UserName, $user->Anrede, $user->Vorname, $user->Nachname, $user->IMG, $user->UserID)){
+            echo "Binding params failed: (" . $stmt->errno . ") " . $stmt->error;
+        }
+        if (!$stmt->execute()) {
+            echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+        }
+
+    }
+    
+    function changeStatus($UserID){
+        $DB = $this->DB;
+        $getStatus = "SELECT Aktiv FROM user WHERE UserID = $UserID";
+        $result = $DB->query($getStatus);
+        $status = $result->fetch_row();//$status[0] = UserStatus
+        
+        if($status[0] == 0){
+            $stmt = "UPDATE user SET Aktiv = 1 WHERE UserID = $UserID";
+        }
+        else{
+            $stmt = "UPDATE user SET Aktiv = 0 WHERE UserID = $UserID"; 
+        }
+        $DB->query($stmt);
     }
 }
