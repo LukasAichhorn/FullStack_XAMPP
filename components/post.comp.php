@@ -78,7 +78,7 @@ $IMG_TN_Path = $IMG_dir."/".$IMG_name."_thumbnail".".".$IMG_ending;
                                         </div>
 
                                         <?php
-                                        if($Post->Username == $CurrentUser->UserName){
+                                        if(isset($CurrentUser) && $Post->Username == $CurrentUser->UserName){
                                             echo('<div class="Comp-like">
                                             
                                             <form action="//'. DIR_UTIL .'handleDelete.php">
