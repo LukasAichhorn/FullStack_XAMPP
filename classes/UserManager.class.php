@@ -60,7 +60,7 @@ function handleRegister($DB){
 
 if(isset($_POST["Username"]) && isset($_POST["Passwort"]) && isset($_POST["Anrede"]) && isset($_POST["Vorname"]) && isset($_POST["Nachname"]) && isset($_POST["Email"])){
 
-
+echo($_POST["Email"]);
     $Validator = new Validator();
     $Username=$Validator->validate_string($_POST["Username"]);
     $Hpw=$Validator->validate_Password($_POST["Passwort"]);
@@ -68,8 +68,7 @@ if(isset($_POST["Username"]) && isset($_POST["Passwort"]) && isset($_POST["Anred
     $Vorname=$Validator->validate_string($_POST["Vorname"]);
     $Nachname=$Validator->validate_string($_POST["Nachname"]);
     $Email = $Validator->validate_Email($_POST["Email"]);
-
-    
+    echo($Email);    
 
     if(!$DB->checkifUserExists($Username)){
 
@@ -82,7 +81,7 @@ if(isset($_POST["Username"]) && isset($_POST["Passwort"]) && isset($_POST["Anred
         $DB->insertUser($NewUser);       
         
 
-        header("Refresh:0; url=login.php");
+        //header("Refresh:0; url=login.php");
         
     }else{
         echo("User already exists!");

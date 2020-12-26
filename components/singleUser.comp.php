@@ -39,12 +39,9 @@
                                 </div>
 
 
-
-
-
-
-
-
+                            </div>
+                            <div class="row">
+                               <p><?php echo($CurrentUser->Email) ?></p> 
                             </div>
                             <div class="d-flex flex-row justify-content-end">
                                 <div class="Comp-like">
