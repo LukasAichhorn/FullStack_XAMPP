@@ -381,10 +381,10 @@ class DBManager
     function updateUser($user){
         $DB = $this->DB;
         
-        if (!($stmt = $DB->prepare("UPDATE user SET Username = ?,Anrede = ?,Vorname=?,Nachname=?,Profilbild=? WHERE UserID = ?"))) {
+        if (!($stmt = $DB->prepare("UPDATE user SET Username = ?,Anrede = ?,Vorname=?,Nachname=?,Profilbild=?,Email=? WHERE UserID = ?"))) {
             echo "Prepare failed: (" . $DB->errno . ") " . $DB->error;
         }
-        if (!$stmt->bind_param("sssssi", $user->UserName, $user->Anrede, $user->Vorname, $user->Nachname, $user->IMG, $user->UserID)){
+        if (!$stmt->bind_param("ssssssi", $user->UserName, $user->Anrede, $user->Vorname, $user->Nachname, $user->IMG,$user->Email, $user->UserID)){
             echo "Binding params failed: (" . $stmt->errno . ") " . $stmt->error;
         }
         if (!$stmt->execute()) {
