@@ -20,7 +20,7 @@ echo "!" . $TestID . "!<br>";
 //$testDBManager->insertUser($testUser);    
 $testUsername = "carlos";
 $testDBManager->checkifUserExists($testUsername);
-var_dump($testDBManager->getPosts(1));
+//var_dump($testDBManager->getPosts(1));
 
 //$testDBManager->dislikePost(1);
 
@@ -39,7 +39,15 @@ $singlepost = $testDBManager->getSinglePost(4);
 //$testDBManager->updateUser($newUser);
 
 //$testDBManager->changeStatus(32);
+$testString = "tset";
+$testArray = array('Entspannung','Kartoffeln','Bruck an der Mur');
+$tagString = '(';
 
-$testDBManager->changeVisibility(19);  
+var_dump($testArray);
+//$userArray = $testDBManager->getUserArray();  
+
+//var_dump($userArray);
+
+$testDBManager->searchPosts($testString,$testArray);
 
 ?>

@@ -407,4 +407,110 @@ class DBManager
         }
         $DB->query($stmt);
     }
+    function getUserArray(){
+
+  
+        $DB = $this->DB;
+    
+            $stmt = "SELECT UserID,Username,Email,Anrede,Vorname,Nachname,Aktiv,Profilbild,RootDir FROM user  WHERE Admin = 0";
+            $result = mysqli_query($DB, $stmt);
+            $users = array();
+            if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                    $users[] = $row;
+                }
+            }
+
+            //print_r($posts);
+        $userObjects = array();
+        foreach ($users as $u) {
+            
+            $userObj = new User($u['UserID'], $u['Username'], "PW", $u['Anrede'], $u['Vorname'], $u['Nachname'], 0, intval($u['Aktiv']), $u['Profilbild'], $u['RootDir'], $u['Email']);
+            array_push($userObjects, $userObj);
+        }
+        
+        return $userObjects;
+    
+    }
+
+    function searchPosts($string,$tags){
+        $DB = $this->DB;
+        $tagString = '(';
+        foreach($tags as $t){
+            $tagString .= "'" . $t ."'" .", ";
+
+        }
+
+        $tagString = rtrim($tagString,", ") . ")";
+        
+
+
+        if(ctype_space($string) || empty($string)){//ctype_space returns true if entire string is only whitespace, empty returns true if string is ""
+            if(!($stmt = $DB->prepare("SELECT DISTINCT u.Username,p.PostID,u.Username,p.Bildadresse,p.Bildname,p.Titel,p.Inhalt,p.Sichtbarkeit,p.FK_UserID,p.CreatedAt,p.Likes,p.Dislikes 
+            FROM ((((post p left join comment c on p.PostID = c.FK_PostID) left join post_tags pt on pt.PostID = p.PostID) left join tags t on t.TagID = pt.TagID) inner join user u on u.UserID = p.FK_UserID) 
+            where t.TagName IN $tagString"))){
+                echo "Prepare failed: (" . $DB->errno . ") " . $DB->error;
+            }      
+        }
+        elseif(empty($tags)){
+            if(!($stmt = $DB->prepare("SELECT DISTINCT u.Username,p.PostID,u.Username,p.Bildadresse,p.Bildname,p.Titel,p.Inhalt,p.Sichtbarkeit,p.FK_UserID,p.CreatedAt,p.Likes,p.Dislikes 
+            FROM ((((post p left join comment c on p.PostID = c.FK_PostID) left join post_tags pt on pt.PostID = p.PostID) left join tags t on t.TagID = pt.TagID) inner join user u on u.UserID = p.FK_UserID) 
+            where p.Titel REGEXP ? or p.Inhalt REGEXP ? or c.Inhalt REGEXP ? "))){
+                echo "Prepare failed: (" . $DB->errno . ") " . $DB->error;
+            }
+            if(!$stmt->bind_param("sss",$string,$string,$string)){
+                echo "Binding params failed: (" . $stmt->errno . ") " . $stmt->error;
+            }
+
+        }
+        else{
+            if(!($stmt = $DB->prepare("SELECT DISTINCT u.Username,p.PostID,u.Username,p.Bildadresse,p.Bildname,p.Titel,p.Inhalt,p.Sichtbarkeit,p.FK_UserID,p.CreatedAt,p.Likes,p.Dislikes 
+            FROM ((((post p left join comment c on p.PostID = c.FK_PostID) left join post_tags pt on pt.PostID = p.PostID) left join tags t on t.TagID = pt.TagID) inner join user u on u.UserID = p.FK_UserID) 
+            where t.TagName IN $tagString or p.Titel REGEXP ? or p.Inhalt REGEXP ? or c.Inhalt REGEXP ? "))){
+                echo "Prepare failed: (" . $DB->errno . ") " . $DB->error;
+            }
+            if(!$stmt->bind_param("sss",$string,$string,$string)){
+                echo "Binding params failed: (" . $stmt->errno . ") " . $stmt->error;
+            }
+        }
+        
+
+        if(!$stmt->execute()){
+            echo "Executing statement failed: (" . $stmt->errno . ") " . $stmt->error;
+        }
+
+        $result = $stmt->get_result();
+
+        print_r($result->fetch_all());
+        
+        
+    }
+
+    /*function getPostsUser($UserID){
+
+  
+        $DB = $this->DB;
+    
+            $stmt = "SELECT Username,PostID,Bildadresse,Bildname,Titel,Inhalt,Likes,Dislikes,CreatedAt,Sichtbarkeit,FK_UserID FROM user Inner JOIN post ON post.FK_UserID = user.UserID WHERE user.UserID = $UserID";
+            $result = mysqli_query($DB, $stmt);
+            $posts = array();
+            if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                    $posts[] = $row;
+                }
+            }
+
+            //print_r($posts);
+        $postObjects = array();
+        foreach ($posts as $p) {
+            $tags = $this->getTags($p['PostID']);
+
+            $postObj = new Post($p['PostID'], $p['Username'], $p['Bildadresse'], $p['Bildname'], $p['Titel'], $p['Inhalt'], $p['Sichtbarkeit'], $p['FK_UserID'], $tags, $p['CreatedAt'], $p['Likes'], $p['Dislikes']);
+            array_push($postObjects, $postObj);
+        }
+
+        return $postObjects;
+    
+    }*/
+    
 }
