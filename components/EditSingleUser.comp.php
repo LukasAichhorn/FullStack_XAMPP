@@ -17,10 +17,14 @@
                     <div class="row d-flex align-items-center  ">
                         <div class="col">
                             <small>status: <?php echo ($CurrentUser->status) ?></small>
-                            <form class="action=//<?php echo (DIR_SERVERROOT .  $_SERVER['REQUEST_URI']); ?>" method="post">
+                            <form class="action=//<?php echo (DIR_SERVERROOT .  $_SERVER['REQUEST_URI']); ?>" method="post" enctype="multipart/form-data">
                             <div class="form-group mt-3">
                                 <label for="Username">Username</label>
                                 <input type="text" name="Username" value="<?php echo ($CurrentUser->UserName); ?>" class="form-control" id="Username" required>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label for="Username">Email:</label>
+                                <input type="text" name="Email" value="<?php echo ($CurrentUser->Email); ?>" class="form-control" id="Email" required>
                             </div>
 
                             <!-- <div class="form-group mt-3">

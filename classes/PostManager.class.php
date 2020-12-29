@@ -44,7 +44,10 @@ function display($DB,$Posts,$CurrentUser){
 
 
             $ImageUpload = $this->handleImgUpload($CurrentUser);
-
+            if($ImageUpload == 0){
+                $ImageUpload=["localhost/WEB_SS2020/WP/ressources/pics/Default_img.png","Default_img.png"];
+            }
+            
             $_PostID = NUll;
             $_Bildadresse = $ImageUpload[0];
             $_Bildname= $ImageUpload[1];
@@ -62,7 +65,10 @@ function display($DB,$Posts,$CurrentUser){
     }   
     function handleImgUpload($CurrentUser){
 
-    if(!$_FILES["fileUpload"]["name"]==""){
+        $nM = new NotificationHandler();
+        $nM->initAlerts();
+
+    if(!($_FILES["fileUpload"]["name"]=="")){
         echo("isset fileupload");
         $targetDir = $CurrentUser->RootFolder ."/". basename($_FILES["fileUpload"]["name"]);
         $target_file = DIR_ROOT."/WEB_SS2020/WP/UsersRoot/".$CurrentUser->UserName ."/". basename($_FILES["fileUpload"]["name"]);
@@ -83,17 +89,17 @@ function display($DB,$Posts,$CurrentUser){
 
             $ImgProcessor = new ImageProcessor();
             $ImgProcessor->createThumbnail($target_file);    
-            return [$targetDir,$fileName];
+            return [$targetDir,$fileName]; 
         }
         else {
+            $nM->pushNotification("file upload error: ". $_FILES["fileUpload"]["error"] ,"danger");
             return 0;
         }
 
 
 
     }
-        return ["localhost/WEB_SS2020/WP/ressources/pics/Default_img.png","Default_img.png"];
-
+        return 0 ;
     }
 
 function handleNewComment($DB,$PostID,$CurrentUserID,$Path){

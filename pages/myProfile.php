@@ -8,6 +8,7 @@ require "../classes/UserManager.class.php";
 require "../classes/validator.class.php";
 require "../classes/PostManager.class.php";
 require "../classes/NotificationHandler.class.php";
+require "../classes/imagePocessor.class.php";
 
 ?>
 
@@ -26,6 +27,8 @@ $CurrentUser = $UserManager->getUser();
 $CurrentUserPosts = $DB->getPostsUser($CurrentUser->UserID);
 $PostManager= new PostManager();
 $UserManager->handleUpdateProfile($DB,$CurrentUser);
+$nM=new NotificationHandler();
+$nM->initAlerts();
 ?>
 
 
@@ -49,6 +52,10 @@ $UserManager->handleUpdateProfile($DB,$CurrentUser);
 
   <!-- +++++++++++++++++++++++++++++++  Navigation +++++++++++++++++++++++++++++++++++ -->
   <?php include "../components/navigationBar.comp.php" ?>
+
+  <div class="alertContainer">
+    <?php $nM->display(); ?>
+</div>
 
   <div class="container-fluid">
     <div class="row User-BG"></div>
