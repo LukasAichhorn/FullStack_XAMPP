@@ -127,3 +127,25 @@ object-fit:contain;
     height: 8em;
     width: 8em;
 }
+.alertContainer{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 0.3rem 0.3rem;
+    
+    position: fixed;
+    bottom: 0;
+    z-index: 10000;
+}
+.alert{
+    display: flex;
+    margin: 0.1rem 0.1rem;
+    padding: 0.4rem 0.4rem;
+}
+.alert-dismissible .btn-close {
+    position: none;
+    top: 0;
+    right: 0;
+    z-index: 0; 
+    padding: 0; 
+}

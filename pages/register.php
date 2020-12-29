@@ -7,6 +7,7 @@ require "../classes/Post.class.php";
 require "../classes/User.class.php";
 require "../classes/UserManager.class.php";
 require "../classes/validator.class.php";
+require "../classes/NotificationHandler.class.php";
 ?>
 
 
@@ -18,6 +19,11 @@ $DB = new DBManager();
 $DB->ConnectDB();
 $UserManager = new UserManager();
 $UserManager->handleRegister($DB);
+$UserManager->startSession();
+
+$nM=new NotificationHandler();
+$nM->initAlerts();
+
 //
 ?>
 
@@ -43,6 +49,10 @@ $UserManager->handleRegister($DB);
 <div class="container-fluid">
 <!-- +++++++++++++++++++++++++++++++  Navigation +++++++++++++++++++++++++++++++++++ -->
 <?php include "../components/navigationBar.comp.php" ?>
+
+<div class="alertContainer">
+    <?php $nM->display(); ?>
+</div>
 
 <div class="container-fluid">
   <div class="row login-BG"></div>

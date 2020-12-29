@@ -7,6 +7,7 @@ require "../classes/User.class.php";
 require "../classes/UserManager.class.php";
 require "../classes/validator.class.php";
 require "../classes/PostManager.class.php";
+require "../classes/NotificationHandler.class.php";
 
 ?>
 
@@ -24,6 +25,7 @@ $UserManager->checkStatus();
 $CurrentUser = $UserManager->getUser();
 $CurrentUserPosts = $DB->getPostsUser($CurrentUser->UserID);
 $PostManager= new PostManager();
+$UserManager->handleUpdateProfile($DB,$CurrentUser);
 ?>
 
 

@@ -64,8 +64,15 @@ class DBManager
 
 
         if (!$stmt->execute()) {
-            echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+            $nM= new NotificationHandler();
+            $nM->initAlerts();
+            $nM->pushNotification("Execute failed: (" . $stmt->errno . ") " . $stmt->error,"danger");
+            
         }
+
+        $nM= new NotificationHandler();
+        $nM->initAlerts();
+        $nM->pushNotification("successfully added a user","success");
     }
 
     //finding data of UserID then creating and returning User Object with corresponding values
@@ -388,7 +395,11 @@ class DBManager
             echo "Binding params failed: (" . $stmt->errno . ") " . $stmt->error;
         }
         if (!$stmt->execute()) {
-            echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+
+            $nM= new NotificationHandler();
+            $nM->initAlerts();
+            $nM->pushNotification("Execute failed: (" . $stmt->errno . ") " . $stmt->error,"danger");
+            
         }
 
     }

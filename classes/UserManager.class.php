@@ -31,6 +31,9 @@ function checkStatus(){
 }
 
 function handleLogin($DB){
+    $nM = new NotificationHandler();
+    $nM->initAlerts();
+
     if(isset($_POST["Username"])&& isset($_POST["Passwort"])){
 
         $UserName = $_POST["Username"];
@@ -42,15 +45,20 @@ function handleLogin($DB){
 
                 $CurrentUser = $DB->getUser($UserID);
                 $_SESSION["User"]=$CurrentUser;
+
+                $nM->pushNotification("sucessfully logged in!","success");
                 header("Refresh:0; url=../index.php");
             }
             else{
-                echo("Username or password is wrong <br>");
+            
+            $nM->pushNotification("Username or password is wrong","danger");
+                
             }
 
         }
         else{
-            echo("User does not exist, try to create a new account ! <br>");
+            
+            $nM->pushNotification("User does not exist, try to create a new account !","danger");
 
         };
 
@@ -84,7 +92,10 @@ echo($_POST["Email"]);
         //header("Refresh:0; url=login.php");
         
     }else{
-        echo("User already exists!");
+        $nM = new NotificationHandler();
+            $nM->initAlerts();
+            $nM->pushNotification("User already exists","danger");
+        
         
     };
 
@@ -93,19 +104,31 @@ echo($_POST["Email"]);
 }
 function handleLogout(){
     session_unset();
+    $nM = new NotificationHandler();
+            $nM->initAlerts();
+            $nM->pushNotification("User was logged out","primary");
     header("Refresh:0; url=../index.php");
 }
 
-function handleUpdateProfile($CurrentUser){
+function handleUpdateProfile($DB,$CurrentUser){
            
-    if( $_POST["Username"]&&
-                $_POST["Anrede"]&&
-                $_POST["Vorname"]){
+    if( isset($_POST["Username"])&&
+        isset($_POST["Anrede"])&&
+        isset($_POST["Vorname"])&&
+        isset($_POST["Nachname"])){
             
-             //upload user pic to        
-            $POSTManager = new PostManager();
-            $POSTManager->handleImgUpload($CurrentUser);
-            
+             //upload user pic to  
+             if(isset($_POST["fileUpload"])){
+                $POSTManager = new PostManager();
+                $POSTManager->handleImgUpload($CurrentUser);
+             }      
+            //create new user object
+            $DB->updateUser();
+
+            $nM = new NotificationHandler();
+            $nM->initAlerts();
+            $nM->pushNotification("User has been updated sucessfully","success");
+
             // if img is empty set img path to default manually
             //$UpdatedUser = new User();
             // use db function to insert user

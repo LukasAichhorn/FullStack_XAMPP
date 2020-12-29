@@ -7,6 +7,7 @@ require "classes/User.class.php";
 require "classes/UserManager.class.php";
 require "classes/validator.class.php";
 require "classes/PostManager.class.php";
+require "classes/NotificationHandler.class.php";
 ?>
 
 
@@ -16,9 +17,16 @@ require "classes/PostManager.class.php";
 //instntiate DB Object
 $DB = new DBManager();
 $DB->ConnectDB();
+
+
+
 //instantiate UserManager
 $UserManager = new UserManager();
 $UserManager->startSession();
+
+$Notifications = new NotificationHandler();
+$Notifications->initAlerts();
+
 $status = $UserManager->checkStatus();
 //get Current user abject from Session
 $CurrentUser = $UserManager->getUser();
@@ -26,7 +34,8 @@ $CurrentUser = $UserManager->getUser();
 $PostManager = new PostManager();
 $PostsAsObjects = $PostManager->fetchPosts($DB,$status);
 $Tags=$DB->allTags();
-echo($_SERVER['DOCUMENT_ROOT']);
+
+
 
 
 
@@ -56,6 +65,15 @@ echo($_SERVER['DOCUMENT_ROOT']);
     <!-- +++++++++++++++++++++++++++++++  Main 3 colum layout +++++++++++++++++++++++++++++++++++ -->
     <div class="container-fluid"> 
     
+    
+    <div class="alertContainer">
+    <?php
+      $Notifications->display();
+
+    ?>
+</div>
+
+    </div>
       
 
       <div class="row login-BG" style="background-image: url(./ressources/pics/bermuda-fatal-error-1.png)">
