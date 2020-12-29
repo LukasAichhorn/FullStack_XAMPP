@@ -21,14 +21,16 @@ $DB->connectDB();
 
 $UserManager = new UserManager();
 $UserManager->startSession();
+$nM=new NotificationHandler();
+$nM->initAlerts();
+
 $UserManager->handleLogin($DB);
 $UserManager->checkStatus();
 $CurrentUser = $UserManager->getUser();
 $CurrentUserPosts = $DB->getPostsUser($CurrentUser->UserID);
 $PostManager= new PostManager();
 $UserManager->handleUpdateProfile($DB,$CurrentUser);
-$nM=new NotificationHandler();
-$nM->initAlerts();
+
 ?>
 
 

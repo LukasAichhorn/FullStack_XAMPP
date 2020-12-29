@@ -99,7 +99,8 @@ function display($DB,$Posts,$CurrentUser){
 
 
     }
-        return 0 ;
+    $nM->pushNotification("no image was selected!","primary");
+        return 0;
     }
 
 function handleNewComment($DB,$PostID,$CurrentUserID,$Path){
