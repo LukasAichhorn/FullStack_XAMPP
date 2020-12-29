@@ -388,10 +388,10 @@ class DBManager
     function updateUser($user){
         $DB = $this->DB;
         
-        if (!($stmt = $DB->prepare("UPDATE user SET Username = ?,Anrede = ?,Vorname=?,Nachname=?,Profilbild=?,Email=? WHERE UserID = ?"))) {
+        if (!($stmt = $DB->prepare("UPDATE user SET Username = ?,Anrede = ?,Vorname=?,Nachname=?,Profilbild=?,Email=?,RootDir=? WHERE UserID = ?"))) {
             echo "Prepare failed: (" . $DB->errno . ") " . $DB->error;
         }
-        if (!$stmt->bind_param("ssssssi", $user->UserName, $user->Anrede, $user->Vorname, $user->Nachname, $user->IMG,$user->Email, $user->UserID)){
+        if (!$stmt->bind_param("sssssssi", $user->UserName, $user->Anrede, $user->Vorname, $user->Nachname, $user->IMG,$user->Email,$user->RootFolder, $user->UserID)){
             echo "Binding params failed: (" . $stmt->errno . ") " . $stmt->error;
         }
         if (!$stmt->execute()) {
@@ -495,6 +495,19 @@ class DBManager
         print_r($result->fetch_all());
         
         
+    }
+    function getUserRootByID($UserID){
+        $DB = $this->DB;
+    
+            $stmt = "SELECT RootDir FROM user  WHERE UserID  = $UserID";
+            $result = mysqli_query($DB, $stmt);
+            $RootDir = array();
+            if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                    $RootDir[] = $row;
+                }
+            return $RootDir;
+        }
     }
 
     /*function getPostsUser($UserID){

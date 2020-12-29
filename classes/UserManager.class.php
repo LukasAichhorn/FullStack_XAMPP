@@ -169,8 +169,7 @@ function handleUpdateProfile($DB,$CurrentUser){
 
             $DB->updateUser($UpdatedUser);
             // save new user in Session: 
-            $this->updateUser($UpdatedUser);
-            
+            $this->updateUser($UpdatedUser);            
             $nM->pushNotification("User has been updated sucessfully","success");
             header("Refresh:0; url= //". DIR_PAGES ."myProfile.php");
             

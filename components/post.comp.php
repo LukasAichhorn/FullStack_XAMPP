@@ -5,7 +5,7 @@ $path_parts= pathinfo($Post->Bildadresse);
 $IMG_name=$path_parts["filename"];
 $IMG_ending=$path_parts["extension"];
 $IMG_dir=$path_parts["dirname"];
-$IMG_TN_Path = $IMG_dir."/".$IMG_name."_thumbnail".".".$IMG_ending;
+$IMG_TN_Path =$IMG_name."_thumbnail".".".$IMG_ending;
 ?>
     
     
@@ -13,8 +13,8 @@ $IMG_TN_Path = $IMG_dir."/".$IMG_name."_thumbnail".".".$IMG_ending;
         <div class="row g-0">
             <div class="col-md-4  d-flex align-content-center">
             
-
-                <img class="card-img cover " src="//<?php echo($IMG_TN_Path)?>">
+                <?php $RD = $DB->getUserRootByID($Post->UserID); $RD = $RD[0]; ?>
+                <img class="card-img cover " src="//<?php echo($RD["RootDir"] ."/".$IMG_TN_Path)?>">
             </div>
             <div class="col-md-8">
                 <div class="card-body d-flex flex-row flex-wrap h-100">
