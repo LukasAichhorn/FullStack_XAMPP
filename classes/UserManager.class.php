@@ -43,11 +43,16 @@ function handleLogin($DB){
         $UserName = $_POST["Username"];
         $PW  =  $_POST["Passwort"];
 
+
         if($DB->checkifUserExists($UserName)){
             $UserID = $DB->validateUser($UserName,$PW);
             if($UserID!= 0){
 
                 $CurrentUser = $DB->getUser($UserID);
+                if($CurrentUser->status == 0){
+                    $nM->pushNotification("Your account has been set to inactive","danger");
+                    return;
+                }
                 $_SESSION["User"]=$CurrentUser;
 
                 $nM->pushNotification("sucessfully logged in!","success");
@@ -184,6 +189,7 @@ function handleUpdateProfile($DB,$CurrentUser){
         if(isset($_GET["changeStatus"]) && isset($_GET["UserID"]) ){
             $UserID = $_GET["UserID"];
             $DB->changeStatus($UserID);
+            header("Refresh:0; url= //". DIR_PAGES ."ManageUsers.php");
             }      
 
         }

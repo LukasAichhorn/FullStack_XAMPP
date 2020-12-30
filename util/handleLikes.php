@@ -1,5 +1,6 @@
 <?php 
 require "../classes/DBManager.class.php";
+require "../classes/NotificationHandler.class.php";
 $DB= new DBManager();
 $DB->ConnectDB();
 $action = $_GET["action"];

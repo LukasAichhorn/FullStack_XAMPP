@@ -9,29 +9,25 @@ $IMG_TN_Path =$IMG_name."_thumbnail".".".$IMG_ending;
 ?>
     
     
-    <div class="card mb-2 shadow-sm">
-        <div class="row g-0">
-            <div class="col-md-4  d-flex align-content-center">
-            
-                <?php $RD = $DB->getUserRootByID($Post->UserID); $RD = $RD[0]; ?>
-                <img class="card-img cover " src="//<?php echo($RD["RootDir"] ."/".$IMG_TN_Path)?>">
-            </div>
+    <div class=" border mb-2 shadow-sm">
+        <div class="row g-0">           
             <div class="col-md-8">
-                <div class="card-body d-flex flex-row flex-wrap h-100">
-                    <div class="row  ">
+                
+                    
                         <div class="col">
-                           
+                        
                             <a href="//<?php echo(DIR_PAGES);?>DisplayPost.php?PostID=<?php echo($Post->PostID); ?>">
                                 <h5 class="card-title"><?php echo($Post->Titel) ?></h5>   
                             </a>
-
+                        </div>
+                         <div class="col">   
                             <p class="d-flex"><small> <?php echo($Post->Sichtbarkeit == 0) ? "private" : "public"; ?></small></p>
 
                             <p class="card-text mb-3">
                             <?php echo($Post->Inhalt)?>
                             </p>
                         </div>
-                    </div>
+                    
 
                     <div class="row  w-100 align-self-end">
                         <div class="col">
@@ -98,7 +94,7 @@ $IMG_TN_Path =$IMG_name."_thumbnail".".".$IMG_ending;
                             </div>
                         </div>
                     </div>
-                </div>
+                
             </div>
         </div>
     </div>

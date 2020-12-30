@@ -77,7 +77,7 @@ $Tags=$DB->allTags();
       
 
       <div class="row login-BG" style="background-image: url(./ressources/pics/bermuda-fatal-error-1.png)">
-        <div class="col-2">
+        <div class="col-xl-2 col-lg-2  col-md-1">
 
         </div>
         
@@ -104,7 +104,7 @@ $Tags=$DB->allTags();
 
         </div>
 
-        <div class="col-2">
+        <div class="col-xl-2 col-lg-2 col-md-1">
 
         </div>
       </div>
@@ -113,7 +113,7 @@ $Tags=$DB->allTags();
 
       </div>
 
-      <div class="col-6 p-4 minusTop">     
+      <div class="col-xl-6 col-lg-10 p-4 minusTop">     
       
       <?php $PostManager->display($DB,$PostsAsObjects,$CurrentUser);?>
       
