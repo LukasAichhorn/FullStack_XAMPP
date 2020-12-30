@@ -118,7 +118,7 @@ function handleNewComment($DB,$PostID,$CurrentUserID,$Path){
 }
 function handleSearch($DB){ 
 
-    if(!empty($_GET)){
+    if(!empty($_GET) && $_GET["string"] !=""){
         $Tags = $DB->allTags();
         $selectedTags= array();
         //check if something was searches :
