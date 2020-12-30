@@ -28,6 +28,7 @@ $nM = new NotificationHandler();
 $nM->initAlerts();
 
 $status = $UserManager->checkStatus();
+$UserManager->handleStatusChange($DB);
 //get Current user abject from Session
 $CurrentUser = $UserManager->getUser();
 $AllUsers = $DB->getUserArray();

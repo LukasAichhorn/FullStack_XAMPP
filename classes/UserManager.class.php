@@ -180,6 +180,16 @@ function handleUpdateProfile($DB,$CurrentUser){
 
     }
 
+    function handleStatusChange($DB){
+        if(isset($_GET["changeStatus"]) && isset($_GET["UserID"]) ){
+            $UserID = $_GET["UserID"];
+            $DB->changeStatus($UserID);
+            }      
+
+        }
+
+    
+
 }
 
 
