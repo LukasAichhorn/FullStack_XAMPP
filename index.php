@@ -34,6 +34,8 @@ $CurrentUser = $UserManager->getUser();
 $PostManager = new PostManager();
 $PostsAsObjects = $PostManager->fetchPosts($DB,$status);
 $Tags=$DB->allTags();
+var_dump($_GET);
+echo(array_key_exists('Kartoffeln', $_GET));
 
 
 

@@ -116,11 +116,34 @@ function handleNewComment($DB,$PostID,$CurrentUserID,$Path){
         header("Refresh:0; url=$Path");   
     }
 }
-function handleSearch($DB){
-    $Tags = $DB->allTags();
-//get all tags in url and save into new array
-//get string in url
-// build query  select * from posts where MATCH(title,Inhalt, bildname) AGAINST (string) AND tag in [array of used tags ]
+function handleSearch($DB){ 
+    
+    if(!empty($_GET)){
+        $Tags = $DB->allTags();
+        $selectedTags= array();
+        //check if something was searches :
+        if(isset($_GET["string"])){
+            $string = $_GET["string"];
+        }   
+
+        foreach ($Tags as $Tag) {
+            if(array_key_exists($Tag, $_GET)){
+                array_push($selectedTags,$Tag);
+            }
+            
+        }
+            if($filteredPosts = $DB->searchPosts($string,$selectedTags)){
+                return $filteredPosts;
+            }
+            else{
+                //generate error message filter problem 
+            }
+    
+    }
+    else{
+        // just do normla fetching
+    }
+
     
 
 
