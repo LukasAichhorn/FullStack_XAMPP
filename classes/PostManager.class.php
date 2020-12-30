@@ -117,22 +117,28 @@ function handleNewComment($DB,$PostID,$CurrentUserID,$Path){
     }
 }
 function handleSearch($DB){ 
-    
+
     if(!empty($_GET)){
         $Tags = $DB->allTags();
         $selectedTags= array();
         //check if something was searches :
         if(isset($_GET["string"])){
             $string = $_GET["string"];
-        }   
+        }
+        
+
 
         foreach ($Tags as $Tag) {
-            if(array_key_exists($Tag, $_GET)){
-                array_push($selectedTags,$Tag);
-            }
             
+            if(array_key_exists($Tag[0], $_GET)){
+                echo($Tag[0]);
+                array_push($selectedTags,$Tag[0]);
+            }
+   
         }
+       
             if($filteredPosts = $DB->searchPosts($string,$selectedTags)){
+                echo(" filter worked");
                 return $filteredPosts;
             }
             else{
@@ -142,6 +148,7 @@ function handleSearch($DB){
     }
     else{
         // just do normla fetching
+        return 0;
     }
 
     

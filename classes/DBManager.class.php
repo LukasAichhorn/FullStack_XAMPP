@@ -452,11 +452,13 @@ class DBManager
 
     function searchPosts($string,$tags){
         $DB = $this->DB;
+        
+        
         $tagString = '(';
         foreach($tags as $t){
-            $tagString .= "'" . $t ."'" .", ";
+         $tagString .= "'" . $t ."'" .", ";
 
-        }
+         }
 
         $tagString = rtrim($tagString,", ") . ")";
         
@@ -498,8 +500,15 @@ class DBManager
 
         $result = $stmt->get_result();
 
-        print_r($result->fetch_all());
-        
+        $result->fetch_all();
+        $PostsObj= array();
+        // creating post objects:
+        foreach ($result as $p) {
+            $tags = $this->getTags($p['PostID']);
+            $postObj = new Post($p['PostID'], $p['Username'], $p['Bildadresse'], $p['Bildname'], $p['Titel'], $p['Inhalt'], $p['Sichtbarkeit'], $p['FK_UserID'], $tags, $p['CreatedAt'], $p['Likes'], $p['Dislikes']);
+            array_push($PostsObj, $postObj);
+        }
+        return $PostsObj;
         
     }
     function getUserRootByID($UserID){

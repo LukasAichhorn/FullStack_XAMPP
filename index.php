@@ -32,10 +32,16 @@ $status = $UserManager->checkStatus();
 $CurrentUser = $UserManager->getUser();
 //Create PostManager and fetch all posts
 $PostManager = new PostManager();
-$PostsAsObjects = $PostManager->fetchPosts($DB,$status);
+$filteredPosts = $PostManager->handleSearch($DB);
+if($filteredPosts == 0){
+  $filteredPosts = $PostManager->FetchPosts($DB,$status);
+}
+
+
 $Tags=$DB->allTags();
-var_dump($_GET);
-echo(array_key_exists('Kartoffeln', $_GET));
+
+
+
 
 
 
@@ -117,7 +123,7 @@ echo(array_key_exists('Kartoffeln', $_GET));
 
       <div class="col-xl-6 col-lg-10 p-4 minusTop">     
       
-      <?php $PostManager->display($DB,$PostsAsObjects,$CurrentUser);?>
+      <?php $PostManager->display($DB,$filteredPosts,$CurrentUser);?>
       
       
        
