@@ -450,9 +450,14 @@ class DBManager
     
     }
 
-    function searchPosts($string,$tags){
+    function searchPosts($string,$tags,$status){
         $DB = $this->DB;
         
+        $statusString = "(0)";
+        //shows all posts if user is logged in and only public posts if user is not logged in
+        if($status == 1){
+            $statusString = "(0,1)";
+        }
         
         $tagString = '(';
         foreach($tags as $t){
@@ -467,14 +472,14 @@ class DBManager
         if(ctype_space($string) || empty($string)){//ctype_space returns true if entire string is only whitespace, empty returns true if string is ""
             if(!($stmt = $DB->prepare("SELECT DISTINCT u.Username,p.PostID,u.Username,p.Bildadresse,p.Bildname,p.Titel,p.Inhalt,p.Sichtbarkeit,p.FK_UserID,p.CreatedAt,p.Likes,p.Dislikes 
             FROM ((((post p left join comment c on p.PostID = c.FK_PostID) left join post_tags pt on pt.PostID = p.PostID) left join tags t on t.TagID = pt.TagID) inner join user u on u.UserID = p.FK_UserID) 
-            where t.TagName IN $tagString"))){
+            where t.TagName IN $tagString AND p.Sichtbarkeit IN $statusString"))){
                 echo "Prepare failed: (" . $DB->errno . ") " . $DB->error;
             }      
         }
         elseif(empty($tags)){
             if(!($stmt = $DB->prepare("SELECT DISTINCT u.Username,p.PostID,u.Username,p.Bildadresse,p.Bildname,p.Titel,p.Inhalt,p.Sichtbarkeit,p.FK_UserID,p.CreatedAt,p.Likes,p.Dislikes 
             FROM ((((post p left join comment c on p.PostID = c.FK_PostID) left join post_tags pt on pt.PostID = p.PostID) left join tags t on t.TagID = pt.TagID) inner join user u on u.UserID = p.FK_UserID) 
-            where p.Titel REGEXP ? or p.Inhalt REGEXP ? or c.Inhalt REGEXP ? "))){
+            where (p.Titel REGEXP ? or p.Inhalt REGEXP ? or c.Inhalt REGEXP ?) AND p.Sichtbarkeit IN $statusString "))){
                 echo "Prepare failed: (" . $DB->errno . ") " . $DB->error;
             }
             if(!$stmt->bind_param("sss",$string,$string,$string)){
@@ -485,7 +490,7 @@ class DBManager
         else{
             if(!($stmt = $DB->prepare("SELECT DISTINCT u.Username,p.PostID,u.Username,p.Bildadresse,p.Bildname,p.Titel,p.Inhalt,p.Sichtbarkeit,p.FK_UserID,p.CreatedAt,p.Likes,p.Dislikes 
             FROM ((((post p left join comment c on p.PostID = c.FK_PostID) left join post_tags pt on pt.PostID = p.PostID) left join tags t on t.TagID = pt.TagID) inner join user u on u.UserID = p.FK_UserID) 
-            where t.TagName IN $tagString or p.Titel REGEXP ? or p.Inhalt REGEXP ? or c.Inhalt REGEXP ? "))){
+            where (t.TagName IN $tagString or p.Titel REGEXP ? or p.Inhalt REGEXP ? or c.Inhalt REGEXP ?) AND p.Sichtbarkeit IN $statusString "))){
                 echo "Prepare failed: (" . $DB->errno . ") " . $DB->error;
             }
             if(!$stmt->bind_param("sss",$string,$string,$string)){

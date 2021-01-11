@@ -15,7 +15,7 @@ class NotificationHandler
             $_SESSION["alerts"] = $this->notifications;
         }
     }
-    //type = light / secondary /success / warning
+    //type = light / secondary /success / danger
     function pushNotification($string, $type)
     {
         $temp = [$string, $type];
