@@ -116,7 +116,7 @@ function handleNewComment($DB,$PostID,$CurrentUserID,$Path){
         header("Refresh:0; url=$Path");   
     }
 }
-function handleSearch($DB){ 
+function handleSearch($DB,$status){ 
 
     if(!empty($_GET) && $_GET["string"] !=""){
         $Tags = $DB->allTags();
@@ -137,12 +137,14 @@ function handleSearch($DB){
    
         }
        
-            if($filteredPosts = $DB->searchPosts($string,$selectedTags)){
+            if($filteredPosts = $DB->searchPosts($string,$selectedTags,$status)){
                 echo(" filter worked");
                 return $filteredPosts;
             }
             else{
                 //generate error message filter problem 
+                
+                echo("no filter");
             }
     
     }

@@ -32,12 +32,13 @@ $status = $UserManager->checkStatus();
 $CurrentUser = $UserManager->getUser();
 //Create PostManager and fetch all posts
 $PostManager = new PostManager();
-$filteredPosts = $PostManager->handleSearch($DB, $status);
+$filteredPosts = $PostManager->handleSearch($DB,$status);
 
 if ($filteredPosts == 0) {
-  $filteredPosts = $PostManager->FetchPosts($DB, $status);
+  $filteredPosts = $PostManager->FetchPosts($DB,$status);
 }
-// handle
+// handle additional filters:
+
 
 
 $Tags = $DB->allTags();
@@ -125,7 +126,7 @@ $Tags = $DB->allTags();
     <div class="col-xl-6 col-lg-10 p-4 minusTop">
       <div class="d-flex sort-container">
 
-        <form class="btn-sort" action="index.php">
+        <form class="btn-sort" action="//<?php echo (DIR_SERVERROOT .  $_SERVER['REQUEST_URI']);?>">
           <input type="hidden" name="filter" value="Likes"/>
 
           <button type="submit" class="btn btn-sm btn-sm-my btn-outline-primary">
@@ -133,12 +134,19 @@ $Tags = $DB->allTags();
             <?php echo ("show most likes") ?></button>
         </form>
 
-        <form class="btn-sort" action="index.php">
+        <form class="btn-sort" action="//<?php echo (DIR_SERVERROOT .  $_SERVER['REQUEST_URI']);?>">
           <input type="hidden" name="filter" value="Time"/>
 
           <button type="submit" class="btn btn-sm btn-sm-my btn-outline-primary">
 
             <?php  echo ("show newest") ?></button>
+        </form>
+        <form class="btn-sort" action="//<?php echo (DIR_SERVERROOT .  $_SERVER['REQUEST_URI']);?>">
+          <input type="hidden" name="filter" value="reset"/>
+
+          <button type="submit" class="btn btn-sm btn-sm-my btn-outline-warning">
+
+            <?php  echo ("clear") ?></button>
         </form>
 
       </div>
