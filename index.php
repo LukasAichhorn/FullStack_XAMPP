@@ -32,7 +32,7 @@ $status = $UserManager->checkStatus();
 $CurrentUser = $UserManager->getUser();
 //Create PostManager and fetch all posts
 $PostManager = new PostManager();
-$filteredPosts = $PostManager->handleSearch($DB,$status);
+$filteredPosts = $PostManager->handleSearch($DB, $status);
 
 /*if ($filteredPosts == 0) {
   $filteredPosts = $PostManager->FetchPosts($DB,$status);
@@ -125,29 +125,64 @@ $Tags = $DB->allTags();
 
     <div class="col-xl-6 col-lg-10 p-4 minusTop">
       <div class="d-flex sort-container">
+        <?php
+        $l = $d = $td = FALSE;
+        $ta = true;
+        if (isset($_GET["filter"])) {
+          $ta = false;
+          
 
-        <form class="btn-sort" action="//<?php echo (DIR_SERVERROOT .  $_SERVER['REQUEST_URI']);?>">
-          <input type="hidden" name="filter" value="Likes"/>
+          switch ($_GET["filter"]) {
+            case 'likes':
+              $l = True;
+              break;
+            case 'dislikes':
+              $d = True;
+              break;
+            case 't_ASC':
+              $ta = True;
+              break;
+            case 't_DESC':
+              $td = True;
+              break;
+            default:
+              # code...
+              break;
+          }
+        }
 
-          <button type="submit" class="btn btn-sm btn-sm-my btn-outline-primary">
+        ?>
 
-            <?php echo ("show most likes") ?></button>
+        <form class="btn-sort"  action="//<?php echo (DIR_SERVERROOT .  $_SERVER['REQUEST_URI']); ?>">
+          <input type="hidden" name="filter" value="likes" />
+
+          <button type="submit" <?php  echo( ($l==True) ? "disabled ":"" );?> class="btn btn-sm btn-sm-my btn-outline-primary">
+
+            <?php echo ("most likes") ?></button>
+        </form>
+        <form class="btn-sort" action="//<?php echo (DIR_SERVERROOT .  $_SERVER['REQUEST_URI']); ?>">
+          <input type="hidden" name="filter" value="dislikes" />
+
+          <button type="submit" <?php echo( ($d==True) ? "disabled ":""); ?> class="btn btn-sm btn-sm-my btn-outline-primary">
+
+            <?php echo ("most dislikes") ?></button>
         </form>
 
-        <form class="btn-sort" action="//<?php echo (DIR_SERVERROOT .  $_SERVER['REQUEST_URI']);?>">
-          <input type="hidden" name="filter" value="Time"/>
+        <form class="btn-sort" action="//<?php echo (DIR_SERVERROOT .  $_SERVER['REQUEST_URI']); ?>">
+          <input type="hidden" name="filter" value="t_ASC" />
 
-          <button type="submit" class="btn btn-sm btn-sm-my btn-outline-primary">
+          <button type="submit" <?php echo( ($ta==True) ? "disabled":"") ; ?> class="btn btn-sm btn-sm-my btn-outline-primary">
 
-            <?php  echo ("show newest") ?></button>
+            <?php echo ("newest") ?></button>
         </form>
-        <form class="btn-sort" action="//<?php echo (DIR_SERVERROOT .  $_SERVER['REQUEST_URI']);?>">
-          <input type="hidden" name="filter" value="reset"/>
+        <form class="btn-sort" action="//<?php echo (DIR_SERVERROOT .  $_SERVER['REQUEST_URI']); ?>">
+          <input type="hidden" name="filter" value="t_DESC" />
 
-          <button type="submit" class="btn btn-sm btn-sm-my btn-outline-warning">
+          <button type="submit" <?php echo( ($td==True) ? "disabled ":"" ); ?> class="btn btn-sm btn-sm-my btn-outline-primary">
 
-            <?php  echo ("clear") ?></button>
+            <?php echo ("oldest") ?></button>
         </form>
+
 
       </div>
 

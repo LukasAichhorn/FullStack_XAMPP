@@ -129,6 +129,9 @@ function handleSearch($DB,$status){
         if(isset($_GET["string"])){
             $string = $_GET["string"];
         }
+        else{
+            $string="";
+        }
         
 
         
@@ -160,8 +163,26 @@ function handleSearch($DB,$status){
     
     }
     else{
-        // just fetch all: 
-        $Posts = $DB->getPosts($status);
+        if(isset($_GET["filter"]) && $_GET["filter"]=="t_ASC"){
+            
+        }
+        elseif(isset($_GET["filter"]) && $_GET["filter"]=="t_DES"){
+
+        }
+        elseif(isset($_GET["filter"]) && $_GET["filter"]=="likes"){
+            
+        }
+        elseif(isset($_GET["filter"]) && $_GET["filter"]=="dislikes"){
+            
+        }
+        else{
+            // just fetch all: 
+            $Posts = $DB->getPosts($status);
+        }
+        
+        
+
+
         return $Posts;
     }
 
