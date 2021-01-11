@@ -77,17 +77,23 @@ function handleRegister($DB){
     $nM = new NotificationHandler();
     $nM->initAlerts();
 
-if(isset($_POST["Username"]) && isset($_POST["Passwort"]) && isset($_POST["Anrede"]) && isset($_POST["Vorname"]) && isset($_POST["Nachname"]) && isset($_POST["Email"])){
+if(isset($_POST["Username"]) && isset($_POST["Passwort"]) && isset($_POST["PasswortRep"]) && isset($_POST["Anrede"]) && isset($_POST["Vorname"]) && isset($_POST["Nachname"]) && isset($_POST["Email"])){
 
-echo($_POST["Email"]);
+
     $Validator = new Validator();
     $Username=$Validator->validate_string($_POST["Username"]);
     $Hpw=$Validator->validate_Password($_POST["Passwort"]);
+    $HpwRep = $Validator->validate_Password($_POST["PasswortRep"]);
     $Anrede=$Validator->validate_string($_POST["Anrede"]);
     $Vorname=$Validator->validate_string($_POST["Vorname"]);
     $Nachname=$Validator->validate_string($_POST["Nachname"]);
     $Email = $Validator->validate_Email($_POST["Email"]);
-       
+    
+    if(!$Validator->compareHashes($Hpw,$HpwRep)){
+        $nM->pushNotification("Passwords do not match!","danger");
+        
+        return;
+    }
 
     if(!$DB->checkifUserExists($Username)){
 

@@ -8,6 +8,10 @@
     <div class="form-group mt-3">
         <label for="Passwort">Password</label>
         <input type="password" name="Passwort" class="form-control" id="Passwort" required>
+    </div>
+    <div class="form-group mt-3">
+        <label for="PasswortRep">Repeat Password</label>
+        <input type="password" name="PasswortRep" class="form-control" id="PasswortRep" required>
     </div>  
     <div class="form-group mt-3">
                 <label for="Email">Email</label>

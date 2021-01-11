@@ -20,7 +20,8 @@ function validate_Password($PW){
             return $PW;
         
     }
-    function validate_Email($email){
+
+function validate_Email($email){
 
         $email = trim(htmlspecialchars($email));
             $email = filter_var($email, FILTER_VALIDATE_EMAIL);
@@ -29,6 +30,14 @@ function validate_Password($PW){
         }
         return $email;
     }
+function compareHashes($pw,$pwRep){
+    if($pw == $pwRep){
+        return TRUE;
+    }
+    else{
+        return FALSE;
+    }
+}
 
     
 }

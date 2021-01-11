@@ -18,12 +18,12 @@ echo(DIR_ROOT);
 $DB = new DBManager();
 $DB->ConnectDB();
 $UserManager = new UserManager();
-$UserManager->handleRegister($DB);
+
 $UserManager->startSession();
 
 $nM=new NotificationHandler();
 $nM->initAlerts();
-
+$UserManager->handleRegister($DB);
 //
 ?>
 
@@ -51,7 +51,7 @@ $nM->initAlerts();
 <?php include "../components/navigationBar.comp.php" ?>
 
 <div class="alertContainer">
-    <?php $nM->display(); ?>
+    <?php $nM->display();?>
 </div>
 
 <div class="container-fluid">
