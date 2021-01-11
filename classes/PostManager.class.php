@@ -119,6 +119,7 @@ function handleNewComment($DB,$PostID,$CurrentUserID,$Path){
 function handleSearch($DB,$status){
     $nM = new NotificationHandler(); 
     $nM->initAlerts();
+    
 
     if(!empty($_GET)){
 
@@ -159,8 +160,9 @@ function handleSearch($DB,$status){
     
     }
     else{
-        // just do normal fetching
-        return 0;
+        // just fetch all: 
+        $Posts = $DB->getPosts($status);
+        return $Posts;
     }
 
     
