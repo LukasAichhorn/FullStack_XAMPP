@@ -453,10 +453,10 @@ class DBManager
     function searchPosts($string,$tags,$status){
         $DB = $this->DB;
         
-        $statusString = "(0)";
+        $statusString = "('0')";
         //shows all posts if user is logged in and only public posts if user is not logged in
         if($status == 1){
-            $statusString = "(0,1)";
+            $statusString = "('0','1')";
         }
         
         $tagString = '(';

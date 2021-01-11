@@ -41,18 +41,26 @@
 
                             </div>
                             <div class="row">
-                               <p><?php echo($CurrentUser->Email) ?></p> 
+                                <p><?php echo ($CurrentUser->Email) ?></p>
                             </div>
                             <div class="d-flex flex-row justify-content-end">
-                                <div class="Comp-like">
+                                
 
                                     <form action="//<?php echo (DIR_SERVERROOT .  $_SERVER['REQUEST_URI']); ?>">
                                         <input type="hidden" name="edit" value="true" />
 
                                         <button type="submit" class="btn btn-sm btn-sm-my btn-outline-primary">
 
-                                            edit profile</button></form>
-                                </div>
+                                            edit profile</button>
+                                    </form>
+                                    <form action="//<?php echo (DIR_SERVERROOT .  $_SERVER['REQUEST_URI']); ?>">
+                                        <input type="hidden" name="pwedit" value="true" />
+
+                                        <button type="submit" class="btn btn-sm btn-sm-my btn-outline-secondary">
+
+                                            edit password</button>
+                                    </form>
+                                
                             </div>
 
                         </div>
