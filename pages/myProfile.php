@@ -74,6 +74,9 @@ $UserManager->handleUpdateProfile($DB,$CurrentUser);
       if(!isset($_GET["edit"])){
        include "../components/singleUser.comp.php";
       }
+      else if(isset($_GET["pwedit"])){
+
+      }
       else{
       include "../components/EditSingleUser.comp.php";}
        ?>    

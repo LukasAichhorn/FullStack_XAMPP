@@ -77,7 +77,7 @@
                                 <form class="Comp-like" action="//<?php echo (DIR_SERVERROOT .  $_SERVER['REQUEST_URI']); ?>">
 
 
-                                    <button type="submit" class="btn btn-sm btn-sm-my btn-outline-secondary">cancle</button>
+                                    <button type="submit" class="btn btn-sm btn-sm-my btn-outline-secondary">cancel</button>
                                 </form>
                             </div>
 

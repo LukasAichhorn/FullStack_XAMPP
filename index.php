@@ -32,7 +32,7 @@ $status = $UserManager->checkStatus();
 $CurrentUser = $UserManager->getUser();
 //Create PostManager and fetch all posts
 $PostManager = new PostManager();
-$filteredPosts = $PostManager->handleSearch($DB);
+$filteredPosts = $PostManager->handleSearch($DB,$status);
 if($filteredPosts == 0){
   $filteredPosts = $PostManager->FetchPosts($DB,$status);
 }
