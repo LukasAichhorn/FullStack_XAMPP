@@ -34,9 +34,9 @@ $CurrentUser = $UserManager->getUser();
 $PostManager = new PostManager();
 $filteredPosts = $PostManager->handleSearch($DB,$status);
 
-if ($filteredPosts == 0) {
+/*if ($filteredPosts == 0) {
   $filteredPosts = $PostManager->FetchPosts($DB,$status);
-}
+}*/
 // handle additional filters:
 
 

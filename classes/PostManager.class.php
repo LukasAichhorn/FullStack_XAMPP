@@ -116,9 +116,12 @@ function handleNewComment($DB,$PostID,$CurrentUserID,$Path){
         header("Refresh:0; url=$Path");   
     }
 }
-function handleSearch($DB,$status){ 
+function handleSearch($DB,$status){
+    $nM = new NotificationHandler(); 
+    $nM->initAlerts();
 
-    if(!empty($_GET) && $_GET["string"] !=""){
+    if(!empty($_GET)){
+
         $Tags = $DB->allTags();
         $selectedTags= array();
         //check if something was searches :
@@ -127,7 +130,7 @@ function handleSearch($DB,$status){
         }
         
 
-
+        
         foreach ($Tags as $Tag) {
             
             if(array_key_exists($Tag[0], $_GET)){
@@ -136,6 +139,12 @@ function handleSearch($DB,$status){
             }
    
         }
+        if(empty($selectedTags)){
+            foreach($Tags as $Tag){
+                array_push($selectedTags, $Tag[0]);
+            }
+        }
+        
        
             if($filteredPosts = $DB->searchPosts($string,$selectedTags,$status)){
                 echo(" filter worked");
@@ -144,7 +153,8 @@ function handleSearch($DB,$status){
             else{
                 //generate error message filter problem 
                 
-                echo("no filter");
+                
+                $nM->pushNotification("No posts match your search!","warning");
             }
     
     }
