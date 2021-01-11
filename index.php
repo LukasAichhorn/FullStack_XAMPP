@@ -28,14 +28,16 @@ $Notifications = new NotificationHandler();
 $Notifications->initAlerts();
 
 $status = $UserManager->checkStatus();
-//get Current user abject from Session
+//get Current user object from Session
 $CurrentUser = $UserManager->getUser();
 //Create PostManager and fetch all posts
 $PostManager = new PostManager();
 $filteredPosts = $PostManager->handleSearch($DB, $status);
+
 if ($filteredPosts == 0) {
   $filteredPosts = $PostManager->FetchPosts($DB, $status);
 }
+// handle
 
 
 $Tags = $DB->allTags();
@@ -123,20 +125,20 @@ $Tags = $DB->allTags();
     <div class="col-xl-6 col-lg-10 p-4 minusTop">
       <div class="d-flex sort-container">
 
-        <form class="btn-sort" action="">
-          <input type="hidden" name="action" value="0" />
+        <form class="btn-sort" action="index.php">
+          <input type="hidden" name="filter" value="Likes"/>
 
           <button type="submit" class="btn btn-sm btn-sm-my btn-outline-primary">
 
             <?php echo ("show most likes") ?></button>
         </form>
 
-        <form action="btn-sort">
-          <input type="hidden" name="action" value="0" />
+        <form class="btn-sort" action="index.php">
+          <input type="hidden" name="filter" value="Time"/>
 
           <button type="submit" class="btn btn-sm btn-sm-my btn-outline-primary">
 
-            <?php echo ("show newest") ?></button>
+            <?php  echo ("show newest") ?></button>
         </form>
 
       </div>
