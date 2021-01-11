@@ -147,7 +147,7 @@ function handleSearch($DB,$status){
     
     }
     else{
-        // just do normla fetching
+        // just do normal fetching
         return 0;
     }
 
