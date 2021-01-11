@@ -126,8 +126,8 @@ $Tags = $DB->allTags();
     <div class="col-xl-6 col-lg-10 p-4 minusTop">
       <div class="d-flex sort-container">
         <?php
-        $l = $d = $td = FALSE;
-        $ta = true;
+        $l = $d = $td = FALSE;//likes, dislikes, time descending
+        $ta = true;// time ascending
         if (isset($_GET["filter"])) {
           $ta = false;
           

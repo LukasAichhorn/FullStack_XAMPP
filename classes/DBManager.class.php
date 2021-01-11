@@ -281,6 +281,7 @@ class DBManager
         if($status == 1){
             $statusString = "('0','1')";
         }
+        echo "!!! " . $col . $order . "!!!";
 
         //no prepared statemnt needed because user input has no influence on query
         
@@ -290,7 +291,7 @@ class DBManager
             }
             if(!($stmt->bind_param("s",$col))){
                 echo "Binding params failed: (" . $stmt->errno . ") " . $stmt->error;
-            }
+            }   
             if(!$stmt->execute()){
                 echo "Executing statement failed: (" . $stmt->errno . ") " . $stmt->error;
             }
