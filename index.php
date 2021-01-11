@@ -13,7 +13,7 @@ require "classes/NotificationHandler.class.php";
 
 
 <?php
- 
+
 //instntiate DB Object
 $DB = new DBManager();
 $DB->ConnectDB();
@@ -32,13 +32,13 @@ $status = $UserManager->checkStatus();
 $CurrentUser = $UserManager->getUser();
 //Create PostManager and fetch all posts
 $PostManager = new PostManager();
-$filteredPosts = $PostManager->handleSearch($DB);
-if($filteredPosts == 0){
-  $filteredPosts = $PostManager->FetchPosts($DB,$status);
+$filteredPosts = $PostManager->handleSearch($DB, $status);
+if ($filteredPosts == 0) {
+  $filteredPosts = $PostManager->FetchPosts($DB, $status);
 }
 
 
-$Tags=$DB->allTags();
+$Tags = $DB->allTags();
 
 
 
@@ -67,77 +67,96 @@ $Tags=$DB->allTags();
 </head>
 
 <body>
-  
-    <!-- +++++++++++++++++++++++++++++++  Navigation +++++++++++++++++++++++++++++++++++ -->
-    <?php include "components/navigationBar.comp.php"?>
-    <!-- +++++++++++++++++++++++++++++++  Main 3 colum layout +++++++++++++++++++++++++++++++++++ -->
-    <div class="container-fluid"> 
-    
-    
+
+  <!-- +++++++++++++++++++++++++++++++  Navigation +++++++++++++++++++++++++++++++++++ -->
+  <?php include "components/navigationBar.comp.php" ?>
+  <!-- +++++++++++++++++++++++++++++++  Main 3 colum layout +++++++++++++++++++++++++++++++++++ -->
+  <div class="container-fluid">
+
+
     <div class="alertContainer">
-    <?php
+      <?php
       $Notifications->display();
 
-    ?>
-</div>
+      ?>
+    </div>
+
+  </div>
+
+
+  <div class="row login-BG" style="background-image: url(./ressources/pics/bermuda-fatal-error-1.png)">
+    <div class="col-xl-2 col-lg-2  col-md-1">
 
     </div>
-      
 
-      <div class="row login-BG" style="background-image: url(./ressources/pics/bermuda-fatal-error-1.png)">
-        <div class="col-xl-2 col-lg-2  col-md-1">
-
-        </div>
-        
-        <div class="col">
-          <div class="mt-5 mb-5 headline-info">
-          <h1 class="headline">Welcome to GoellHorn!</h1>
-          <?php if(isset($CurrentUser)){
-            echo("<p>Your are logged in as $CurrentUser->UserName</p>");
-          }
-          else{
-            echo("<p>Your are not logged in and only see 'public' posts!</p>");
-          }
-          ?>    
-          </div> 
-
-          <?php include "components/search.comp.php"?>
-
-          <div class="mt-5">
-          
-          </div>
-          
-
-
-
-        </div>
-
-        <div class="col-xl-2 col-lg-2 col-md-1">
-
-        </div>
+    <div class="col">
+      <div class="mt-5 mb-5 headline-info">
+        <h1 class="headline">Welcome to GoellHorn!</h1>
+        <?php if (isset($CurrentUser)) {
+          echo ("<p>Your are logged in as $CurrentUser->UserName</p>");
+        } else {
+          echo ("<p>Your are not logged in and only see 'public' posts!</p>");
+        }
+        ?>
       </div>
-      <div class="row">
-      <div class="col">
+
+      <?php include "components/search.comp.php" ?>
+
+      <div class="mt-5">
 
       </div>
 
-      <div class="col-xl-6 col-lg-10 p-4 minusTop">     
-      
-      <?php $PostManager->display($DB,$filteredPosts,$CurrentUser);?>
-      
-      
-       
-            
-         
-        </div>
-        
 
-      
 
-      <div class="col">
+
     </div>
 
-  
+    <div class="col-xl-2 col-lg-2 col-md-1">
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+
+    </div>
+
+    <div class="col-xl-6 col-lg-10 p-4 minusTop">
+      <div class="d-flex sort-container">
+
+        <form class="btn-sort" action="">
+          <input type="hidden" name="action" value="0" />
+
+          <button type="submit" class="btn btn-sm btn-sm-my btn-outline-primary">
+
+            <?php echo ("show most likes") ?></button>
+        </form>
+
+        <form action="btn-sort">
+          <input type="hidden" name="action" value="0" />
+
+          <button type="submit" class="btn btn-sm btn-sm-my btn-outline-primary">
+
+            <?php echo ("show newest") ?></button>
+        </form>
+
+      </div>
+
+
+      <?php $PostManager->display($DB, $filteredPosts, $CurrentUser); ?>
+
+
+
+
+
+    </div>
+
+
+
+
+    <div class="col">
+    </div>
+
+
 
 
 
