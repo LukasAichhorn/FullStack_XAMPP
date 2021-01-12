@@ -117,15 +117,39 @@ function handleNewComment($DB,$PostID,$CurrentUserID,$Path){
     }
 }
 function handleSearch($DB,$status){
+
     $nM = new NotificationHandler(); 
     $nM->initAlerts();
     
 
     if(!empty($_GET)){
 
+        if(isset($_GET["filter"])){
+            
+            if(isset($_GET["filter"]) && $_GET["filter"]=="t_ASC"){
+            
+            }
+            elseif(isset($_GET["filter"]) && $_GET["filter"]=="t_DES"){
+    
+            }
+            elseif(isset($_GET["filter"]) && $_GET["filter"]=="likes"){
+                
+            }
+            elseif(isset($_GET["filter"]) && $_GET["filter"]=="dislikes"){
+                
+            }
+            else{
+                // just fetch all: 
+                $Posts = $DB->getPosts($status);
+            }
+
+        }
+
+
         $Tags = $DB->allTags();
         $selectedTags= array();
         //check if something was searches :
+
         if(isset($_GET["string"])){
             $string = $_GET["string"];
         }
@@ -163,22 +187,7 @@ function handleSearch($DB,$status){
     
     }
     else{
-        if(isset($_GET["filter"]) && $_GET["filter"]=="t_ASC"){
-            
-        }
-        elseif(isset($_GET["filter"]) && $_GET["filter"]=="t_DES"){
-
-        }
-        elseif(isset($_GET["filter"]) && $_GET["filter"]=="likes"){
-            
-        }
-        elseif(isset($_GET["filter"]) && $_GET["filter"]=="dislikes"){
-            
-        }
-        else{
-            // just fetch all: 
-            $Posts = $DB->getPosts($status);
-        }
+      
         
         
 
