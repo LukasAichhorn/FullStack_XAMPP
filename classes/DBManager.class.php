@@ -476,7 +476,7 @@ class DBManager
                 echo "Prepare failed: (" . $DB->errno . ") " . $DB->error;
             }      
         }
-        elseif(empty($tags)){
+        elseif(!empty($string)){
             echo "im IN 2";
             if(!($stmt = $DB->prepare("SELECT DISTINCT u.Username,p.PostID,u.Username,p.Bildadresse,p.Bildname,p.Titel,p.Inhalt,p.Sichtbarkeit,p.FK_UserID,p.CreatedAt,p.Likes,p.Dislikes 
             FROM ((((post p left join comment c on p.PostID = c.FK_PostID) left join post_tags pt on pt.PostID = p.PostID) left join tags t on t.TagID = pt.TagID) inner join user u on u.UserID = p.FK_UserID) 
