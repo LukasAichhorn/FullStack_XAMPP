@@ -105,51 +105,6 @@ class PostManager
 
         if (!empty($_POST["Comment_text"])) {
 
-<<<<<<< HEAD
-        $DB->insertComment($NewComment); 
-        header("Refresh:0; url=$Path");   
-    }
-}
-function handleSearch($DB,$status){
-
-    $nM = new NotificationHandler(); 
-    $nM->initAlerts();
-    
-
-    if(!empty($_GET)){
-
-        if(isset($_GET["filter"])){
-            
-            if(isset($_GET["filter"]) && $_GET["filter"]=="t_ASC"){
-            
-            }
-            elseif(isset($_GET["filter"]) && $_GET["filter"]=="t_DES"){
-    
-            }
-            elseif(isset($_GET["filter"]) && $_GET["filter"]=="likes"){
-                
-            }
-            elseif(isset($_GET["filter"]) && $_GET["filter"]=="dislikes"){
-                
-            }
-            else{
-                // just fetch all: 
-                $Posts = $DB->getPosts($status);
-            }
-
-        }
-
-
-        $Tags = $DB->allTags();
-        $selectedTags= array();
-        //check if something was searches :
-
-        if(isset($_GET["string"])){
-            $string = $_GET["string"];
-        }
-        else{
-            $string="";
-=======
             $validator = new Validator();
             $text = $validator->validate_string($_POST["Comment_text"]);
             $CreatedAt = Null;
@@ -157,7 +112,7 @@ function handleSearch($DB,$status){
 
             $DB->insertComment($NewComment);
             header("Refresh:0; url=$Path");
->>>>>>> fe1e05dc1eb74e662da82c19a81b3d4e1dfa9ce0
+
         }
     }
     function handleSearch($DB, $status)
@@ -169,27 +124,27 @@ function handleSearch($DB,$status){
         if (!empty($_GET)) {
 
             if (isset($_GET['filter'])) {
-                echo "ufta";
+                
                 if ($_GET["filter"] == "t_ASC") {
                     $col = "CreatedAt";
                     $order = "ASC";
-                    echo "t_asc";
+                    echo "t_asc <br>";
                 } elseif ($_GET["filter"] == "t_DESC") {
                     $col = "CreatedAt";
                     $order = "DESC";
-                    echo "t_desc";
+                    echo "t_desc <br>";
                 } elseif ($_GET["filter"] == "likes") {
                     $col = "Likes";
                     $order = "DESC";
-                    echo "likes";
+                    echo "likes <br>";
                 } elseif ($_GET["filter"] == "dislikes") {
                     $col = "Dislikes";
                     $order = "DESC";
-                    echo "dislikes";
+                    echo "dislikes <br>";
                 }
                 $Posts = $DB->getPosts($status, $col, $order);
-
-                var_dump($Posts);
+                
+                print_r($Posts);
                 return $Posts;
             }
 
@@ -216,16 +171,6 @@ function handleSearch($DB,$status){
                     array_push($selectedTags, $Tag[0]);
                 }
             }
-<<<<<<< HEAD
-    
-    }
-    else{
-      
-        
-        
-=======
-
->>>>>>> fe1e05dc1eb74e662da82c19a81b3d4e1dfa9ce0
 
             if ($filteredPosts = $DB->searchPosts($string, $selectedTags, $status)) {
                 echo (" filter worked");
