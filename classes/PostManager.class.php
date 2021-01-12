@@ -120,7 +120,8 @@ class PostManager
         $nM->initAlerts();
 
 
-        if (!empty($_GET)) {
+        if (!empty($_GET)) 
+        {
 
             if (isset($_GET['filter'])) {
 
@@ -185,7 +186,12 @@ class PostManager
 
                 $nM->pushNotification("No posts match your search!", "warning");
             }
-        } else {
+        } 
+        else 
+        {
+            $filteredPosts = $DB->searchPosts("",[],$status,false);
+            return $filteredPosts;
+            
         }
     }
 }

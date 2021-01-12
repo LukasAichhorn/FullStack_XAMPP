@@ -187,7 +187,8 @@ $Tags = $DB->allTags();
       </div>
 
 
-      <?php $PostManager->display($DB, $filteredPosts, $CurrentUser); ?>
+      <?php if(!empty($filteredPosts)){
+      $PostManager->display($DB, $filteredPosts, $CurrentUser); }?>
 
 
 
