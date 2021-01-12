@@ -21,15 +21,15 @@ $DB->connectDB();
 
 $UserManager = new UserManager();
 $UserManager->startSession();
-$nM=new NotificationHandler();
+$nM = new NotificationHandler();
 $nM->initAlerts();
 
 $UserManager->handleLogin($DB);
 $UserManager->checkStatus();
 $CurrentUser = $UserManager->getUser();
 $CurrentUserPosts = $DB->getPostsUser($CurrentUser->UserID);
-$PostManager= new PostManager();
-$UserManager->handleUpdateProfile($DB,$CurrentUser);
+$PostManager = new PostManager();
+$UserManager->handleUpdateProfile($DB, $CurrentUser);
 
 ?>
 
@@ -57,7 +57,7 @@ $UserManager->handleUpdateProfile($DB,$CurrentUser);
 
   <div class="alertContainer">
     <?php $nM->display(); ?>
-</div>
+  </div>
 
   <div class="container-fluid">
     <div class="row User-BG"></div>
@@ -66,32 +66,32 @@ $UserManager->handleUpdateProfile($DB,$CurrentUser);
 
       </div>
 
-      <div class="col-6 p-4 minusTop">     
-            <h5>My Profile:</h5>
-      
-      
-      <?php
-      if(!isset($_GET["edit"])){
-       include "../components/singleUser.comp.php";
-      }
-      else if(isset($_GET["pwedit"])){
+      <div class="col-6 p-4 minusTop">
+        <h5>My Profile:</h5>
 
-      }
-      else{
-      include "../components/EditSingleUser.comp.php";}
-       ?>    
-             
-      <h5>My Posts:</h5>
-      <?php //var_dump($CurrentUserPosts);?>
-      <?php $PostManager->display($DB,$CurrentUserPosts,$CurrentUser);?>
-      
-        </div>
-        
-        
-      
-      
+
+        <?php
+        if (isset($_GET["edit"])) {
+          include "../components/EditSingleUser.comp.php";
+        } else if (isset($_GET["pwedit"])) {
+          include "../components/EditPassword.comp.php";
+        } else {
+          include "../components/singleUser.comp.php";
+        }
+        ?>
+
+        <h5>My Posts:</h5>
+        <?php //var_dump($CurrentUserPosts);
+        ?>
+        <?php $PostManager->display($DB, $CurrentUserPosts, $CurrentUser); ?>
+
+      </div>
+
+
+
+
       <div class="col">
-     
+
 
       </div>
     </div>

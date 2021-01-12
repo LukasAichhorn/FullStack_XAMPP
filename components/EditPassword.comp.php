@@ -11,10 +11,6 @@
                     <div class="col">
                         <form class="action=//<?php echo (DIR_SERVERROOT .  $_SERVER['REQUEST_URI']); ?>" method="post">
                             <div class="form-group mt-3">
-                                <label for="Username">Username</label>
-                                <input type="text" name="Username" value="<?php echo ($CurrentUser->UserName); ?>" class="form-control" id="Username" required>
-                            </div>
-                            <div class="form-group mt-3">
                                 <label for="PasswortAlt">Altes Passwort</label>
                                 <input type="password" name="PasswortAlt" class="form-control" id="PasswortAlt" required>
                             </div>
@@ -22,30 +18,16 @@
                                 <label for="Passwort">Neues Passwort</label>
                                 <input type="password" name="Passwort" class="form-control" id="Passwort" required>
                             </div>
-                            <div class="form-group mt-3">
+                            <div class="form-group mt-3 mb-3">
                                 <label for="PasswortRep">Neues Passwort wiederholen</label>
                                 <input type="password" name="PasswortRep" class="form-control" id="PasswortRep" required>
                             </div>
 
-
-
-
-
-
-
-
-
-
-
-
                             <div class="d-flex flex-row justify-content-end">
-
-
-                                <button type="submit" class="btn btn-sm btn-sm-my btn-outline-primary">update profile</button>
+                                <button type="submit" class="btn btn-sm btn-sm-my btn-outline-primary">change password</button>
                         </form>
 
                         <form class="Comp-like" action="//<?php echo (DIR_SERVERROOT .  $_SERVER['REQUEST_URI']); ?>">
-
 
                             <button type="submit" class="btn btn-sm btn-sm-my btn-outline-secondary">cancel</button>
                         </form>
