@@ -468,6 +468,19 @@ class DBManager
         echo $tagString;
         echo $statusString;
 
+        /*
+        $TagsSelect = false;
+        case1 default : string is empty &&  tagsSelected == false
+            => query all posts on sichtbarkeit
+        case 2: string is empty && tagsSelected == true 
+            => query all posts on tagsSelected && sichtbarkeit
+        case 3: string not empty && tagsselected == false
+            => qeruy all posts on strings && sichtbarkeit
+        case 4: string not empty && tagsselected == true
+            => query all posts on string && tags && sichtbarkeit
+        */
+        
+
         if(ctype_space($string) || empty($string)){//ctype_space returns true if entire string is only whitespace, empty returns true if string is ""
             echo "im IN 1";
             if(!($stmt = $DB->prepare("SELECT DISTINCT u.Username,p.PostID,u.Username,p.Bildadresse,p.Bildname,p.Titel,p.Inhalt,p.Sichtbarkeit,p.FK_UserID,p.CreatedAt,p.Likes,p.Dislikes 

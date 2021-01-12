@@ -112,7 +112,6 @@ class PostManager
 
             $DB->insertComment($NewComment);
             header("Refresh:0; url=$Path");
-
         }
     }
     function handleSearch($DB, $status)
@@ -124,7 +123,7 @@ class PostManager
         if (!empty($_GET)) {
 
             if (isset($_GET['filter'])) {
-                
+
                 if ($_GET["filter"] == "t_ASC") {
                     $col = "CreatedAt";
                     $order = "ASC";
@@ -143,7 +142,7 @@ class PostManager
                     echo "dislikes <br>";
                 }
                 $Posts = $DB->getPosts($status, $col, $order);
-                
+
                 print_r($Posts);
                 return $Posts;
             }
@@ -156,7 +155,7 @@ class PostManager
             } else {
                 $string = "";
             }
-
+            $tagsSelected = false;
 
 
             foreach ($Tags as $Tag) {
@@ -166,13 +165,18 @@ class PostManager
                     array_push($selectedTags, $Tag[0]);
                 }
             }
-            if (empty($selectedTags)) {
-                foreach ($Tags as $Tag) {
-                    array_push($selectedTags, $Tag[0]);
-                }
+            if (!empty($selectedTags)) {
+                $tagsSelected = true;
             }
 
-            if ($filteredPosts = $DB->searchPosts($string, $selectedTags, $status)) {
+            // no longer needed because of DB search Query adaptions
+            // if (empty($selectedTags)) {
+            //     foreach ($Tags as $Tag) {
+            //         array_push($selectedTags, $Tag[0]);
+            //     }
+            // }
+
+            if ($filteredPosts = $DB->searchPosts($string, $selectedTags, $status,$tagsSelected)) {
                 echo (" filter worked");
                 return $filteredPosts;
             } else {
@@ -182,9 +186,6 @@ class PostManager
                 $nM->pushNotification("No posts match your search!", "warning");
             }
         } else {
-
-
-            
         }
     }
 }
