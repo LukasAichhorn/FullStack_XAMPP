@@ -278,13 +278,10 @@ class DBManager
     {
         $DB = $this->DB;
         $statusString = "('1')";
-        if($status == 1){
+        if($status == 1 || $status == 2){
             $statusString = "('0','1')";
         }
-        echo "<br>  status: $status";
-        echo "<br>  col: $col";
-        echo "<br>  order: $order";
-        echo"<br>";
+        
 
         //no prepared statemnt needed because user input has no influence on query
         
@@ -453,7 +450,7 @@ class DBManager
         
         $statusString = "('1')";
         //filters all posts if user is logged in and only public posts if user is not logged in
-        if($status == 1){
+        if($status == 1 || $status == 2){
             $statusString = "('0','1')";
         }
         
@@ -485,7 +482,7 @@ class DBManager
             echo "im IN 1";
             if(!($stmt = $DB->prepare("SELECT DISTINCT u.Username,p.PostID,u.Username,p.Bildadresse,p.Bildname,p.Titel,p.Inhalt,p.Sichtbarkeit,p.FK_UserID,p.CreatedAt,p.Likes,p.Dislikes 
             FROM ((((post p left join comment c on p.PostID = c.FK_PostID) left join post_tags pt on pt.PostID = p.PostID) left join tags t on t.TagID = pt.TagID) inner join user u on u.UserID = p.FK_UserID) 
-            where p.Sichtbarkeit IN $statusString")))
+            where p.Sichtbarkeit IN $statusString ORDER BY p.CreatedAt DESC")))
             {
                 echo "Prepare failed: (" . $DB->errno . ") " . $DB->error;
             }  
@@ -495,7 +492,7 @@ class DBManager
             echo "im IN 2";
             if(!($stmt = $DB->prepare("SELECT DISTINCT u.Username,p.PostID,u.Username,p.Bildadresse,p.Bildname,p.Titel,p.Inhalt,p.Sichtbarkeit,p.FK_UserID,p.CreatedAt,p.Likes,p.Dislikes 
             FROM ((((post p left join comment c on p.PostID = c.FK_PostID) left join post_tags pt on pt.PostID = p.PostID) left join tags t on t.TagID = pt.TagID) inner join user u on u.UserID = p.FK_UserID) 
-            where t.TagName IN $tagString AND p.Sichtbarkeit IN $statusString")))
+            where t.TagName IN $tagString AND p.Sichtbarkeit IN $statusString ORDER BY p.CreatedAt DESC")))
             {
                 echo "Prepare failed: (" . $DB->errno . ") " . $DB->error;
             }
@@ -505,7 +502,7 @@ class DBManager
             echo "im IN 3";
             if(!($stmt = $DB->prepare("SELECT DISTINCT u.Username,p.PostID,u.Username,p.Bildadresse,p.Bildname,p.Titel,p.Inhalt,p.Sichtbarkeit,p.FK_UserID,p.CreatedAt,p.Likes,p.Dislikes 
             FROM ((((post p left join comment c on p.PostID = c.FK_PostID) left join post_tags pt on pt.PostID = p.PostID) left join tags t on t.TagID = pt.TagID) inner join user u on u.UserID = p.FK_UserID) 
-            where (p.Titel REGEXP ? or p.Inhalt REGEXP ? or c.Inhalt REGEXP ?) AND p.Sichtbarkeit IN $statusString"))){
+            where (p.Titel REGEXP ? or p.Inhalt REGEXP ? or c.Inhalt REGEXP ?) AND p.Sichtbarkeit IN $statusString ORDER BY p.CreatedAt DESC"))){
                 echo "Prepare failed: (" . $DB->errno . ") " . $DB->error;
             }
             if(!$stmt->bind_param("sss",$string,$string,$string)){
@@ -517,7 +514,7 @@ class DBManager
             echo "im IN 4";
             if(!($stmt = $DB->prepare("SELECT DISTINCT u.Username,p.PostID,u.Username,p.Bildadresse,p.Bildname,p.Titel,p.Inhalt,p.Sichtbarkeit,p.FK_UserID,p.CreatedAt,p.Likes,p.Dislikes 
             FROM ((((post p left join comment c on p.PostID = c.FK_PostID) left join post_tags pt on pt.PostID = p.PostID) left join tags t on t.TagID = pt.TagID) inner join user u on u.UserID = p.FK_UserID) 
-            where t.TagName IN $tagString AND (p.Titel REGEXP ? or p.Inhalt REGEXP ? or c.Inhalt REGEXP ?) AND p.Sichtbarkeit IN $statusString"))){
+            where t.TagName IN $tagString AND (p.Titel REGEXP ? or p.Inhalt REGEXP ? or c.Inhalt REGEXP ?) AND p.Sichtbarkeit IN $statusString ORDER BY p.CreatedAt DESC"))){
                 echo "Prepare failed: (" . $DB->errno . ") " . $DB->error;
             }
             if(!$stmt->bind_param("sss",$string,$string,$string)){

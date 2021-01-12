@@ -126,10 +126,10 @@ $Tags = $DB->allTags();
     <div class="col-xl-6 col-lg-10 p-4 minusTop">
       <div class="d-flex sort-container">
         <?php
-        $l = $d = $td = FALSE;//likes, dislikes, time descending
-        $ta = true;// time ascending
+        $l = $d = $ta = FALSE;//likes, dislikes, time descending
+        $td = true;// time ascending
         if (isset($_GET["filter"])) {
-          $ta = false;
+          $td = false;
           
 
           switch ($_GET["filter"]) {
@@ -169,16 +169,16 @@ $Tags = $DB->allTags();
         </form>
 
         <form class="btn-sort" action="//<?php echo (DIR_SERVERROOT .  $_SERVER['REQUEST_URI']); ?>">
-          <input type="hidden" name="filter" value="t_ASC" />
+          <input type="hidden" name="filter" value="t_DESC" />
 
-          <button type="submit" <?php echo( ($ta==True) ? "disabled":"") ; ?> class="btn btn-sm btn-sm-my btn-outline-primary">
+          <button type="submit" <?php echo( ($td==True) ? "disabled":"") ; ?> class="btn btn-sm btn-sm-my btn-outline-primary">
 
             <?php echo ("newest") ?></button>
         </form>
         <form class="btn-sort" action="//<?php echo (DIR_SERVERROOT .  $_SERVER['REQUEST_URI']); ?>">
-          <input type="hidden" name="filter" value="t_DESC" />
+          <input type="hidden" name="filter" value="t_ASC" />
 
-          <button type="submit" <?php echo( ($td==True) ? "disabled ":"" ); ?> class="btn btn-sm btn-sm-my btn-outline-primary">
+          <button type="submit" <?php echo( ($ta==True) ? "disabled ":"" ); ?> class="btn btn-sm btn-sm-my btn-outline-primary">
 
             <?php echo ("oldest") ?></button>
         </form>

@@ -144,7 +144,7 @@ class PostManager
                 }
                 $Posts = $DB->getPosts($status, $col, $order);
 
-                print_r($Posts);
+                
                 return $Posts;
             }
 
