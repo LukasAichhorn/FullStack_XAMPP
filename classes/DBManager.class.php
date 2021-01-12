@@ -281,23 +281,29 @@ class DBManager
         if($status == 1){
             $statusString = "('0','1')";
         }
-        echo "!!! " . $col . $order . "!!!";
+        echo "<br>  status: $status";
+        echo "<br>  col: $col";
+        echo "<br>  order: $order";
+        echo"<br>";
 
         //no prepared statemnt needed because user input has no influence on query
         
-            if(!($stmt = $DB->prepare("SELECT Username,PostID,Bildadresse,Bildname,Titel,Inhalt,Likes,Dislikes,CreatedAt,Sichtbarkeit,FK_UserID FROM user Inner JOIN post ON post.FK_UserID = user.UserID WHERE Sichtbarkeit 
-            IN $statusString ORDER BY ? $order"))){
+            if(!$stmt = $DB->query("SELECT Username,PostID,Bildadresse,Bildname,Titel,Inhalt,Likes,Dislikes,CreatedAt,Sichtbarkeit,FK_UserID FROM user Inner JOIN post ON post.FK_UserID = user.UserID WHERE Sichtbarkeit 
+            IN $statusString ORDER BY $col $order")){
                 echo "Prepare failed: (" . $DB->errno . ") " . $DB->error;
             }
-            if(!($stmt->bind_param("s",$col))){
-                echo "Binding params failed: (" . $stmt->errno . ") " . $stmt->error;
-            }   
-            if(!$stmt->execute()){
-                echo "Executing statement failed: (" . $stmt->errno . ") " . $stmt->error;
-            }
+            // if(!($stmt->bind_param())){
+            //     echo "Binding params failed: (" . $stmt->errno . ") " . $stmt->error;
+            // }   
 
-            $result = $stmt->get_result();
+            // if(!$stmt->execute()){
+            //     echo "Executing statement failed: (" . $stmt->errno . ") " . $stmt->error;
+            // }
+            
+            $result = $stmt;
             $result->fetch_all();
+            echo("<br>");
+           
             
 
         $postObjects = array();
