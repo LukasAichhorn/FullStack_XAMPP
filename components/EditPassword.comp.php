@@ -15,15 +15,15 @@
                                 <input type="text" name="Username" value="<?php echo ($CurrentUser->UserName); ?>" class="form-control" id="Username" required>
                             </div>
                             <div class="form-group mt-3">
-                                <label for="Username">Email:</label>
-                                <input type="text" name="Email" value="<?php echo ($CurrentUser->Email); ?>" class="form-control" id="Email" required>
+                                <label for="PasswortAlt">Altes Passwort</label>
+                                <input type="password" name="PasswortAlt" class="form-control" id="PasswortAlt" required>
                             </div>
                             <div class="form-group mt-3">
-                                <label for="Passwort">Password</label>
+                                <label for="Passwort">Neues Passwort</label>
                                 <input type="password" name="Passwort" class="form-control" id="Passwort" required>
                             </div>
                             <div class="form-group mt-3">
-                                <label for="PasswortRep">Repeat Password</label>
+                                <label for="PasswortRep">Neues Passwort wiederholen</label>
                                 <input type="password" name="PasswortRep" class="form-control" id="PasswortRep" required>
                             </div>
 

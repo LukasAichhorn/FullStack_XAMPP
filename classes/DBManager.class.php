@@ -274,42 +274,34 @@ class DBManager
     }
 
     //fnc for getting assoc. array of posts to depict, output depends on loginstatus of user (public posts or all posts)
-    function getPosts($status)
+    function getPosts($status,$col,$order)
     {
         $DB = $this->DB;
-        //
-        if ($status == 0) { //no prepared statemnt needed because user input has no influence on query
-            $stmt = "SELECT Username,PostID,Bildadresse,Bildname,Titel,Inhalt,Likes,Dislikes,CreatedAt,Sichtbarkeit,FK_UserID FROM user Inner JOIN post ON post.FK_UserID = user.UserID WHERE Sichtbarkeit = 1";
-            $result = mysqli_query($DB, $stmt);
-            $posts = array();
-            if (mysqli_num_rows($result) > 0) {
-                while ($row = mysqli_fetch_assoc($result)) {
-                    $posts[] = $row;
-                }
-            }
-
-            //print_r($posts);
-
-
-
-
-        } else {
-            $stmt = "SELECT Username,PostID,Bildadresse,Bildname,Titel,Inhalt,Likes,Dislikes,CreatedAt,Sichtbarkeit,FK_UserID FROM user Inner JOIN post ON post.FK_UserID = user.UserID";
-            $result = mysqli_query($DB, $stmt);
-            $posts = array();
-            if (mysqli_num_rows($result) > 0) {
-                while ($row = mysqli_fetch_assoc($result)) {
-                    $posts[] = $row;
-                }
-            }
-
-            //print_r($posts);
-
-
+        $statusString = "('1')";
+        if($status == 1){
+            $statusString = "('0','1')";
         }
+        echo "!!! " . $col . $order . "!!!";
+
+        //no prepared statemnt needed because user input has no influence on query
+        
+            if(!($stmt = $DB->prepare("SELECT Username,PostID,Bildadresse,Bildname,Titel,Inhalt,Likes,Dislikes,CreatedAt,Sichtbarkeit,FK_UserID FROM user Inner JOIN post ON post.FK_UserID = user.UserID WHERE Sichtbarkeit 
+            IN $statusString ORDER BY ? $order"))){
+                echo "Prepare failed: (" . $DB->errno . ") " . $DB->error;
+            }
+            if(!($stmt->bind_param("s",$col))){
+                echo "Binding params failed: (" . $stmt->errno . ") " . $stmt->error;
+            }   
+            if(!$stmt->execute()){
+                echo "Executing statement failed: (" . $stmt->errno . ") " . $stmt->error;
+            }
+
+            $result = $stmt->get_result();
+            $result->fetch_all();
+            
 
         $postObjects = array();
-        foreach ($posts as $p) {
+        foreach ($result as $p) {
             $tags = $this->getTags($p['PostID']);
 
             $postObj = new Post($p['PostID'], $p['Username'], $p['Bildadresse'], $p['Bildname'], $p['Titel'], $p['Inhalt'], $p['Sichtbarkeit'], $p['FK_UserID'], $tags, $p['CreatedAt'], $p['Likes'], $p['Dislikes']);
