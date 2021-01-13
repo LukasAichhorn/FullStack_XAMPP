@@ -10,7 +10,7 @@ function validate_string($varName){
 
         
         $varName =htmlspecialchars($varName);
-        $varname = trim($varName);
+        $varName = trim($varName);
         return $varName;
 }
 

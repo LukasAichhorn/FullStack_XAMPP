@@ -580,5 +580,15 @@ class DBManager
         return $postObjects;
     
     }*/
+
+    function changePassword($CurrentUser,$newPW){
+        $DB = $this->DB;
+        $stmt = "UPDATE user SET Passwort = '" . $newPW . "' WHERE UserID = $CurrentUser->UserID";
+        if($DB->query($stmt)){
+            
+        }
+        $updatedUser = $this->getUser($CurrentUser->UserID);
+        return $updatedUser;
+    }
     
 }

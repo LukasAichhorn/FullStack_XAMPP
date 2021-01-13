@@ -200,7 +200,39 @@ function handleUpdateProfile($DB,$CurrentUser){
 
         }
 
-    
+    function handlePasswordChange($DB,$CurrentUser){
+        $nM = new NotificationHandler();
+        $nM->initAlerts();
+
+        if(isset($_POST["PasswortAlt"]) && isset($_POST["PasswortNeu"]) && isset($_POST["PasswortNeuRep"])){
+
+            $Validator = new Validator();
+            $HpwAlt = $Validator->validate_Password($_POST["PasswortAlt"]);
+            $HpwNeu = $Validator->validate_Password($_POST["PasswortNeu"]);
+            $HpwNeuRep = $Validator->validate_Password($_POST["PasswortNeuRep"]);
+
+
+            if(!$Validator->compareHashes($CurrentUser->UserPW,$HpwAlt)){
+                $nM->pushNotification("Current password is not correct!","danger");
+                
+                return;
+            }
+            elseif(!$Validator->compareHashes($HpwNeu,$HpwNeuRep)){
+                $nM->pushNotification("New password does not match repeated password!","warning");
+                return;
+            }
+            else{
+                $updatedUser = $DB->changePassword($CurrentUser,$HpwNeu);
+                $this->updateUser($updatedUser);
+                header("Refresh:0; url=//". DIR_PAGES . "myProfile.php"); 
+                $nM->pushNotification("Password changed successfully","success");
+                 
+            }
+        }
+
+
+
+    }
 
 }
 

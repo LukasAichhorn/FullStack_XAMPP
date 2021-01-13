@@ -21,7 +21,9 @@ class PostManager
         }
     }
     function handleNewPost($DB, $CurrentUser)
-    {
+    {   
+        $nM = new NotificationHandler();
+        $nM->initAlerts();
 
         if (
             isset($_POST["Titel"]) &&
@@ -60,6 +62,8 @@ class PostManager
 
 
             $DB->insertPost($NewPost);
+            header("Refresh:0; url=//" . DIR_BASE ."index.php");
+            $nM->pushNotification("Post successfully created!","success");
         }
     }
     function handleImgUpload($CurrentUser)
