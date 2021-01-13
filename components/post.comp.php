@@ -15,7 +15,7 @@ $IMG_TN_Path =$IMG_name."_thumbnail".".".$IMG_ending;
             <div class="col-md-4  d-flex align-content-center" >
             
                 <?php $RD = $DB->getUserRootByID($Post->UserID); $RD = $RD[0]; ?>
-                <a class="card-img cover " href="<?php echo("UsersRoot"."/".$Post->Username ."/".$IMG_name.".".$IMG_ending)?>" data-lightbox="<?php echo("LB-".$Post->PostID);?>">
+                <a class="card-img cover" data-title="My caption" href="<?php echo("UsersRoot"."/".$Post->Username ."/".$IMG_name.".".$IMG_ending)?>" data-toggle="lightbox">
                 <img class="card-img cover " src="//<?php echo($RD["RootDir"] ."/".$IMG_TN_Path)?>">
                 </a>
             </div>
