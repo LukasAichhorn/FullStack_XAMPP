@@ -58,7 +58,7 @@
                                     </div>
                                 </div>
                                 <div class=" form-group  mt-3 mb-3">
-                                    <label for="formFileSm" class="form-label">Choose img for Upload:</label>
+                                    <label for="formFileSm" class="form-label">Profilbild hochladen</label>
                                     <input class="form-control form-control-sm" id="fileUpload" name="fileUpload" type="file">
                                 </div>
 
@@ -71,13 +71,13 @@
                                 <div class="d-flex flex-row justify-content-end">
 
 
-                                    <button type="submit" class="btn btn-sm btn-sm-my btn-outline-primary">update profile</button>
+                                    <button type="submit" class="btn btn-sm btn-sm-my btn-outline-primary">Änderungen speichern</button>
                             </form>
 
                             <form class="Comp-like" action="//<?php echo (DIR_SERVERROOT .  $_SERVER['REQUEST_URI']); ?>">
 
 
-                                <button type="submit" class="btn btn-sm btn-sm-my btn-outline-secondary">cancel</button>
+                                <button type="submit" class="btn btn-sm btn-sm-my btn-outline-secondary">abbrechen</button>
                             </form>
                         </div>
 

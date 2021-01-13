@@ -68,7 +68,7 @@ $UserManager->handlePasswordChange($DB, $CurrentUser);
       </div>
 
       <div class="col-6 p-4 minusTop">
-        <h1>My Profile:</h1>
+        <h1>Mein Profil</h1>
 
 
         <?php
@@ -81,7 +81,7 @@ $UserManager->handlePasswordChange($DB, $CurrentUser);
         }
         ?>
 
-        <h1 class="mb-3">My Posts:</h1>
+        <h1 class="mb-3">Meine Beiträge</h1>
         <?php //var_dump($CurrentUserPosts);
         ?>
         <?php $PostManager->display($DB, $CurrentUserPosts, $CurrentUser); ?>

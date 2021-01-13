@@ -12,12 +12,12 @@ $litemHome = "
         ";
 $litemlogin ="
 <li class='nav-item'>
-    <a class='nav-link' aria-current='page' href='//".DIR_PAGES."login.php'>login</a>
+    <a class='nav-link' aria-current='page' href='//".DIR_PAGES."login.php'>Login</a>
 </li>
         ";
 $litemMyProfile = "
 <li class='nav-item'>
-    <a class='nav-link' aria-current='page' href='//".DIR_PAGES."myProfile.php'>My Profile</a>
+    <a class='nav-link' aria-current='page' href='//".DIR_PAGES."myProfile.php'>Mein Profil</a>
 </li>
         ";
 $litemLogOut = "
@@ -32,17 +32,17 @@ $litemImpressum = "
         ";
 $litemHelp = "
 <li class='nav-item'>
-    <a class='nav-link' aria-current='page' href='//".DIR_PAGES."help.php'>Help</a>
+    <a class='nav-link' aria-current='page' href='//".DIR_PAGES."help.php'>Hilfe</a>
     </li>
                 ";
 $litemManageUsers = "
         <li class='nav-item'>
-            <a class='nav-link' aria-current='page' href='//".DIR_PAGES."ManageUsers.php'>Manage Users</a>
+            <a class='nav-link' aria-current='page' href='//".DIR_PAGES."ManageUsers.php'>User verwalten</a>
         </li>
                 ";
 $litemNewPost = "
         <li class='nav-item'>
-            <a class='nav-link' aria-current='page' href='//".DIR_PAGES."createPost.php'>create new Post</a>
+            <a class='nav-link' aria-current='page' href='//".DIR_PAGES."createPost.php'>Beitrag erstellen</a>
         </li>
                 ";
 

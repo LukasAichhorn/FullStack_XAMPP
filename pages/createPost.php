@@ -60,7 +60,7 @@ $PostManager->handleNewPost($DB,$CurrentUser);
       </div>
 
       <div class="col-6 p-4 minusTop">     
-            <h1>Create new Post:</h1>
+            <h1>Neuen Beitrag erstellen</h1>
       
       
       <?php include "../components/createPost.comp.php" ?>    

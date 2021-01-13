@@ -31,7 +31,7 @@
                         <?php echo ($CurrentUser->Email) ?>
                     </div>
                     <div class="col d-flex align-items-center justify-content-start">
-                        <?php echo ($CurrentUser->status == 1) ? "active" : "inactive" ?>
+                        <?php echo ($CurrentUser->status == 1) ? "aktiv" : "inaktiv" ?>
                     </div>
 
                     <div class="col d-flex align-items-center justify-content-start">
@@ -41,7 +41,7 @@
                             <input type="hidden" name="changeStatus" value="true" />
                             <input type="hidden" name="UserID" value="<?php echo ($CurrentUser->UserID); ?>" />
                             <button type="submit" class="btn btn-sm btn-sm-my btn-outline-primary">
-                                <?php echo ($CurrentUser->status == 1) ? "inactivate" : "activate" ?>
+                                <?php echo ($CurrentUser->status == 1) ? "deaktivieren" : "aktivieren" ?>
                             </button>
                         </form>
 
@@ -59,7 +59,7 @@
         <div class="row">
             <div class="col m-1">
                 <button class="btn btn-sm btn-sm-my btn-outline-primary" type="button" data-toggle="collapse" data-target="#collapse_<?php echo($CurrentUser->UserID); ?>" aria-expanded="false" aria-controls="collapse_<?php echo($CurrentUser->UserID); ?>">
-                    show All posts:
+                    Alle Beiträge anzeigen:
                 </button>
 
             </div>

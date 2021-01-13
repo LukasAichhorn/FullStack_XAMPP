@@ -22,12 +22,12 @@
                 </div>
 
                 <div class="d-flex flex-row justify-content-end">
-                    <button type="submit" class="btn btn-sm btn-sm-my btn-outline-primary">change password</button>
+                    <button type="submit" class="btn btn-sm btn-sm-my btn-outline-primary">Passwort ändern</button>
             </form>
 
             <form class="Comp-like" action="//<?php echo (DIR_SERVERROOT .  $_SERVER['REQUEST_URI']); ?>">
 
-                <button type="submit" class="btn btn-sm btn-sm-my btn-outline-secondary">cancel</button>
+                <button type="submit" class="btn btn-sm btn-sm-my btn-outline-secondary">abbrechen</button>
             </form>
         </div>
 

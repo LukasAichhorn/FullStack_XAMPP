@@ -107,11 +107,11 @@ console.log("hello");
 
     <div class="col">
       <div class="mt-5 mb-5 headline-info">
-        <h1 class="headline">Welcome to GoellHorn!</h1>
+        <h1 class="headline">Willkommen auf GoellHorn!</h1>
         <?php if (isset($CurrentUser)) {
-          echo ("<p>Your are logged in as $CurrentUser->UserName</p>");
+          echo ("<p>Sie sind eingeloggt als $CurrentUser->UserName</p>");
         } else {
-          echo ("<p>Your are not logged in and only see 'public' posts!</p>");
+          echo ("<p>Sie sind nicht eingeloggt und sehen nur öffentliche Beiträge</p>");
         }
         ?>
       </div>
@@ -171,14 +171,14 @@ console.log("hello");
 
           <button type="submit" <?php  echo( ($l==True) ? "disabled ":"" );?> class="btn btn-sm btn-sm-my btn-outline-primary">
 
-            <?php echo ("most likes") ?></button>
+            <?php echo ("meiste Likes") ?></button>
         </form>
         <form class="btn-sort" action="//<?php echo (DIR_SERVERROOT .  $_SERVER['REQUEST_URI']); ?>">
           <input type="hidden" name="filter" value="dislikes" />
 
           <button type="submit" <?php echo( ($d==True) ? "disabled ":""); ?> class="btn btn-sm btn-sm-my btn-outline-primary">
 
-            <?php echo ("most dislikes") ?></button>
+            <?php echo ("meiste Dislikes") ?></button>
         </form>
 
         <form class="btn-sort" action="//<?php echo (DIR_SERVERROOT .  $_SERVER['REQUEST_URI']); ?>">
@@ -186,14 +186,14 @@ console.log("hello");
 
           <button type="submit" <?php echo( ($td==True) ? "disabled":"") ; ?> class="btn btn-sm btn-sm-my btn-outline-primary">
 
-            <?php echo ("newest") ?></button>
+            <?php echo ("Neueste zuerst") ?></button>
         </form>
         <form class="btn-sort" action="//<?php echo (DIR_SERVERROOT .  $_SERVER['REQUEST_URI']); ?>">
           <input type="hidden" name="filter" value="t_ASC" />
 
           <button type="submit" <?php echo( ($ta==True) ? "disabled ":"" ); ?> class="btn btn-sm btn-sm-my btn-outline-primary">
 
-            <?php echo ("oldest") ?></button>
+            <?php echo ("Älteste zuerst") ?></button>
         </form>
 
 

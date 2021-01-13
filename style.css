@@ -91,6 +91,15 @@ a {
     background-position: top;
     background-repeat: no-repeat;
 }
+.help-BG{
+    background-image: url("./ressources/pics/bermuda-bad-gateway-1.png");
+    background-color: #ffaf2a;
+    height:42em;
+    background-position: top;
+    background-repeat: no-repeat;
+    
+   
+}
 .minusTop{
     margin-top: -4rem;
     background-color: white;

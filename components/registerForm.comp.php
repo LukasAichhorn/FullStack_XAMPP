@@ -6,11 +6,11 @@
     </div>
 
     <div class="form-group mt-3">
-        <label for="Passwort">Password</label>
+        <label for="Passwort">Passwort</label>
         <input type="password" name="Passwort" class="form-control" id="Passwort" required>
     </div>
     <div class="form-group mt-3">
-        <label for="PasswortRep">Repeat Password</label>
+        <label for="PasswortRep">Passwort wiederholen</label>
         <input type="password" name="PasswortRep" class="form-control" id="PasswortRep" required>
     </div>  
     <div class="form-group mt-3">
