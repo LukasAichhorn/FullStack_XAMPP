@@ -22,7 +22,7 @@ class DBManager
 
             
         } else {
-            echo $DB->host_info . " Connection success!\n";
+            //echo $DB->host_info . " Connection success!\n";
             $nM->pushNotification($DB->host_info . " Connection success!\n","success");
         }
     }
@@ -299,7 +299,8 @@ class DBManager
             
             $result = $stmt;
             $result->fetch_all();
-            echo("<br>");
+            
+        
            
             
 
@@ -462,8 +463,8 @@ class DBManager
 
         $tagString = rtrim($tagString,", ") . ")";
         
-        echo $tagString;
-        echo $statusString;
+        //echo $tagString;
+        //echo $statusString;
 
         /*
         $TagsSelect = false;
@@ -479,7 +480,7 @@ class DBManager
         
         if((ctype_space($string) || empty($string) && $tagBool == false))//ctype_space returns true if entire string is only whitespace, empty returns true if string is ""
         {
-            echo "im IN 1";
+            //echo "im IN 1";
             if(!($stmt = $DB->prepare("SELECT DISTINCT u.Username,p.PostID,u.Username,p.Bildadresse,p.Bildname,p.Titel,p.Inhalt,p.Sichtbarkeit,p.FK_UserID,p.CreatedAt,p.Likes,p.Dislikes 
             FROM ((((post p left join comment c on p.PostID = c.FK_PostID) left join post_tags pt on pt.PostID = p.PostID) left join tags t on t.TagID = pt.TagID) inner join user u on u.UserID = p.FK_UserID) 
             where p.Sichtbarkeit IN $statusString ORDER BY p.CreatedAt DESC")))
@@ -489,7 +490,7 @@ class DBManager
         }
         elseif((ctype_space($string) || empty($string)) && $tagBool == true)
         {
-            echo "im IN 2";
+            //echo "im IN 2";
             if(!($stmt = $DB->prepare("SELECT DISTINCT u.Username,p.PostID,u.Username,p.Bildadresse,p.Bildname,p.Titel,p.Inhalt,p.Sichtbarkeit,p.FK_UserID,p.CreatedAt,p.Likes,p.Dislikes 
             FROM ((((post p left join comment c on p.PostID = c.FK_PostID) left join post_tags pt on pt.PostID = p.PostID) left join tags t on t.TagID = pt.TagID) inner join user u on u.UserID = p.FK_UserID) 
             where t.TagName IN $tagString AND p.Sichtbarkeit IN $statusString ORDER BY p.CreatedAt DESC")))
@@ -499,7 +500,7 @@ class DBManager
         }
         elseif(!empty($string) && $tagBool == false)
         {
-            echo "im IN 3";
+            //echo "im IN 3";
             if(!($stmt = $DB->prepare("SELECT DISTINCT u.Username,p.PostID,u.Username,p.Bildadresse,p.Bildname,p.Titel,p.Inhalt,p.Sichtbarkeit,p.FK_UserID,p.CreatedAt,p.Likes,p.Dislikes 
             FROM ((((post p left join comment c on p.PostID = c.FK_PostID) left join post_tags pt on pt.PostID = p.PostID) left join tags t on t.TagID = pt.TagID) inner join user u on u.UserID = p.FK_UserID) 
             where (p.Titel REGEXP ? or p.Inhalt REGEXP ? or c.Inhalt REGEXP ?) AND p.Sichtbarkeit IN $statusString ORDER BY p.CreatedAt DESC"))){
@@ -511,7 +512,7 @@ class DBManager
         }
         elseif(!empty($string) && $tagBool == true)
         {
-            echo "im IN 4";
+            //echo "im IN 4";
             if(!($stmt = $DB->prepare("SELECT DISTINCT u.Username,p.PostID,u.Username,p.Bildadresse,p.Bildname,p.Titel,p.Inhalt,p.Sichtbarkeit,p.FK_UserID,p.CreatedAt,p.Likes,p.Dislikes 
             FROM ((((post p left join comment c on p.PostID = c.FK_PostID) left join post_tags pt on pt.PostID = p.PostID) left join tags t on t.TagID = pt.TagID) inner join user u on u.UserID = p.FK_UserID) 
             where t.TagName IN $tagString AND (p.Titel REGEXP ? or p.Inhalt REGEXP ? or c.Inhalt REGEXP ?) AND p.Sichtbarkeit IN $statusString ORDER BY p.CreatedAt DESC"))){

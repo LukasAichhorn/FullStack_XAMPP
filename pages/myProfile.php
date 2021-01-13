@@ -67,7 +67,7 @@ $UserManager->handleUpdateProfile($DB, $CurrentUser);
       </div>
 
       <div class="col-6 p-4 minusTop">
-        <h5>My Profile:</h5>
+        <h1>My Profile:</h1>
 
 
         <?php
@@ -80,7 +80,7 @@ $UserManager->handleUpdateProfile($DB, $CurrentUser);
         }
         ?>
 
-        <h5>My Posts:</h5>
+        <h1 class="mb-3">My Posts:</h1>
         <?php //var_dump($CurrentUserPosts);
         ?>
         <?php $PostManager->display($DB, $CurrentUserPosts, $CurrentUser); ?>

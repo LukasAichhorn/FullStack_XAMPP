@@ -57,7 +57,7 @@ $nM->initAlerts();
       </div>
 
       <div class="col-6 p-4 minusTop">     
-            <h5>Login:</h5>
+            <h1>Login:</h1>
       
       
       <?php include "../components/loginForm.comp.php" ?>    

@@ -49,7 +49,7 @@ $litemNewPost = "
 
 ?>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm sticky-top">
     <div class="container-fluid w-100">
     <a class="navbar-brand" href="#">
     <img src="//<?php echo(DIR_RES."color-filter-sharp.svg"); ?>" width="30" height="30" alt="">

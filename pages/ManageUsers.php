@@ -81,7 +81,7 @@ $AllUsers = $DB->getUserArray();
                 </div>
 
                 <div class="col-6 p-4 minusTop">
-                    <h5>All Users:</h5>
+                    <h1 class="mb-3">All Users:</h1>
 
 
                     <?php

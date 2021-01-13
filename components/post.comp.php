@@ -6,31 +6,51 @@ $IMG_name=$path_parts["filename"];
 $IMG_ending=$path_parts["extension"];
 $IMG_dir=$path_parts["dirname"];
 $IMG_TN_Path =$IMG_name."_thumbnail".".".$IMG_ending;
+
 ?>
     
     
     <div class="card mb-2 shadow-sm">
         <div class="row g-0">
-            <div class="col-md-4  d-flex align-content-center">
+            <div class="col-md-4  d-flex align-content-center" >
             
                 <?php $RD = $DB->getUserRootByID($Post->UserID); $RD = $RD[0]; ?>
+                <a class="card-img cover " href="<?php echo("UsersRoot"."/".$Post->Username ."/".$IMG_name.".".$IMG_ending)?>" data-lightbox="<?php echo("LB-".$Post->PostID);?>">
                 <img class="card-img cover " src="//<?php echo($RD["RootDir"] ."/".$IMG_TN_Path)?>">
+                </a>
             </div>
             <div class="col-md-8">
                 <div class="card-body d-flex flex-row flex-wrap h-100">
-                    <div class="row  ">
+                    <div class="row w-100">
                         <div class="col">
-                           
+                           <div class="d-flex">
                             <a href="//<?php echo(DIR_PAGES);?>DisplayPost.php?PostID=<?php echo($Post->PostID); ?>">
                                 <h5 class="card-title"><?php echo($Post->Titel) ?></h5>   
                             </a>
+                           
+                           
+                            <?php
+                                        // if(isset($CurrentUser) && $Post->Username == $CurrentUser->UserName){
+                                        //     echo('<div style="margin-left: auto;">
+                                            
+                                        //     <form action="//'. DIR_UTIL .'handleDelete.php">
+                                        //     <input type="hidden" name="PostId" value="'. $Post->PostID . '" />  
+                                        //     <button type="submit" class="btn btn-sm btn-sm-my btn-outline-warning">X</button>
+                                        //     </form>
+                                        //     </div>');
+                                        // }
 
+                                        // ?>
+                           
+                           </div>
                             <p class="d-flex"><small> <?php echo($Post->Sichtbarkeit == 0) ? "private" : "public"; ?></small></p>
 
                             <p class="card-text mb-3">
                             <?php echo($Post->Inhalt)?>
                             </p>
                         </div>
+                        
+
                     </div>
 
                     <div class="row  w-100 align-self-end">
@@ -47,9 +67,9 @@ $IMG_TN_Path =$IMG_name."_thumbnail".".".$IMG_ending;
                             </div>
                             <div class="divider border"></div>
                             
-                            <div class="row mt-2">
+                            <div class="row mt-2 mb-2">
                             
-                                <div class="col-6 ">
+                                <div class="col ">
                                     <p class="card-text"><small class="text-muted">created by <?php echo($Post->Username);?> <br> at: <?php echo($Post->CreatedAt); ?> </small></p>
                                 </div>
 
@@ -83,12 +103,12 @@ $IMG_TN_Path =$IMG_name."_thumbnail".".".$IMG_ending;
                                             
                                             <form action="//'. DIR_UTIL .'handleDelete.php">
                                             <input type="hidden" name="PostId" value="'. $Post->PostID . '" />  
-                                            <button type="submit" class="btn btn-sm btn-sm-my btn-outline-warning">delete</button>
+                                            <button type="submit" class="btn btn-sm btn-sm-my btn-outline-warning">x</button>
                                             </form>
                                             </div>');
                                         }
 
-                                        ?>
+                                        ?> 
 
                                     </div>
                                 </div>

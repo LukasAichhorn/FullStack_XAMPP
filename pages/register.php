@@ -62,7 +62,7 @@ $UserManager->handleRegister($DB);
     </div>
 
     <div class="col-6 p-4 minusTop">     
-          <h5>Register:</h5>
+          <h1>Register:</h1>
     
     
     <?php include "../components/registerForm.comp.php" ?>    

@@ -10,13 +10,14 @@ h5 {
     
 
 }
-h1,h2, h3, h4 {
+h1,h6, h6, h4 {
     font-family: 'Bree Serif', serif;
 }
 a {
     text-decoration: none;
     
 }
+
 
 
 .navbar-brand{
@@ -35,6 +36,7 @@ a {
     border-radius: 40px;
     padding-top: .2em;
     padding-bottom: .2em;
+    
 }
 .Comp-like{
     margin-left: 1em;
@@ -48,6 +50,8 @@ a {
     height:42em;
     background-position: top;
     background-repeat: no-repeat;
+    
+   
 }
 
 .createPostBG{
@@ -75,6 +79,13 @@ a {
 }
 .Admin-BG{
     background-image: url("./ressources/pics/admin.png");
+    background-color: #ffaf2a;
+    height:42em;
+    background-position: top;
+    background-repeat: no-repeat;
+}
+.Impressum-BG{
+    background-image: url("./ressources/pics/bermuda-negotiation.png");
     background-color: #ffaf2a;
     height:42em;
     background-position: top;

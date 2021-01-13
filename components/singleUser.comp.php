@@ -14,7 +14,7 @@
             </div>
             <div class="col-md-8">
                 <div class="card-body d-flex flex-row flex-wrap h-100">
-                    <div class="row d-flex align-items-center  ">
+                    <div class="row w-100 d-flex align-items-center  ">
                         <div class="col">
 
 
@@ -49,14 +49,14 @@
                                     <form action="//<?php echo (DIR_SERVERROOT .  $_SERVER['REQUEST_URI']); ?>">
                                         <input type="hidden" name="edit" value="true" />
 
-                                        <button type="submit" class="btn btn-sm btn-sm-my btn-outline-primary">
+                                        <button type="submit" class=" btn btn-sm btn-sm-my btn-outline-primary">
 
                                             edit profile</button>
                                     </form>
-                                    <form action="//<?php echo (DIR_SERVERROOT .  $_SERVER['REQUEST_URI']); ?>">
+                                    <form  class="Comp-like" action="//<?php echo (DIR_SERVERROOT .  $_SERVER['REQUEST_URI']); ?>">
                                         <input type="hidden" name="pwedit" value="true" />
 
-                                        <button type="submit" class="btn btn-sm btn-sm-my btn-outline-secondary">
+                                        <button type="submit" class=" btn btn-sm btn-sm-my btn-outline-secondary">
 
                                             edit password</button>
                                     </form>
