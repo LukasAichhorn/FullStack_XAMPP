@@ -8,7 +8,7 @@
     
 
         <div class="form-group mt-1">
-            <label for="Titel">Title:</label>
+            <label for="Titel">Titel:</label>
             <input type="text" name="Titel" class="form-control" id="Titel" required>
         </div>
 
@@ -18,7 +18,7 @@
         </div>
 
         <div class=" form-group  mt-3 mb-3">
-  <label for="formFileSm" class="form-label">Choose img for Upload:</label>
+  <label for="formFileSm" class="form-label">Bild hochladen:</label>
   <input class="form-control form-control-sm" id="fileUpload" name="fileUpload" type="file">
 </div>
 
@@ -32,13 +32,13 @@
         </div>
 
         <div class="form-check mt-3">
-        <label class="form-check-label" for="checkPrivate">is privat</label>
+        <label class="form-check-label" for="checkPrivate">privat</label>
         <input class="form-check-input" type="checkbox" value="on" name="checkPrivate" id="checkPrivate">
    
     </div>
 
         <div class="form-group mt-3">
-            <button type="submit" name="Submit" class="btn btn-sm btn-primary" style="border-radius: 40px;">Create Post</button>
+            <button type="submit" name="Submit" class="btn btn-sm btn-primary" style="border-radius: 40px;">Beitrag erstellen</button>
         </div>
 
     </form>

@@ -12,12 +12,20 @@ $litemHome = "
         ";
 $litemlogin ="
 <li class='nav-item'>
+<<<<<<< HEAD
     <a class='nav-link' style='text-align: center;' aria-current='page' href='//".DIR_PAGES."login.php'>login</a>
+=======
+    <a class='nav-link' aria-current='page' href='//".DIR_PAGES."login.php'>Login</a>
+>>>>>>> 8cc3f69dcc85bda0ecbc024ea3766fe0be0cf69f
 </li>
         ";
 $litemMyProfile = "
 <li class='nav-item'>
+<<<<<<< HEAD
     <a class='nav-link' style='text-align: center;' aria-current='page' href='//".DIR_PAGES."myProfile.php'>My Profile</a>
+=======
+    <a class='nav-link' aria-current='page' href='//".DIR_PAGES."myProfile.php'>Mein Profil</a>
+>>>>>>> 8cc3f69dcc85bda0ecbc024ea3766fe0be0cf69f
 </li>
         ";
 $litemLogOut = "
@@ -32,17 +40,29 @@ $litemImpressum = "
         ";
 $litemHelp = "
 <li class='nav-item'>
+<<<<<<< HEAD
     <a class='nav-link' style='text-align: center;' aria-current='page' href='//".DIR_PAGES."help.php'>Help</a>
+=======
+    <a class='nav-link' aria-current='page' href='//".DIR_PAGES."help.php'>Hilfe</a>
+>>>>>>> 8cc3f69dcc85bda0ecbc024ea3766fe0be0cf69f
     </li>
                 ";
 $litemManageUsers = "
         <li class='nav-item'>
+<<<<<<< HEAD
             <a class='nav-link' style='text-align: center;' aria-current='page' href='//".DIR_PAGES."ManageUsers.php'>Manage Users</a>
+=======
+            <a class='nav-link' aria-current='page' href='//".DIR_PAGES."ManageUsers.php'>User verwalten</a>
+>>>>>>> 8cc3f69dcc85bda0ecbc024ea3766fe0be0cf69f
         </li>
                 ";
 $litemNewPost = "
         <li class='nav-item'>
+<<<<<<< HEAD
             <a class='nav-link' style='text-align: center;' aria-current='page' href='//".DIR_PAGES."createPost.php'>create new Post</a>
+=======
+            <a class='nav-link' aria-current='page' href='//".DIR_PAGES."createPost.php'>Beitrag erstellen</a>
+>>>>>>> 8cc3f69dcc85bda0ecbc024ea3766fe0be0cf69f
         </li>
                 ";
 

@@ -51,14 +51,14 @@
 
                                         <button type="submit" class=" btn btn-sm btn-sm-my btn-outline-primary">
 
-                                            edit profile</button>
+                                            Profil bearbeiten</button>
                                     </form>
                                     <form  class="Comp-like" action="//<?php echo (DIR_SERVERROOT .  $_SERVER['REQUEST_URI']); ?>">
                                         <input type="hidden" name="pwedit" value="true" />
 
                                         <button type="submit" class=" btn btn-sm btn-sm-my btn-outline-secondary">
 
-                                            edit password</button>
+                                            Passwort ändern</button>
                                     </form>
                                 
                             </div>

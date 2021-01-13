@@ -28,7 +28,9 @@ $SinglePost = $DB->getSinglePost($PostID);
 $comments = $DB->commentCount($PostID);
 $SinglePost = $SinglePost[0];
 $Path = $_SERVER['REQUEST_URI'];
+if(!empty($CurrentUser)){
 $PostManager->handleNewComment($DB, $PostID, $CurrentUser->UserID, $Path);
+}
 $Comments = $DB->getComments($PostID);
 
 ?>

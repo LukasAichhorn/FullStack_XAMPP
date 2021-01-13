@@ -43,7 +43,7 @@ $IMG_TN_Path =$IMG_name."_thumbnail".".".$IMG_ending;
                                         // ?>
                            
                            </div>
-                            <p class="d-flex"><small> <?php echo($Post->Sichtbarkeit == 0) ? "private" : "public"; ?></small></p>
+                            <p class="d-flex"><small> <?php echo($Post->Sichtbarkeit == 0) ? "privat" : "öffentlich"; ?></small></p>
 
                             <p class="card-text mb-3">
                             <?php echo($Post->Inhalt)?>
@@ -70,11 +70,11 @@ $IMG_TN_Path =$IMG_name."_thumbnail".".".$IMG_ending;
                             <div class="row mt-2 mb-2">
                             
                                 <div class="col ">
-                                    <p class="card-text"><small class="text-muted">created by <?php echo($Post->Username);?> <br> at: <?php echo($Post->CreatedAt); ?> </small></p>
+                                    <p class="card-text"><small class="text-muted">erstellt von <?php echo($Post->Username);?> <br>  <?php echo($Post->CreatedAt); ?> </small></p>
                                 </div>
 
                                 <div class="col">
-                                    <p class="card-text"><small class="text-muted"><?php echo($commentnr); ?> comment(s)</small></p>
+                                    <p class="card-text"><small class="text-muted"><?php echo($commentnr); ?> Kommentar(e)</small></p>
                                 </div>
                                 
                                 
