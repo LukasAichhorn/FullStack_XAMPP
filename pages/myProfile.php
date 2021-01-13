@@ -30,6 +30,7 @@ $CurrentUser = $UserManager->getUser();
 $CurrentUserPosts = $DB->getPostsUser($CurrentUser->UserID);
 $PostManager = new PostManager();
 $UserManager->handleUpdateProfile($DB, $CurrentUser);
+$UserManager->handlePasswordChange($DB, $CurrentUser);
 
 ?>
 
