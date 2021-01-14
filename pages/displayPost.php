@@ -110,7 +110,7 @@ $Comments = $DB->getComments($PostID);
 
         </div>
         <div class="row mb-1">
-          <b>Comments:</b>
+          <b>Kommentare:</b>
         </div>
 
         <?php

@@ -12,12 +12,20 @@ $litemHome = "
         ";
 $litemlogin ="
 <li class='nav-item'>
+<<<<<<< HEAD
     <a class='nav-link' style='text-align: center;' aria-current='page' href='//".DIR_PAGES."login.php'>Login</a>
+=======
+    <a class='nav-link' style='text-align: center;' aria-current='page' href='//".DIR_PAGES."login.php'>login</a>
+>>>>>>> 4d6e980a3c92680f3a5182dc0cab56ef9a29aff4
 </li>
         ";
 $litemMyProfile = "
 <li class='nav-item'>
+<<<<<<< HEAD
     <a class='nav-link' style='text-align: center;' aria-current='page' href='//".DIR_PAGES."myProfile.php'>Mein Profil</a>
+=======
+    <a class='nav-link' style='text-align: center;' aria-current='page' href='//".DIR_PAGES."myProfile.php'>My Profile</a>
+>>>>>>> 4d6e980a3c92680f3a5182dc0cab56ef9a29aff4
 </li>
         ";
 $litemLogOut = "
@@ -32,17 +40,29 @@ $litemImpressum = "
         ";
 $litemHelp = "
 <li class='nav-item'>
+<<<<<<< HEAD
     <a class='nav-link' style='text-align: center;' aria-current='page' href='//".DIR_PAGES."help.php'>Hilfe</a>
+=======
+    <a class='nav-link' style='text-align: center;' aria-current='page' href='//".DIR_PAGES."help.php'>Help</a>
+>>>>>>> 4d6e980a3c92680f3a5182dc0cab56ef9a29aff4
     </li>
                 ";
 $litemManageUsers = "
         <li class='nav-item'>
+<<<<<<< HEAD
             <a class='nav-link' style='text-align: center;' aria-current='page' href='//".DIR_PAGES."ManageUsers.php'>User verwalten</a>
+=======
+            <a class='nav-link' style='text-align: center;' aria-current='page' href='//".DIR_PAGES."ManageUsers.php'>Manage Users</a>
+>>>>>>> 4d6e980a3c92680f3a5182dc0cab56ef9a29aff4
         </li>
                 ";
 $litemNewPost = "
         <li class='nav-item'>
+<<<<<<< HEAD
             <a class='nav-link' style='text-align: center;' aria-current='page' href='//".DIR_PAGES."createPost.php'>Beitrag erstellen</a>
+=======
+            <a class='nav-link' style='text-align: center;' aria-current='page' href='//".DIR_PAGES."createPost.php'>create new Post</a>
+>>>>>>> 4d6e980a3c92680f3a5182dc0cab56ef9a29aff4
         </li>
                 ";
 
