@@ -24,7 +24,7 @@
                                 </div>
                                 <div class="form-group mt-3">
                                     <label for="Username">Email:</label>
-                                    <input type="text" name="Email" value="<?php echo ($CurrentUser->Email); ?>" class="form-control" id="Email" required>
+                                    <input type="Email" name="Email" value="<?php echo ($CurrentUser->Email); ?>" class="form-control" id="Email" required>
                                 </div>
 
                                 <!-- <div class="form-group mt-3">

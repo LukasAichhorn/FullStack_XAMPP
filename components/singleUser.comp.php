@@ -20,7 +20,7 @@
 
                             <h5 class="card-title"><?php echo ($CurrentUser->UserName) ?></h5>
                             <small>
-                                status: <?php echo ($CurrentUser->status) ?>
+                                Status: <?php echo ($CurrentUser->status) ?>
                             </small>
 
                             <div class="row">

@@ -132,19 +132,19 @@ class PostManager
                 if ($_GET["filter"] == "t_ASC") {
                     $col = "CreatedAt";
                     $order = "ASC";
-                    echo "t_asc <br>";
+                    
                 } elseif ($_GET["filter"] == "t_DESC") {
                     $col = "CreatedAt";
                     $order = "DESC";
-                    echo "t_desc <br>";
+                    
                 } elseif ($_GET["filter"] == "likes") {
                     $col = "Likes";
                     $order = "DESC";
-                    echo "likes <br>";
+                    
                 } elseif ($_GET["filter"] == "dislikes") {
                     $col = "Dislikes";
                     $order = "DESC";
-                    echo "dislikes <br>";
+                    
                 }
                 $Posts = $DB->getPosts($status, $col, $order);
 
