@@ -1,6 +1,6 @@
 <form action="<?php echo ($_SERVER['REQUEST_URI']); ?>" method="post">
     <div class="row mt-3">
-        <label for="Textarea1" class="form-label"><b>Create a new Comment:</b></label>
+        <label for="Textarea1" class="form-label"><b>Neuen Kommentar verfassen:</b></label>
     </div>
     <div class="row d-flex align-content-end justify-content-end">
         <div class="col">
@@ -10,7 +10,7 @@
         </div>
         <div class="col-3 justify-content-end">
 
-            <button type="submit" name="Submit" class="btn btn-sm btn-primary form-control-sm" style="border-radius: 40px;">create comment</button>
+            <button type="submit" name="Submit" class="btn btn-sm btn-primary form-control-sm" style="border-radius: 40px;">kommentieren</button>
 
         </div>
     </div>

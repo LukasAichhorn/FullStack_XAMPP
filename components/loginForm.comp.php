@@ -11,7 +11,7 @@
         </div>
 
         <div class="form-group m-1">
-            <label for="Passwort">Password</label>
+            <label for="Passwort">Passwort</label>
             <input type="password" name="Passwort" class="form-control" id="Passwort" required>
         </div>
 
@@ -22,8 +22,8 @@
     </form>
     <div class="row">
         <div class="col">
-            <p>Don´t have an account?</p>
-            <a class='link' aria-current='page' href='register.php'>register</a>
+            <p>Noch keinen Account?</p>
+            <a class='link' aria-current='page' href='register.php'>Registrieren</a>
         </div>
     </div>
     </div>

@@ -46,11 +46,11 @@ $IMG_TN_Path =$IMG_name."_thumbnail".".".$IMG_ending;
                             <div class="row mt-2">
                             
                                 <div class="col-6 ">
-                                    <p class="card-text"><small class="text-muted">created by <?php echo($Post->Username);?> <br> at: <?php echo($Post->CreatedAt); ?> </small></p>
+                                    <p class="card-text"><small class="text-muted">erstellt von <?php echo($Post->Username);?> <br> at: <?php echo($Post->CreatedAt); ?> </small></p>
                                 </div>
 
                                 <div class="col">
-                                    <p class="card-text"><small class="text-muted"><?php echo($commentnr); ?> comment(s)</small></p>
+                                    <p class="card-text"><small class="text-muted"><?php echo($commentnr); ?> Kommentar(e)</small></p>
                                 </div>
                                 
                                 
