@@ -10,7 +10,7 @@
         </div>
         <div class="col-3 justify-content-end">
 
-            <button type="submit" name="Submit" class="btn btn-sm btn-primary form-control-sm" style="border-radius: 40px;">kommentieren</button>
+            <button type="submit" name="Submit" class="btn btn-sm btn-primary form-control-sm" style="border-radius: 40px;" <?php echo (empty($CurrentUser) == TRUE) ? "disabled" : "" ?>>kommentieren</button>
 
         </div>
     </div>

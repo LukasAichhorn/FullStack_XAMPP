@@ -97,7 +97,7 @@ else{
                                             <form action="//<?php echo(DIR_UTIL);?>handleLikes.php">
                                             <input type="hidden" name="action" value="0" />
                                             <input type="hidden" name="PostId" value="<?php echo($Post->PostID);?>" />  
-                                            <button type="submit" class="btn btn-sm btn-sm-my btn-outline-success">
+                                            <button type="submit" class="btn btn-sm btn-sm-my btn-outline-success" <?php echo (empty($CurrentUser) == TRUE) ? "disabled" : "" ?>>
                                                 
                                             <?php echo($Post->Likes); ?></button></form>
                                         </div>
@@ -105,7 +105,7 @@ else{
                                             <form action="//<?php echo(DIR_UTIL);?>handleLikes.php">
                                             <input type="hidden" name="action" value="1" />
                                             <input type="hidden" name="PostId" value="<?php echo($Post->PostID);?>" />  
-                                            <button type="submit" class="btn btn-sm btn-sm-my btn-outline-danger"> <?php echo($Post->Dislikes); ?></button></form>
+                                            <button type="submit" class="btn btn-sm btn-sm-my btn-outline-danger"<?php echo (empty($CurrentUser) == TRUE) ? "disabled" : "" ?>> <?php echo($Post->Dislikes); ?> </button></form>
                                         </div>
 
                                         <?php

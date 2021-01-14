@@ -182,7 +182,8 @@ function handleUpdateProfile($DB,$CurrentUser){
             // save new user in Session: 
             $this->updateUser($UpdatedUser);            
             $nM->pushNotification("User has been updated sucessfully","success");
-            header("Refresh:0; url= //". DIR_PAGES ."myProfile.php");
+            //header("Refresh:0; url= //". DIR_PAGES ."myProfile.php"); keine perfekte Lösung für Reload und Anzeige der Notifications gefunden
+            
             
 
             }

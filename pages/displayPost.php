@@ -88,20 +88,24 @@ $Comments = $DB->getComments($PostID);
           </div>
           <div class="divider border mt-1 mb-1"></div>
           <div class="col">
-            <p class="card-text"><small class="text-muted">created by <?php echo ($SinglePost->Username) ?> at: <?php echo ($SinglePost->CreatedAt) ?> </small></p>
+            <p class="card-text"><small class="text-muted">erstellt von: <?php echo ($SinglePost->Username) ?> at: <?php echo ($SinglePost->CreatedAt) ?> </small></p>
           </div>
 
           <div class="col">
-            <p class="card-text"><small class="text-muted"><?php echo ($comments); ?> comment(s)</small></p>
+            <p class="card-text"><small class="text-muted"><?php echo ($comments); ?> Kommentar(e)</small></p>
           </div>
 
           <div class="col ">
             <div class="d-flex flex-row justify-content-end">
               <div class="Comp-like">
-                <form><button type="button" class="btn btn-sm btn-sm-my btn-outline-success"><?php echo ($SinglePost->Likes) ?></button></form>
+                <form><button type="button" class="btn btn-sm btn-sm-my btn-outline-success" <?php echo (empty($CurrentUser) == TRUE) ? "disabled" : "" ?>>
+                <?php echo ($SinglePost->Likes) ?>
+                </button></form>
               </div>
               <div class="Comp-like">
-                <form><button type="button" class="btn btn-sm btn-sm-my btn-outline-danger"> <?php echo ($SinglePost->Dislikes) ?></button></form>
+                <form><button type="button" class="btn btn-sm btn-sm-my btn-outline-danger" <?php echo (empty($CurrentUser) == TRUE) ? "disabled" : "" ?>> 
+                <?php echo ($SinglePost->Dislikes) ?>
+                </button></form>
               </div>
             </div>
           </div>
