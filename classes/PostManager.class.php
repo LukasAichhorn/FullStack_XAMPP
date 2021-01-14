@@ -48,7 +48,7 @@ class PostManager
 
             $ImageUpload = $this->handleImgUpload($CurrentUser);
             if ($ImageUpload == 0) {
-                $ImageUpload = ["localhost/WEB_SS2020/WP/ressources/pics/Default_img.png", "Default_img.png"];
+                $ImageUpload = ["localhost/WEB_SS2020/WP/ressources/pics/Default_img_thumbnail.png", "Default_img_thumbnail.png"];
             }
 
             $_PostID = NUll;

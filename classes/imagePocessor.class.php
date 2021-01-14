@@ -52,10 +52,13 @@ class ImageProcessor{
 
         }
         elseif($IMG_type == 3){
+            
             $IMG = imagecreatefrompng($ImgPath);
+            imagealphablending($IMG,false);
             $Thumbnail=imagescale($IMG,$IMG_new_Width,$IMG_new_Height,IMG_NEAREST_NEIGHBOUR);
             //C:\xampp\htdocs\WEB_SS2020\WP\usersRoot\b\80Enzian Logo.jpeg
-            imagejpeg($Thumbnail,$IMG_NewPath);
+            imagesavealpha($Thumbnail, true);
+            imagepng($Thumbnail,$IMG_NewPath);
             imagedestroy($Thumbnail);
         }
 

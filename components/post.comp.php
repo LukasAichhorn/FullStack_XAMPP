@@ -7,6 +7,17 @@ $IMG_ending=$path_parts["extension"];
 $IMG_dir=$path_parts["dirname"];
 $IMG_TN_Path =$IMG_name."_thumbnail".".".$IMG_ending;
 
+$IMG_defaultName= "Default_img_thumbnail";
+$IMG_default_Path="//localhost/WEB_SS2020/WP/ressources/pics/Default_img_thumbnail.png";
+//if img name = deflaut => use deflaut path
+$RD = $DB->getUserRootByID($Post->UserID); $RD = $RD[0]; 
+$IMG_dynamic_path = "UsersRoot"."/".$Post->Username ."/".$IMG_name."_thumbnail".".".$IMG_ending;
+if($IMG_name==$IMG_defaultName){
+    $path = $IMG_default_Path;
+}
+else{
+    $path = $IMG_dynamic_path;
+}
 ?>
     
     
@@ -14,9 +25,9 @@ $IMG_TN_Path =$IMG_name."_thumbnail".".".$IMG_ending;
         <div class="row g-0">
             <div class="col-md-4  d-flex align-content-center" >
             
-                <?php $RD = $DB->getUserRootByID($Post->UserID); $RD = $RD[0]; ?>
-                <a class="card-img cover" href="<?php echo("UsersRoot"."/".$Post->Username ."/".$IMG_name.".".$IMG_ending)?>" data-lightbox="<?php echo("LB".$Post->UserID); ?>">
-                <img class="card-img cover " src="//<?php echo($RD["RootDir"] ."/".$IMG_TN_Path)?>">
+                <?php ?>
+                <a class="card-img cover" href="<?php echo($path);?>" data-lightbox="<?php echo("LB".$Post->UserID); ?>">
+                <img class="card-img cover " src="<?php echo($path)?>">
                 </a>
             </div>
             <div class="col-md-8">
