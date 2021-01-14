@@ -11,11 +11,11 @@ class ImageProcessor{
         $IMG_width =$IMGdata[0];
         $IMG_height =$IMGdata[1];
         $IMG_type = $IMGdata[2];
-        //calculate new widht and hight according to max size:
+        //calculate new widht and height according to max size:
         $IMG_MAX_WIDTH = 400;
-        $IMG_MAX_HEIGHT = 200;
+        $IMG_MAX_HEIGHT = 400;
 
-        if ($IMG_width> $IMG_MAX_WIDTH)
+        if ($IMG_width > $IMG_MAX_WIDTH)
         {
         $factor = $IMG_MAX_WIDTH / $IMG_width;
         $IMG_new_Width = round($IMG_width * $factor);

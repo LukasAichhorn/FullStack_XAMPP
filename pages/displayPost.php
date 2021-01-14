@@ -28,8 +28,8 @@ $SinglePost = $DB->getSinglePost($PostID);
 $comments = $DB->commentCount($PostID);
 $SinglePost = $SinglePost[0];
 $Path = $_SERVER['REQUEST_URI'];
-if(!empty($CurrentUser)){
-$PostManager->handleNewComment($DB, $PostID, $CurrentUser->UserID, $Path);
+if (!empty($CurrentUser)) {
+  $PostManager->handleNewComment($DB, $PostID, $CurrentUser->UserID, $Path);
 }
 $Comments = $DB->getComments($PostID);
 
@@ -58,18 +58,18 @@ $Comments = $DB->getComments($PostID);
   <?php include "../components/navigationBar.comp.php" ?>
 
   <div class="container-fluid">
-    <div class="row displayPost-BG"></div>
+    <div class="row displayPost-BG size-adjust"></div>
     <div class="row">
       <div class="col">
 
       </div>
 
-      <div class="col-6 p-4 minusTop">
+      <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 p-4 minusTop">
 
 
         <img class="card-img-top " src="//<?php echo ($SinglePost->Bildadresse); ?>" alt="Card image cap">
         <h5 class="mt-3 mb-3"><?php echo ($SinglePost->Titel) ?></h5>
-        
+
         <p><?php echo ($SinglePost->Inhalt) ?></p>
 
 
@@ -99,13 +99,13 @@ $Comments = $DB->getComments($PostID);
             <div class="d-flex flex-row justify-content-end">
               <div class="Comp-like">
                 <form><button type="button" class="btn btn-sm btn-sm-my btn-outline-success" <?php echo (empty($CurrentUser) == TRUE) ? "disabled" : "" ?>>
-                <?php echo ($SinglePost->Likes) ?>
-                </button></form>
+                    <?php echo ($SinglePost->Likes) ?>
+                  </button></form>
               </div>
               <div class="Comp-like">
-                <form><button type="button" class="btn btn-sm btn-sm-my btn-outline-danger" <?php echo (empty($CurrentUser) == TRUE) ? "disabled" : "" ?>> 
-                <?php echo ($SinglePost->Dislikes) ?>
-                </button></form>
+                <form><button type="button" class="btn btn-sm btn-sm-my btn-outline-danger" <?php echo (empty($CurrentUser) == TRUE) ? "disabled" : "" ?>>
+                    <?php echo ($SinglePost->Dislikes) ?>
+                  </button></form>
               </div>
             </div>
           </div>
@@ -139,3 +139,7 @@ $Comments = $DB->getComments($PostID);
       </div>
     </div>
   </div>
+  <?php require "../components/JS_Imports.comp.php" ?>
+</body>
+
+</html>

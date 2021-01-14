@@ -8,7 +8,7 @@
     <div class="mb-1 mt-1 shadow-sm border p-2 <?php echo ($CurrentUser->status == 1) ? "border-success" : "border-danger" ?>">
         <div class="row d-flex" >
 
-            <div class=" col-2">
+            <div class=" col-12 col-sm col-md col-lg col-xl d-flex justify-content-center">
                 <img class="card-img user-Img cover " src="//<?php echo ($CurrentUser->IMG); ?>" width="20" height="20">
             </div>
             <div class="col">
@@ -34,7 +34,20 @@
                         <?php echo ($CurrentUser->status == 1) ? "aktiv" : "inaktiv" ?>
                     </div>
 
-                    <div class="col d-flex align-items-center justify-content-start">
+                    
+                </div>
+
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col m-1">
+                <button class="btn btn-sm btn-sm-my btn-outline-primary" type="button" data-toggle="collapse" data-target="#collapse_<?php echo($CurrentUser->UserID); ?>" aria-expanded="false" aria-controls="collapse_<?php echo($CurrentUser->UserID); ?>">
+                    Alle Beiträge anzeigen:
+                </button>
+
+            </div>
+            <div class="col d-flex align-items-center justify-content-start">
 
 
                         <form action="//<?php echo (DIR_SERVERROOT .  $_SERVER['REQUEST_URI']); ?>">
@@ -51,18 +64,6 @@
 
 
                     </div>
-                </div>
-
-            </div>
-
-        </div>
-        <div class="row">
-            <div class="col m-1">
-                <button class="btn btn-sm btn-sm-my btn-outline-primary" type="button" data-toggle="collapse" data-target="#collapse_<?php echo($CurrentUser->UserID); ?>" aria-expanded="false" aria-controls="collapse_<?php echo($CurrentUser->UserID); ?>">
-                    Alle Beiträge anzeigen:
-                </button>
-
-            </div>
         </div>
         <div class="row ">
             <div class="col collapse" id="collapse_<?php echo($CurrentUser->UserID); ?>">

@@ -13,10 +13,7 @@ $litemHome = "
 $litemlogin ="
 <li class='nav-item'>
     <a class='nav-link' style='text-align: center;' aria-current='page' href='//".DIR_PAGES."login.php'>Login</a>
-<<<<<<< HEAD
-=======
     
->>>>>>> b4bc8fa6a4b38ffb406150dda3bb028d4c618914
 </li>
         ";
 $litemMyProfile = "

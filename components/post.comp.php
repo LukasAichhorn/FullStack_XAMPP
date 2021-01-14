@@ -7,17 +7,24 @@ $IMG_ending=$path_parts["extension"];
 $IMG_dir=$path_parts["dirname"];
 $IMG_TN_Path =$IMG_name."_thumbnail".".".$IMG_ending;
 
+
 $IMG_defaultName= "Default_img_thumbnail";
-$IMG_default_Path="//localhost/WEB_SS2020/WP/ressources/pics/Default_img_thumbnail.png";
+$IMG_default_Path="//localhost/WEB_SS2020/WP/ressources/pics/Default_img.png";
+$IMG_default_Path_thumbnail="//localhost/WEB_SS2020/WP/ressources/pics/Default_img_thumbnail.png";
 //if img name = deflaut => use deflaut path
 $RD = $DB->getUserRootByID($Post->UserID); $RD = $RD[0]; 
-$IMG_dynamic_path = "UsersRoot"."/".$Post->Username ."/".$IMG_name."_thumbnail".".".$IMG_ending;
+$IMG_dynamic_path_thumbnail = "//" . $RD['RootDir'] . "/".$IMG_name."_thumbnail".".".$IMG_ending;
+$IMG_dynamic_path = "//" . $RD['RootDir'] . "/".$IMG_name.".".$IMG_ending;
 if($IMG_name==$IMG_defaultName){
-    $path = $IMG_default_Path;
+    $path_img = $IMG_default_Path_thumbnail;
+    $path_link = $IMG_default_Path;
 }
 else{
-    $path = $IMG_dynamic_path;
+    $path_img = $IMG_dynamic_path_thumbnail;
+    $path_link = $IMG_dynamic_path;
 }
+
+
 ?>
     
     
@@ -26,8 +33,8 @@ else{
             <div class="col-md-4  d-flex align-content-center" >
             
                 <?php ?>
-                <a class="card-img cover" href="<?php echo($path);?>" data-lightbox="<?php echo("LB".$Post->UserID); ?>">
-                <img class="card-img cover " src="<?php echo($path)?>">
+                <a class="card-img cover" href="<?php echo($path_link);?>" data-lightbox="<?php echo("LB".$Post->UserID); ?>">
+                <img class="card-img cover " src="<?php echo($path_img)?>">
                 </a>
             </div>
             <div class="col-md-8">
@@ -90,7 +97,7 @@ else{
                                 
                                 
 
-                                <div class="col-1 ">
+                                <div class="col ">
                                     <div class="d-flex flex-row justify-content-end">
                                         <div class="Comp-like">
                                             

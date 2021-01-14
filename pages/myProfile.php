@@ -61,13 +61,13 @@ $UserManager->handlePasswordChange($DB, $CurrentUser);
   </div>
 
   <div class="container-fluid">
-    <div class="row User-BG"></div>
+    <div class="row User-BG size-adjust"></div>
     <div class="row">
       <div class="col">
 
       </div>
 
-      <div class="col-6 p-4 minusTop">
+      <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 p-4 minusTop">
         <h1>Mein Profil</h1>
 
 
@@ -97,3 +97,7 @@ $UserManager->handlePasswordChange($DB, $CurrentUser);
       </div>
     </div>
   </div>
+  <?php require "../components/JS_Imports.comp.php" ?>
+</body>
+
+</html>

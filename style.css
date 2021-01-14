@@ -44,6 +44,17 @@ a {
 .comp_divider{
     border-radius: 100%;
 }
+
+.index-BG{
+    background-image: url("./ressources/pics/bermuda-fatal-error-1.png");
+    background-color: #ffaf2a;
+    height:42em;
+    background-position: top;
+    background-repeat: no-repeat;
+    
+   
+}
+
 .login-BG{
     background-image: url("./ressources/pics/sign-in-4.png");
     background-color: #ffaf2a;
@@ -96,8 +107,7 @@ a {
     background-color: #ffaf2a;
     height:42em;
     background-position: top;
-    background-repeat: no-repeat;
-    
+    background-repeat: no-repeat;   
    
 }
 .minusTop{
@@ -108,6 +118,7 @@ a {
     font-size: 3.5em;
     color:white;
 }
+
 .headline-info{
     color:white;
     font-size:1.5em;
@@ -178,4 +189,35 @@ object-fit:contain;
 }
 .btn-sort{
     margin-left: 0.2rem;
+}
+
+@media screen and (max-width: 767.98px){
+
+    .headline{
+        font-size: 1.5em;
+    }
+    .headline-text{
+        font-size: 0.8em;
+    }
+    .size-adjust{
+        background-size:contain;
+        height: 18em;
+    }
+}
+@media (max-width: 991.98px) {
+    .minusTop{
+        margin-top: 0.0;
+    }
+    .size-adjust{
+        background-size:contain;
+        height: 21em;
+    }
+    h1{
+        text-align: center;
+        margin-bottom:0.6em;
+    }
+    .headline-text{
+        text-align: center;
+    }
 };
+
