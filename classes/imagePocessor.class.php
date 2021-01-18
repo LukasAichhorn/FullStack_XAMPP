@@ -11,13 +11,8 @@ class ImageProcessor{
         $IMG_width =$IMGdata[0];
         $IMG_height =$IMGdata[1];
         $IMG_type = $IMGdata[2];
-<<<<<<< HEAD
-        //calculate new widht and height according to max size:
-        $IMG_MAX_WIDTH = 400;
-=======
         //calculate new widht and hight according to max size:
         $IMG_MAX_WIDTH = 800;
->>>>>>> cfa7c61927765bf927a92408a0bccb24a59260f6
         $IMG_MAX_HEIGHT = 400;
 
         if ($IMG_width > $IMG_MAX_WIDTH)
