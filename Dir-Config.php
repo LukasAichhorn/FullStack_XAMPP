@@ -1,4 +1,5 @@
 <?php
+//Konstanten um das Zusammenbauen von Pfaden zu erleichtern
 define('DIR_SERVERROOT', $_SERVER['SERVER_NAME']   );//localhost
 define('DIR_BASE',      DIR_SERVERROOT. '/WEB_SS2020/WP/');
 define('DIR_COMPONENTS',     DIR_BASE . 'components/');

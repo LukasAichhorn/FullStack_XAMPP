@@ -1,10 +1,11 @@
 <?php
+//händelt alle Interaktionen mit Posts
 class PostManager
 {
     private $Posts;
 
 
-
+    //DB Objekt und UserStatus wird übergeben
     function FetchPosts($DB, $status)
     {
 
@@ -12,6 +13,7 @@ class PostManager
         return $this->Posts;
     }
 
+    //alle Posts im Array werden mit der Komponente unten angezeigt
     function display($DB, $Posts, $CurrentUser)
     {
 
@@ -20,6 +22,7 @@ class PostManager
             include "C:/xampp/htdocs/WEB_SS2020/WP/components/post.comp.php";
         }
     }
+
     function handleNewPost($DB, $CurrentUser)
     {   
         $nM = new NotificationHandler();
@@ -37,15 +40,15 @@ class PostManager
 
             $TagsSelected = array();
             $Tags = $DB->allTags();
-
+            //Vergleich des Arrays mit allen Tags mit den im POST array gespeicherten Tags
             foreach ($Tags as $Tag) {
                 if (isset($_POST[$Tag[0]])) {
                     array_push($TagsSelected, $Tag);
                 }
             }
-            print_r($TagsSelected);
+            
 
-
+            //speichert Adresse und Bildernamen in diese Variable
             $ImageUpload = $this->handleImgUpload($CurrentUser);
             if ($ImageUpload == 0) {
                 $ImageUpload = ["localhost/WEB_SS2020/WP/ressources/pics/Default_img_thumbnail.png", "Default_img_thumbnail.png"];
@@ -66,6 +69,7 @@ class PostManager
             $nM->pushNotification("Post successfully created!","success");
         }
     }
+
     function handleImgUpload($CurrentUser)
     {
 
@@ -104,7 +108,7 @@ class PostManager
         return 0;
     }
 
-    function handleNewComment($DB, $PostID, $CurrentUserID, $Path)
+    function handleNewComment($DB, $PostID, $CurrentUserID, $URLPath)
     {
 
         if (!empty($_POST["Comment_text"])) {
@@ -115,7 +119,7 @@ class PostManager
             $NewComment = new Comment($text, $CurrentUserID, $PostID, $CreatedAt);
 
             $DB->insertComment($NewComment);
-            header("Refresh:0; url=$Path");
+            header("Refresh:0; url=$URLPath");
         }
     }
     function handleSearch($DB, $status)
@@ -129,19 +133,19 @@ class PostManager
 
             if (isset($_GET['filter'])) {
 
-                if ($_GET["filter"] == "t_ASC") {
+                if ($_GET["filter"] == "t_ASC") {//time ascending = älteste zuerst
                     $col = "CreatedAt";
                     $order = "ASC";
                     
-                } elseif ($_GET["filter"] == "t_DESC") {
+                } elseif ($_GET["filter"] == "t_DESC") {// time descending = neueste zuerst
                     $col = "CreatedAt";
                     $order = "DESC";
                     
-                } elseif ($_GET["filter"] == "likes") {
+                } elseif ($_GET["filter"] == "likes") { //meiste Likes zuerst
                     $col = "Likes";
                     $order = "DESC";
                     
-                } elseif ($_GET["filter"] == "dislikes") {
+                } elseif ($_GET["filter"] == "dislikes") {// meiste Dislikes zuerst
                     $col = "Dislikes";
                     $order = "DESC";
                     
@@ -151,10 +155,10 @@ class PostManager
                 
                 return $Posts;
             }
-
+            
             $Tags = $DB->allTags();
             $selectedTags = array();
-            //check if something was searches :
+            
             if (isset($_GET["string"])) {
                 $string = $_GET["string"];
             } else {
@@ -166,7 +170,7 @@ class PostManager
             foreach ($Tags as $Tag) {
 
                 if (array_key_exists($Tag[0], $_GET)) {
-                    echo ($Tag[0]);
+                    
                     array_push($selectedTags, $Tag[0]);
                 }
             }
@@ -182,7 +186,7 @@ class PostManager
             // }
 
             if ($filteredPosts = $DB->searchPosts($string, $selectedTags, $status,$tagsSelected)) {
-                echo (" filter worked");
+                
                 return $filteredPosts;
             } else {
                 //generate error message filter problem 
@@ -192,7 +196,7 @@ class PostManager
             }
         } 
         else 
-        {
+        {   //default if no search param or filter was selected
             $filteredPosts = $DB->searchPosts("",[],$status,false);
             return $filteredPosts;
             

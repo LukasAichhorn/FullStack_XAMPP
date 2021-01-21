@@ -1,6 +1,7 @@
 <?php
+//diese Klasse erstellt ein Thumbnail für hochgeladene Bilder
 class ImageProcessor{
-
+    //input ist der Bildpfad nach dem Upload
    function createThumbnail($ImgPath){
 
         $IMGdata = getimagesize($ImgPath);
@@ -11,7 +12,7 @@ class ImageProcessor{
         $IMG_width =$IMGdata[0];
         $IMG_height =$IMGdata[1];
         $IMG_type = $IMGdata[2];
-        //calculate new widht and hight according to max size:
+        //calculate new width and height according to max size:
         $IMG_MAX_WIDTH = 800;
         $IMG_MAX_HEIGHT = 400;
 
@@ -30,10 +31,9 @@ class ImageProcessor{
         }
 
 
-        // $IMG_new_Width = $IMG_width/5;
-        // $IMG_new_Height =$IMG_height/5;
+        
         $IMG_NewPath = $IMG_dir."/".$IMG_name."_thumbnail".".".$IMG_ending;  
-//1 == gif 2 == jpeg 3==png 4
+        //1 == gif 2 == jpeg 3==png 4
 
         if($IMG_type == 1){
             $IMG= imagecreatefromgif($ImgPath);

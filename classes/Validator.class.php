@@ -1,5 +1,5 @@
 <?php
-
+//diese Klasse enthält verschiedene Funktionen zur Validierung von Userinput
 class Validator{
 
 

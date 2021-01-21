@@ -44,23 +44,23 @@
                                 <p><?php echo ($CurrentUser->Email) ?></p>
                             </div>
                             <div class="d-flex flex-row justify-content-end">
-                                
 
-                                    <form action="//<?php echo (DIR_SERVERROOT .  $_SERVER['REQUEST_URI']); ?>">
-                                        <input type="hidden" name="edit" value="true" />
 
-                                        <button type="submit" class=" btn btn-sm btn-sm-my btn-outline-primary">
+                                <form action="//<?php echo (DIR_SERVERROOT .  $_SERVER['REQUEST_URI']); ?>">
+                                    <input type="hidden" name="edit" value="true" />
 
-                                            Profil bearbeiten</button>
-                                    </form>
-                                    <form  class="Comp-like" action="//<?php echo (DIR_SERVERROOT .  $_SERVER['REQUEST_URI']); ?>">
-                                        <input type="hidden" name="pwedit" value="true" />
+                                    <button type="submit" class=" btn btn-sm btn-sm-my btn-outline-primary">
 
-                                        <button type="submit" class=" btn btn-sm btn-sm-my btn-outline-secondary">
+                                        Profil bearbeiten</button>
+                                </form>
+                                <form class="Comp-like" action="//<?php echo (DIR_SERVERROOT .  $_SERVER['REQUEST_URI']); ?>">
+                                    <input type="hidden" name="pwedit" value="true" />
 
-                                            Passwort ändern</button>
-                                    </form>
-                                
+                                    <button type="submit" class=" btn btn-sm btn-sm-my btn-outline-secondary">
+
+                                        Passwort ändern</button>
+                                </form>
+
                             </div>
 
                         </div>

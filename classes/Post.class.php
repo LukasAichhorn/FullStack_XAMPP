@@ -1,5 +1,5 @@
 <?php
-
+//Klasse für Postobjekte
 class Post {
 public $PostID;
 public $Username;

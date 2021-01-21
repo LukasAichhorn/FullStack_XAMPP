@@ -25,10 +25,12 @@ function checkStatus(){
     return 0;
    
 }
+
  function getUser(){
    return $this->User;
     
 }
+
 function updateUser($UserOBJ){
     $_SESSION["User"]=$UserOBJ;
     $this->User = $UserOBJ;
@@ -142,7 +144,6 @@ function handleUpdateProfile($DB,$CurrentUser){
             //validate all inputs
             $Validator = new Validator();
             $Username=$Validator->validate_string($_POST["Username"]);
-            //$Hpw=$Validator->validate_Password($_POST["Passwort"]);
             $Anrede=$Validator->validate_string($_POST["Anrede"]);
             $Vorname=$Validator->validate_string($_POST["Vorname"]);
             $Nachname=$Validator->validate_string($_POST["Nachname"]);

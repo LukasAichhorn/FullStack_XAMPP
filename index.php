@@ -135,8 +135,9 @@ $Tags = $DB->allTags();
     <div class="col-xl-6 col-lg-10 p-4 minusTop">
       <div class="d-flex sort-container mb-3">
         <?php
-        $l = $d = $ta = FALSE;//likes, dislikes, time descending
-        $td = true;// time ascending
+        //diese funktionalität ist notwendig um den derzeit ausgewählten Sortiermodus zu deaktivieren
+        $l = $d = $ta = FALSE;//likes, dislikes, time ascending
+        $td = true;// time descending
         if (isset($_GET["filter"])) {
           $td = false;
           

@@ -1,4 +1,5 @@
-<?php 
+<?php
+//die comment klasse kommt bei Kommentaren zum Einsatz, für jeden Kommentar wird eine Instanz des Objekts erstellt
 class Comment{
 public $Inhalt;
 public $PostID;
@@ -15,7 +16,3 @@ public $CreatedAt;
 
     
 }
-
-
-
-?>

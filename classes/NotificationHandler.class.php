@@ -1,10 +1,11 @@
 <?php
+//diese Klasse ermöglicht es Benachrichtigungen im Frontend auszugeben
 class NotificationHandler
 {
     public $notifications = array();
 
 
-
+    //alle Benachrichtigungen werden im Session Array gespeichert und einmalig ausgegeben
     function initAlerts()
     {
 
@@ -15,14 +16,14 @@ class NotificationHandler
             $_SESSION["alerts"] = $this->notifications;
         }
     }
-    //type = light / secondary /success / danger
+    //type = light / secondary /success / danger, fügt eine neue Benachrichtigung ins Session Array ein
     function pushNotification($string, $type)
     {
         $temp = [$string, $type];
         array_push($_SESSION["alerts"], $temp);
 
     }
-
+    //funktion zur einmaligen Anzeige von allen gespeicherten Benachrichtigungen, inkl. Cleanup danach
     function display()
     {
         $this->notifications = $_SESSION["alerts"];
